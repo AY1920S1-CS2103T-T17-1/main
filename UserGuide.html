@@ -193,6 +193,27 @@ addMeeting p/PROJECT_NAME [dt/tentative days for a meeting] [m/MEMBERS INVOLVED]
 </ol>
 </div>
 </li>
+<li>
+<p>Add Task: <em>addTimetable</em></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Adds timetable to a person to record down their schedule.</p>
+</li>
+<li>
+<p>Format:
+<em>addTimetable INDEX [n/NUSMODS_SHARE_URL] [f/FILEPATH_TO_TIMETABLE]
+</em></p>
+</li>
+<li>
+<p>Example:
+<em>addTimetable 3 f//home/john/Desktop/aliceTimetable.txt
+</em>addTimetable 2 n/https://nusmods.com/timetable/sem-1/share?CS2100=LAB:05,TUT:02,LEC:1&amp;CS2101=&amp;CS2103T=LEC:G13&amp;CS2105=TUT:03,LEC:1&amp;CS3241=TUT:05,LEC:1&amp;CS3243=TUT:01,LEC:1&amp;GEQ1000=TUT:D27
+__</p>
+</li>
+</ol>
+</div>
+</li>
 </ol>
 </div>
 </li>
@@ -305,16 +326,22 @@ input d/(i.e. <em>editTask 1 d/</em>). Tasks are automatically unchecked if <em>
 </div>
 </li>
 <li>
-<p>Generate next meeting date: <em>generate</em></p>
+<p>Generate meeting timing: <code>generate</code></p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
-<p>Come up with next meeting date.</p>
+<p>Generates a meeting time that everyone is available.</p>
+</li>
+<li>
+<p>Prerequisite: A project is checked out using the command <code>checkout</code>, and timetables have been assigned to the members with the command <code>addTimetable</code></p>
 </li>
 <li>
 <p>Format:
-<em>generateTiming [mt/MEETING_INDEX]
-</em></p>
+<code>generate d/DURATION r/TIMERANGE</code></p>
+</li>
+<li>
+<p>Example:
+<code>generate d/2 r/MONDAY 0900 MONDAY 1800</code></p>
 </li>
 </ol>
 </div>
@@ -456,4 +483,4 @@ to find out which indexes are available.</p>
 </ol>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 12:05:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 12:41:32 UTC</div></div></div></body></html>
