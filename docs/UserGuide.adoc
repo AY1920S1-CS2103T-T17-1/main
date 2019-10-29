@@ -47,6 +47,7 @@ Format: `checkout INDEX`
 Example:
 
 * `checkout 1`
+
 === Adding Items
 
 This section deals with adding information to the application.
