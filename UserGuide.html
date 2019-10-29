@@ -53,434 +53,535 @@ Interested? Jump to the Section 2, “QuickStart” to get started. Enjoy!</p>
 <div class="sect1">
 <h2 id="features"><a class="link" href="#features">Features</a></h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Help</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Viewing help: <em>help</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Shows a list of commands.</p>
-</li>
-<li>
-<p>Format: <em>help</em></p>
-</li>
-</ol>
+<div class="sect2">
+<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing help: <code>help</code></a></h3>
+<div class="paragraph">
+<p>Shows a list of commands.<br>
+Format: <code>help</code><br></p>
 </div>
-</li>
-</ol>
 </div>
-</li>
-<li>
-<p><strong>List</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>List Projects: <em>listProjects</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Shows the list of projects.</p>
-</li>
-<li>
-<p>Format:
-<em>listProjects</em></p>
-</li>
-</ol>
+<div class="sect2">
+<h3 id="listing-information"><a class="link" href="#listing-information">Listing Information</a></h3>
+<div class="sect3">
+<h4 id="list-your-contacts-code-list-code"><a class="link" href="#list-your-contacts-code-list-code">List your contacts: <code>list</code></a></h4>
+<div class="paragraph">
+<p>Shows you the list of contacts you have currently along with their respective information.<br>
+Format: <code>list</code></p>
 </div>
-</li>
-<li>
-<p>List Members: <em>listMembers</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Shows the list of members involved with the specified project. If no project is specified, a list of all projects with its corresponding members is shown.</p>
-</li>
-<li>
-<p>Format:
-<em>listMembers [pr/PROJECT_NAME]
-</em></p>
-</li>
-</ol>
 </div>
-</li>
-</ol>
 </div>
-</li>
-<li>
-<p><strong>Add</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Add Project: <em>addProject</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Adds a project to your list of projects</p>
-</li>
-<li>
-<p>Format:
-<em>addProject pr/PROJECT_NAME [d/PROJECT_DESCRIPTION] [dl/DEADLINE] [m/MEMBERS] [ta/TASKS] [t/TAG]&#8230;&#8203;</em></p>
-</li>
-<li>
-<p>Example:
-<em>addProject pr/GET1031 project dl/October 11 Tuesday 2359 m/John Lim_Mark Tan_David Chan ta/1. Come up with project outline 2.Research on project topic t/NUS
-</em></p>
-</li>
-</ol>
+<div class="sect2">
+<h3 id="checkout-a-project-code-checkout-code"><a class="link" href="#checkout-a-project-code-checkout-code">Checkout a project: <code>checkout</code></a></h3>
+<div class="paragraph">
+<p>Checkout a project to begin working on the project immediately.</p>
 </div>
-</li>
-<li>
-<p>Add Meeting: addMeeting</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Adds a meeting to the list of meetings of your current project.</p>
-</li>
-<li>
-<p>Format:
-addMeeting p/PROJECT_NAME [dt/tentative days for a meeting] [m/MEMBERS INVOLVED] [a/AGENDA]&#8230;&#8203;</p>
-</li>
-<li>
-<p>Example:
-<em>addMeeting p/GET1031 project dl/October 11 - October 17 m/John Lim_Mark Tan_David Chan a/decide on the structure of presentation
-</em></p>
-</li>
-</ol>
+<div class="literalblock">
+<div class="content">
+<pre>Commands which require a project to be checked out first will be tagged using [Checkout].</pre>
 </div>
-</li>
-<li>
-<p>Add Member: <em>addMember</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Adds a person to addressBook. After a person is added, they can then be linked to a project by editing the project.</p>
-</li>
-<li>
-<p>Format:
-<em>addMember n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​
-</em></p>
-</li>
-<li>
-<p>Example:
-<em>addMember n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01
-</em></p>
-</li>
-</ol>
 </div>
-</li>
-<li>
-<p>Add Task: <em>addTask</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Adds an unchecked task to the list of tasks of your current project.</p>
-</li>
-<li>
-<p>Format:
-<em>addTask s/DESCRIPTION c/TIME
-</em></p>
-</li>
-<li>
-<p>Example:
-<em>addTask s/Finish GUI c/06/10/2019 1600
-</em></p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Format: <code>checkout INDEX</code></p>
 </div>
-</li>
-<li>
-<p>Add Task: <em>addTimetable</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Adds timetable to a person to record down their schedule.</p>
-</li>
-<li>
-<p>Format:
-<em>addTimetable INDEX [n/NUSMODS_SHARE_URL] [f/FILEPATH_TO_TIMETABLE]
-</em></p>
-</li>
-<li>
-<p>Example:
-<em>addTimetable 3 f//home/john/Desktop/aliceTimetable.txt
-</em>addTimetable 2 n/https://nusmods.com/timetable/sem-1/share?CS2100=LAB:05,TUT:02,LEC:1&amp;CS2101=&amp;CS2103T=LEC:G13&amp;CS2105=TUT:03,LEC:1&amp;CS3241=TUT:05,LEC:1&amp;CS3243=TUT:01,LEC:1&amp;GEQ1000=TUT:D27
-__</p>
-</li>
-</ol>
+<div class="paragraph">
+<p><code>INDEX</code> is the number used to identify the project in the project list.</p>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>Example:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>checkout 1</code>
+=== Adding Items</p>
 </li>
-<li>
-<p><strong>Edit</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Edit project: <em>edit</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Edit the attributes of the project.</p>
-</li>
-<li>
-<p>Format:
-<em>edit INDEX [s/DESCRIPTION] [n/NAME]
-</em></p>
-</li>
-<li>
-<p>Examples:
-__edit 5 pr/OP1 pd/Oral Presentation on Negotiation Techniques dl/25/09/2019 2359</p>
-</li>
-</ol>
+</ul>
 </div>
-</li>
-<li>
-<p>Edit task: <em>editTask</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Edits task with the specified index of the task list of current project. To check off task,
-input d/(i.e. <em>editTask 1 d/</em>). Tasks are automatically unchecked if <em>d/</em> is not in the input.</p>
-</li>
-<li>
-<p>Format:
-<em>editTask INDEX [s/DESCRIPTION] [c/TIME] [d/]</em></p>
-</li>
-<li>
-<p>Example:
-<em>editTask 1 c/05/05/2019 d/</em></p>
-</li>
-</ol>
+<div class="paragraph">
+<p>This section deals with adding information to the application.</p>
 </div>
-</li>
-</ol>
+<div class="sect3">
+<h4 id="1-add-a-project-code-addproject-code"><a class="link" href="#1-add-a-project-code-addproject-code">1. Add a project: <code>addProject</code></a></h4>
+<div class="paragraph">
+<p>Adds a new project into your list of projects.<br>
+Format: <code>addProject n/PROJECT_TITLE s/PROJECT_DESCRIPTION</code></p>
 </div>
-</li>
-<li>
-<p><strong>Delete</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Delete person: <em>delete</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Deletes specified person from the addressbook.</p>
-</li>
-<li>
-<p>Format:
-<em>delete INDEX</em></p>
-</li>
-<li>
-<p>Example:
-<em>delete 1
-</em></p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Example:</p>
 </div>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p>Delete task: <em>deleteTask</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Deletes task of specified index from the task list of the current project.</p>
+<p><code>addProject n/CS2103 project s/Software engeering project</code></p>
 </li>
-<li>
-<p>Format:
-<em>deleteTask INDEX</em></p>
-</li>
-<li>
-<p>Example:
-<em>delete 1</em></p>
-</li>
-</ol>
+</ul>
 </div>
-</li>
-</ol>
 </div>
+<div class="sect3">
+<h4 id="2-add-a-person-to-your-contacts-code-add-code"><a class="link" href="#2-add-a-person-to-your-contacts-code-add-code">2. Add a person to your contacts: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds a person to your contacts.</p>
+</div>
+<div class="paragraph">
+<p>When you add a person to your contacts, it will automatically change to displaying your list of contacts.<br>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A person can have any number of tags (including 0)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
 </li>
 <li>
-<p><strong>Meeting</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-add-a-member-to-your-project"><a class="link" href="#3-add-a-member-to-your-project">3. Add a member to your project</a></h4>
+<div class="paragraph">
+<p>Adding a member can be done in 2 ways, you can either add a new person to your contacts and to your current project,
+or you can simply add an existing person from your contacts to your current project.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-1-add-a-new-person-to-your-contacts-and-project-code-addmember-code-checkout"><a class="link" href="#3-1-add-a-new-person-to-your-contacts-and-project-code-addmember-code-checkout">3.1 Add a new person to your contacts and project: <code>addMember</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>This command is similar to adding a person to your contacts shown previously, except that you have to
+checked out into a project.<br>
+Format: <code>addMember n/NAME [p/PHONE_NUMBER] [e/EMAIL] [a/address] [t/tag]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Adding a member only requires his/her name!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>However it will be good to add as much information as possible.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>Store meeting minutes: <em>attach</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
+<p><code>addMember n/John Doe a/John street, block 123, #01-01</code></p>
+</li>
+<li>
+<p><code>addMember n/Betsy Crowe e/betsycrowe@example.com t/friend t/criminal</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-2-add-a-person-from-contacts-to-a-project-code-addfromcontacts-code-checkout"><a class="link" href="#3-2-add-a-person-from-contacts-to-a-project-code-addfromcontacts-code-checkout">3.2 Add a person from contacts to a project: <code>addFromContacts</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>This command helps to add a person you already saved in your contacts into your project, reducing the need
+to type his information all over again. All you need to do is enter the index he is listed at.<br>
+Format: <code>addFromContacts INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><code>INDEX</code> is the number which the person is listed at, and it should be a postive integer eg. 1, 2, 3, &#8230;&#8203;.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addFromContacts 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="4-add-a-timetable-for-a-person-code-addtimetable-code"><a class="link" href="#4-add-a-timetable-for-a-person-code-addtimetable-code">4. Add a timetable for a person: <code>addTimeTable</code></a></h4>
+<div class="paragraph">
+<p>Adds a timetable for the specified person, to record down their schedule.<br>
+Format : <code>addTimetable INDEX [n/NUSMODS_SHARE_URL] [f/FILEPATH_TO_TIMETABLE]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addTimetable 3 f//home/john/Desktop/aliceTimetable.txt addTimetable 2
+n/https://nusmods.com/timetable/sem-1/share?CS2100=LAB:05,TUT:02,LEC:1&amp;CS2101=&amp;CS2103T=LEC:G13&amp;CS2105=TUT:03,LEC:1&amp;CS3241=TUT:05,LEC:1&amp;CS3243=TUT:01,LEC:1&amp;GEQ1000=TUT:D27 __</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="5-add-a-task-to-your-project-code-addtask-code-checkout"><a class="link" href="#5-add-a-task-to-your-project-code-addtask-code-checkout">5. Add a task to your project: <code>addTask</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Adds an unchecked task to the list of tasks of your current working project.<br>
+Format: <code>addTask s/DESCRIPTION c/TIME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addTask s/Finish GUI c/06/10/2019 1600</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="6-add-a-project-meeting-code-addprojectmeeting-code"><a class="link" href="#6-add-a-project-meeting-code-addprojectmeeting-code">6. Add a project meeting: <code>addProjectMeeting</code></a></h4>
+<div class="paragraph">
+<p>Adds a new project meeting to the current working project. <br>
+Format: <code>Format: addProjectMeeting [c/ dd/MM/yyyy HHmm] [s/MEETING_DESCRIPTION]</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing"><a class="link" href="#editing">Editing</a></h3>
+<div class="paragraph">
+<p>This section deals with editing information shown on the application.</p>
+</div>
+<div class="sect3">
+<h4 id="1-editing-a-person-code-edit-code"><a class="link" href="#1-editing-a-person-code-edit-code">1. Editing a person : <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing person in the address book.<br>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
+Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+</li>
+<li>
+<p><code>edit 2 n/Betsy Crower t/</code><br>
+Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting"><a class="link" href="#deleting">Deleting</a></h3>
+<div class="paragraph">
+<p>This section deals with removing information within the application.</p>
+</div>
+<div class="sect3">
+<h4 id="1-deleting-a-person-from-contacts-code-delete-code"><a class="link" href="#1-deleting-a-person-from-contacts-code-delete-code">1. Deleting a person from contacts : <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified person from your contacts.<br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed person list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>delete 1</code><br>
+Deletes the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="2-removing-a-member-from-a-project-code-removemember-code-checkout"><a class="link" href="#2-removing-a-member-from-a-project-code-removemember-code-checkout">2. Removing a member from a project: <code>removeMember</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Removes the specified person from the current working project.<br>
+Format: <code>removeMember NAME</code></p>
+</div>
+<div class="paragraph">
+<p><code>NAME</code> refers to the full name of the member displayed in the project.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removeMember John Doe</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-deleting-a-task-from-a-project-code-deletetask-code-checkout"><a class="link" href="#3-deleting-a-task-from-a-project-code-deletetask-code-checkout">3. Deleting a task from a project: <code>deleteTask</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Deletes the specified task from the current working project. <br>
+Format: <code>deleteTask INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><code>INDEX</code> is the number used to identify this task in the task list.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteTask 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding"><a class="link" href="#finding">Finding</a></h3>
+<div class="sect3">
+<h4 id="1-finding-a-person-by-name-code-find-code"><a class="link" href="#1-finding-a-person-by-name-code-find-code">1. Finding a person by name: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds persons whose names contain any of the given keywords.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John</code><br>
+Returns <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>find Betsy Tim John</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="meeting"><a class="link" href="#meeting">Meeting</a></h3>
+<div class="paragraph">
+<p>For every project, you can add meetings to it, and below you will be able to find more useful commands
+associated with this functionality.</p>
+</div>
+<div class="sect3">
+<h4 id="1-store-meeting-minutes-code-attach-code"><a class="link" href="#1-store-meeting-minutes-code-attach-code">1. Store meeting minutes: <code>attach</code></a></h4>
+<div class="ulist">
+<ul>
 <li>
 <p>Upload text file that contains the meeting minute for a specific meeting.</p>
 </li>
 <li>
-<p>Format:
-<em>attach [mt/MEETING_INDEX] [dl/DEADLINE] [ta/TASKS] [t/TAG]&#8230;&#8203;
-</em></p>
+<p>Format: <code>attach [mt/MEETING_INDEX] [dl/DEADLINE] [ta/TASKS] [t/TAG]…​</code></p>
 </li>
-</ol>
+</ul>
 </div>
-</li>
-<li>
-<p>Generate meeting timing: <code>generate</code></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Generates a meeting time that everyone is available.</p>
-</li>
-<li>
-<p>Prerequisite: A project is checked out using the command <code>checkout</code>, and timetables have been assigned to the members with the command <code>addTimetable</code></p>
-</li>
-<li>
-<p>Format:
-<code>generate d/DURATION r/TIMERANGE</code></p>
-</li>
-<li>
-<p>Example:
-<code>generate d/2 r/MONDAY 0900 MONDAY 1800</code></p>
-</li>
-</ol>
 </div>
-</li>
-<li>
-<p>Send reminder: <em>Reminder</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Sends a reminder to all members of the current project.</p>
-</li>
-<li>
-<p>Format: sendReminder</p>
-</li>
-</ol>
+<div class="sect3">
+<h4 id="2-generate-meeting-timing-code-generate-code-checkout"><a class="link" href="#2-generate-meeting-timing-code-generate-code-checkout">2. Generate meeting timing: <code>generate</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Generates a meeting time for which everyone is available.</p>
 </div>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p>Adds meeting to the Project: <em>addProjectMeeting</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Adds meeting to a currently checked out project.</p>
+<p>Prerequisite: Timetables have been assigned to the members with the command addTimetable</p>
 </li>
-<li>
-<p>Format: addProjectMeeting [c/ dd/MM/yyyy HHmm] [s/MEETING_DESCRIPTION]</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>Email</strong></p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Sign in to Account: <em>signIn</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Signs in to the Account that that user has.</p>
-</li>
-<li>
-<p>Format:
-<em>signIn [ac/ACCOUNT_EMAIL_ADDRESS] [pa/PASSWORD]
-</em></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Signs out from user&#8217;s account: <em>logOut</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Signs out from currently signed in account.</p>
-</li>
-<li>
-<p>Format:
-<em>logout
-</em></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Sends personal Email: <em>sendMail</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Sends an email to one person in the AddressBook.</p>
-</li>
-<li>
-<p>Format: sendMail [r/RECIPIENT_OF_EMAIL] [su/SUBJECT] [me/MESSAGE_BODY]</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Sends broadcast Email: <em>broadcastMail</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Sends an email to all members in the Project.</p>
-</li>
-<li>
-<p>Format: broadcastMail [su/SUBJECT] [me/MESSAGE_BODY]</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>Sort</strong></p>
-</li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
-<p>All sort methods follow this set of index/order pairing. Some indexes are specific to
-certain methods(such as 3 and 4 are specific to sortTask). Refer to each individual method
-to find out which indexes are available.</p>
+<p>Format: `generate d/DURATION r/TIMERANGE</p>
 </div>
 <div class="paragraph">
-<p>1&#8201;&#8212;&#8201;Alphabetical order</p>
+<p>Example:</p>
 </div>
-<div class="paragraph">
-<p>2&#8201;&#8212;&#8201;Increasing order of time</p>
-</div>
-<div class="paragraph">
-<p>3&#8201;&#8212;&#8201;Whether tasks are done.</p>
-</div>
-<div class="paragraph">
-<p>4&#8201;&#8212;&#8201;Whether tasks are done and then by increasing order of time.</p>
-</div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<div class="ulist">
+<ul>
 <li>
-<p>Sort tasks: <em>sortTask</em></p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
+<p><code>generate d/2 r/MONDAY 0900 MON</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-send-reminder-code-sendreminder-code"><a class="link" href="#3-send-reminder-code-sendreminder-code">3. Send reminder: <code>sendReminder</code></a></h4>
+<div class="paragraph">
+<p>Sends a reminder to all members of the current working project.<br>
+Format: <code>sendReminder</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="email"><a class="link" href="#email">Email</a></h3>
+<div class="paragraph">
+<p>Tired of switching between applications? We got you covered, below you will find some commands which support sending
+emails right here within the application.</p>
+</div>
+<div class="sect3">
+<h4 id="1-sign-in-to-your-account-code-singin-code"><a class="link" href="#1-sign-in-to-your-account-code-singin-code">1. Sign in to your account: <code>singIn</code></a></h4>
+<div class="paragraph">
+<p>Sings in to the your email account.<br>
+Format: <code>signIn [ac/ACCOUNT_EMAIL_ADDRESS] [pa/PASSWORD]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="2-log-out-from-your-account-code-logout-code"><a class="link" href="#2-log-out-from-your-account-code-logout-code">2. Log out from your account: <code>logOut</code></a></h4>
+<div class="paragraph">
+<p>Logs out from your email account.<br>
+Format: <code>logOut</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-send-an-email-code-sendemail-code"><a class="link" href="#3-send-an-email-code-sendemail-code">3. Send an email: <code>sendEmail</code></a></h4>
+<div class="paragraph">
+<p>Sends an email to the specified person in your contacts.<br>
+Format: <code>sendEmail [r/RECIPIENT_OF_EMAIL] [su/SUBJECT] [me/MESSAGE_BODY]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="4-broadcast-an-email-code-broadcastmail-code"><a class="link" href="#4-broadcast-an-email-code-broadcastmail-code">4. Broadcast an email: <code>broadcastMail</code></a></h4>
+<div class="paragraph">
+<p>Sends an email to all members in the current working project.<br>
+Format: <code>broadcastMail [su/SUBJECT] [me/MESSAGE_BODY]</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting"><a class="link" href="#sorting">Sorting</a></h3>
+<div class="paragraph">
+<p>The following section provides a set of commands which help with sorting the information inside the
+application.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>All commands in this section follow this set of index/order pairing, where applicable:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Sorts tasks in the task list of current project based on given index.</p>
+<p>Alphabetical order</p>
 </li>
 <li>
-<p>Format:
-<em>sortTask INDEX(Integer value from 1-4)</em></p>
+<p>Increasing order of time</p>
 </li>
 <li>
-<p>Example:
-<em>sortTask 1</em> (Sort tasks by alphabetical order)</p>
+<p>Whether tasks are done.</p>
+</li>
+<li>
+<p>Whether tasks are done and then by increasing order of time.</p>
 </li>
 </ol>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="1-sort-tasks-code-sorttask-code"><a class="link" href="#1-sort-tasks-code-sorttask-code">1. Sort tasks: <code>sortTask</code></a></h4>
+<div class="paragraph">
+<p>Sorts the tasks in the task list of the current working project based on given specification.<br>
+Format: <code>sortTask INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><code>INDEX</code> in this case refers to which type of sorting you want to do. (Refer to the highlighted section above)</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sortTask 1</code> (Sorts the tasks by alphabetical order)</p>
 </li>
-</ol>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 12:41:32 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 04:23:43 UTC</div></div></div></body></html>
