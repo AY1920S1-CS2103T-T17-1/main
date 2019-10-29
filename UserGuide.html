@@ -162,7 +162,7 @@ or you can simply add an existing person from your contacts to your current proj
 <div class="sect3">
 <h4 id="3-1-add-a-new-member-code-addmember-code-checkout"><a class="link" href="#3-1-add-a-new-member-code-addmember-code-checkout">3.1 Add a new member: <code>addMember</code> [Checkout]</a></h4>
 <div class="paragraph">
-<p>This command is similar to adding a person to your contacts shown previously, except that you have to
+<p>This command is similar to adding a person to your contacts shown previously, except that you have to be
 checked out into a project.<br>
 Format: <code>addMember n/NAME [p/PHONE_NUMBER] [e/EMAIL] [a/address] [t/tag]&#8230;&#8203;</code></p>
 </div>
@@ -305,6 +305,45 @@ Edits the phone number and email address of the 1st person to be <code>91234567<
 <li>
 <p><code>edit 2 n/Betsy Crower t/</code><br>
 Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="2-edit-a-task-code-edittask-code"><a class="link" href="#2-edit-a-task-code-edittask-code">2. Edit a task : <code>editTask</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing task in the task list of the current project.<br>
+Format: <code>editTask INDEX [s/DESCRIPTION] [c/TIME] [d/]</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the task at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed task list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>If <code>d/</code> is not provided in the input, the task will automatically be unchecked.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editTask 1 c/05/05/2019 1600 d/</code><br>
+Edits the date and time to <code>05/05/2019 1600</code> and checks the task.</p>
+</li>
+<li>
+<p><code>editTask 2</code><br>
+Unchecks the task.</p>
 </li>
 </ul>
 </div>
@@ -558,6 +597,9 @@ application.</p>
 <li>
 <p>Whether tasks are done and then by increasing order of time.</p>
 </li>
+<li>
+<p>Increasing price.</p>
+</li>
 </ol>
 </div>
 </div>
@@ -569,7 +611,7 @@ application.</p>
 Format: <code>sortTask INDEX</code></p>
 </div>
 <div class="paragraph">
-<p><code>INDEX</code> in this case refers to which type of sorting you want to do. (Refer to the highlighted section above)</p>
+<p><code>INDEX</code> in this case refers to which type of sorting you want to do. In this case, only integers between 1 and 4 are applicable.(Refer to the highlighted section above)</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -577,7 +619,27 @@ Format: <code>sortTask INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>sortTask 1</code> (Sorts the tasks by alphabetical order)</p>
+<p><code>sortTask 4</code> (Sorts the tasks whether they are done and then by increasing date/time)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="2-sort-spending-code-sortspending-code"><a class="link" href="#2-sort-spending-code-sortspending-code">2. Sort spending: <code>sortSpending</code></a></h4>
+<div class="paragraph">
+<p>Sorts the spending in the budget list of the current working project based on given specification.<br>
+Format: <code>sortSpending INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><code>INDEX</code> in this case refers to which type of sorting you want to do. In this case, only integers 1, 2 and 5 are applicable.(Refer to the highlighted section above)</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sortSpending 5</code> (Sorts the tasks by increasing spending)</p>
 </li>
 </ul>
 </div>
@@ -611,4 +673,4 @@ Format: <code>listBudget</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 04:59:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 18:14:17 UTC</div></div></div></body></html>
