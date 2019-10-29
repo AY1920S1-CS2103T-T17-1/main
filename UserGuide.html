@@ -92,11 +92,13 @@ Format: <code>list</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>checkout 1</code>
-=== Adding Items</p>
+<p><code>checkout 1</code></p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="adding-items"><a class="link" href="#adding-items">Adding Items</a></h3>
 <div class="paragraph">
 <p>This section deals with adding information to the application.</p>
 </div>
@@ -118,12 +120,10 @@ Format: <code>addProject n/PROJECT_TITLE s/PROJECT_DESCRIPTION</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="2-add-a-person-to-your-contacts-code-add-code"><a class="link" href="#2-add-a-person-to-your-contacts-code-add-code">2. Add a person to your contacts: <code>add</code></a></h4>
+<h4 id="2-add-a-person-code-add-code"><a class="link" href="#2-add-a-person-code-add-code">2. Add a person: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to your contacts.</p>
-</div>
-<div class="paragraph">
-<p>When you add a person to your contacts, it will automatically change to displaying your list of contacts.<br>
+<p>Adds a person to your contacts.
+When you add a person to your contacts, it will automatically change to displaying your list of contacts.<br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
@@ -160,7 +160,7 @@ or you can simply add an existing person from your contacts to your current proj
 </div>
 </div>
 <div class="sect3">
-<h4 id="3-1-add-a-new-person-to-your-contacts-and-project-code-addmember-code-checkout"><a class="link" href="#3-1-add-a-new-person-to-your-contacts-and-project-code-addmember-code-checkout">3.1 Add a new person to your contacts and project: <code>addMember</code> [Checkout]</a></h4>
+<h4 id="3-1-add-a-new-member-code-addmember-code-checkout"><a class="link" href="#3-1-add-a-new-member-code-addmember-code-checkout">3.1 Add a new member: <code>addMember</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>This command is similar to adding a person to your contacts shown previously, except that you have to
 checked out into a project.<br>
@@ -196,14 +196,14 @@ Adding a member only requires his/her name!
 </div>
 </div>
 <div class="sect3">
-<h4 id="3-2-add-a-person-from-contacts-to-a-project-code-addfromcontacts-code-checkout"><a class="link" href="#3-2-add-a-person-from-contacts-to-a-project-code-addfromcontacts-code-checkout">3.2 Add a person from contacts to a project: <code>addFromContacts</code> [Checkout]</a></h4>
+<h4 id="3-2-add-from-your-contacts-code-addfromcontacts-code-checkout"><a class="link" href="#3-2-add-from-your-contacts-code-addfromcontacts-code-checkout">3.2 Add from your contacts: <code>addFromContacts</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>This command helps to add a person you already saved in your contacts into your project, reducing the need
 to type his information all over again. All you need to do is enter the index he is listed at.<br>
 Format: <code>addFromContacts INDEX</code></p>
 </div>
 <div class="paragraph">
-<p><code>INDEX</code> is the number which the person is listed at, and it should be a postive integer eg. 1, 2, 3, &#8230;&#8203;.</p>
+<p><code>INDEX</code> is the number which the person is listed at, and it should be a positive integer eg. 1, 2, 3, &#8230;&#8203;.</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -217,7 +217,7 @@ Format: <code>addFromContacts INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="4-add-a-timetable-for-a-person-code-addtimetable-code"><a class="link" href="#4-add-a-timetable-for-a-person-code-addtimetable-code">4. Add a timetable for a person: <code>addTimeTable</code></a></h4>
+<h4 id="4-add-a-timetable-code-addtimetable-code"><a class="link" href="#4-add-a-timetable-code-addtimetable-code">4. Add a timetable: <code>addTimeTable</code></a></h4>
 <div class="paragraph">
 <p>Adds a timetable for the specified person, to record down their schedule.<br>
 Format : <code>addTimetable INDEX [n/NUSMODS_SHARE_URL] [f/FILEPATH_TO_TIMETABLE]</code></p>
@@ -235,7 +235,7 @@ n/https://nusmods.com/timetable/sem-1/share?CS2100=LAB:05,TUT:02,LEC:1&amp;CS210
 </div>
 </div>
 <div class="sect3">
-<h4 id="5-add-a-task-to-your-project-code-addtask-code-checkout"><a class="link" href="#5-add-a-task-to-your-project-code-addtask-code-checkout">5. Add a task to your project: <code>addTask</code> [Checkout]</a></h4>
+<h4 id="5-add-a-task-code-addtask-code-checkout"><a class="link" href="#5-add-a-task-code-addtask-code-checkout">5. Add a task: <code>addTask</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Adds an unchecked task to the list of tasks of your current working project.<br>
 Format: <code>addTask s/DESCRIPTION c/TIME</code></p>
@@ -265,7 +265,7 @@ Format: <code>Format: addProjectMeeting [c/ dd/MM/yyyy HHmm] [s/MEETING_DESCRIPT
 <p>This section deals with editing information shown on the application.</p>
 </div>
 <div class="sect3">
-<h4 id="1-editing-a-person-code-edit-code"><a class="link" href="#1-editing-a-person-code-edit-code">1. Editing a person : <code>edit</code></a></h4>
+<h4 id="1-edit-a-person-code-edit-code"><a class="link" href="#1-edit-a-person-code-edit-code">1. Edit a person : <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
@@ -316,7 +316,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <p>This section deals with removing information within the application.</p>
 </div>
 <div class="sect3">
-<h4 id="1-deleting-a-person-from-contacts-code-delete-code"><a class="link" href="#1-deleting-a-person-from-contacts-code-delete-code">1. Deleting a person from contacts : <code>delete</code></a></h4>
+<h4 id="1-deleting-a-person-code-delete-code"><a class="link" href="#1-deleting-a-person-code-delete-code">1. Deleting a person: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified person from your contacts.<br>
 Format: <code>delete INDEX</code></p>
@@ -357,7 +357,7 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="2-removing-a-member-from-a-project-code-removemember-code-checkout"><a class="link" href="#2-removing-a-member-from-a-project-code-removemember-code-checkout">2. Removing a member from a project: <code>removeMember</code> [Checkout]</a></h4>
+<h4 id="2-remove-a-member-code-removemember-code-checkout"><a class="link" href="#2-remove-a-member-code-removemember-code-checkout">2. Remove a member: <code>removeMember</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Removes the specified person from the current working project.<br>
 Format: <code>removeMember NAME</code></p>
@@ -377,7 +377,7 @@ Format: <code>removeMember NAME</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="3-deleting-a-task-from-a-project-code-deletetask-code-checkout"><a class="link" href="#3-deleting-a-task-from-a-project-code-deletetask-code-checkout">3. Deleting a task from a project: <code>deleteTask</code> [Checkout]</a></h4>
+<h4 id="3-delete-a-task-code-deletetask-code-checkout"><a class="link" href="#3-delete-a-task-code-deletetask-code-checkout">3. Delete a task: <code>deleteTask</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Deletes the specified task from the current working project. <br>
 Format: <code>deleteTask INDEX</code></p>
@@ -400,7 +400,7 @@ Format: <code>deleteTask INDEX</code></p>
 <div class="sect2">
 <h3 id="finding"><a class="link" href="#finding">Finding</a></h3>
 <div class="sect3">
-<h4 id="1-finding-a-person-by-name-code-find-code"><a class="link" href="#1-finding-a-person-by-name-code-find-code">1. Finding a person by name: <code>find</code></a></h4>
+<h4 id="1-find-a-person-by-name-code-find-code"><a class="link" href="#1-find-a-person-by-name-code-find-code">1. Find a person by name: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
@@ -584,4 +584,4 @@ Format: <code>sortTask INDEX</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 04:45:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 04:47:43 UTC</div></div></div></body></html>
