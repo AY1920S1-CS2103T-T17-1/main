@@ -259,7 +259,7 @@ Add timetable to the person with index 2 on the list of persons.</p>
 <h4 id="5-add-a-task-code-addtask-code-checkout"><a class="link" href="#5-add-a-task-code-addtask-code-checkout">5. Add a task: <code>addTask</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Adds an unchecked task to the list of tasks of your current working project.<br>
-Format: <code>addTask s/DESCRIPTION c/TIME</code></p>
+Format: <code>addTask s/DESCRIPTION c/dd/MM/yyyy HHmm</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -270,6 +270,32 @@ Format: <code>addTask s/DESCRIPTION c/TIME</code></p>
 <p><code>addTask s/Finish GUI c/06/10/2019 1600</code></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Whenever you add a time with the prefix c/, the format should be dd/MM/yyyy HHmm,
+whereby the year must be between 1900 to 2100 and the time must be between 0000 to 2359.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+MyProject does not check for invalid days such as 30th February so do ensure you input
+your dates correctly!
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -344,7 +370,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <h4 id="2-edit-a-task-code-edittask-code"><a class="link" href="#2-edit-a-task-code-edittask-code">2. Edit a task : <code>editTask</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing task in the task list of the current project.<br>
-Format: <code>editTask INDEX [s/DESCRIPTION] [c/TIME] [d/]</code><br></p>
+Format: <code>editTask INDEX [s/DESCRIPTION] [c/dd/MM/yyyy HHmm] [d/]</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -523,6 +549,8 @@ associated with this functionality.</p>
 </div>
 <div class="sect3">
 <h4 id="1-generate-meeting-timing-code-generate-code-checkout"><a class="link" href="#1-generate-meeting-timing-code-generate-code-checkout">1. Generate meeting timing: <code>generate</code> [Checkout]</a></h4>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
 <p>Generates possible meeting timeslots for which everyone is available.</p>
 </div>
@@ -546,6 +574,8 @@ associated with this functionality.</p>
 Generates all possible meeting timeslots that lasts at least 2 hours, within the time frame of Monday 9am to Monday 6pm.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -580,10 +610,10 @@ Format: <code>logOut</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="3-send-an-email-code-sendemail-code"><a class="link" href="#3-send-an-email-code-sendemail-code">3. Send an email: <code>sendEmail</code></a></h4>
+<h4 id="3-send-an-email-code-sendmail-code"><a class="link" href="#3-send-an-email-code-sendmail-code">3. Send an email: <code>sendMail</code></a></h4>
 <div class="paragraph">
 <p>Sends an email to the specified person in your contacts.<br>
-Format: <code>sendEmail [r/RECIPIENT_OF_EMAIL] [su/SUBJECT] [me/MESSAGE_BODY]</code></p>
+Format: <code>sendMail [r/RECIPIENT_OF_EMAIL] [su/SUBJECT] [me/MESSAGE_BODY]</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -661,7 +691,7 @@ Format: <code>sortSpending INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>sortSpending 5</code> (Sorts the tasks by increasing spending)</p>
+<p><code>sortSpending 5</code> (Sorts the spending by increasing prices)</p>
 </li>
 </ul>
 </div>
@@ -676,14 +706,14 @@ Format: <code>sortSpending INDEX</code></p>
 <h4 id="add-a-budget"><a class="link" href="#add-a-budget">Add a budget</a></h4>
 <div class="paragraph">
 <p>Add multiple budgets available to the current project.<br>
-Format: <code>addBudget [b/NAME_OF_BUDGET AMOUNT NAME_OFBUDGET AMOUNT&#8230;&#8203;]</code></p>
+Format: <code>addBudget [b/NAME_OF_BUDGET AMOUNT NAME_OF_BUDGET AMOUNT&#8230;&#8203;]</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="add-an-expense"><a class="link" href="#add-an-expense">Add an expense</a></h4>
 <div class="paragraph">
 <p>Whenever an expenditure is made under a budget, add it to record.<br>
-Format: <code>addExpense [INDEX_OF_BUDGET] [s/DESCRIPTION] [ex/AMOUNT SPEND] [c/DATE_SPENT]</code></p>
+Format: <code>addExpense [INDEX_OF_BUDGET] [s/DESCRIPTION] [ex/AMOUNT SPEND] [c/dd/MM/yyyy HHmm]</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -695,4 +725,4 @@ Format: <code>listBudget</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 11:23:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 12:31:54 UTC</div></div></div></body></html>
