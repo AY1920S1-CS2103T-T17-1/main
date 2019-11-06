@@ -558,7 +558,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This feature makes heavy use of the class <code>TimeRange</code>, which represents a period of time in a week, e.g. Monday 1000&#8201;&#8212;&#8201;Monday 1200.
+This feature makes heavy use of the class <code>TimeRange</code>, which represents a period of time in a week, e.g. MONDAY 1000&#8201;&#8212;&#8201;MONDAY 1200.
 </td>
 </tr>
 </table>
@@ -567,7 +567,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 <p>The main logic of this feature is contained within the <code>TimeSlotGenerator</code> class:</p>
 </div>
 <div class="paragraph">
-<p>TimeSlotGenerator(members, desiredMeetingDuration, restrictedTimeRange)`</p>
+<p><code>TimeSlotGenerator(members, desiredMeetingDuration, restrictedTimeRange)</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -655,16 +655,13 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/GenerateSlotActivityDiagram.png" alt="GenerateSlotActivityDiagram">
 </div>
-<div class="title">Figure 9. <code>Generate</code> command tries to provide best possible meeting timeslot</div>
+<div class="title">Figure 9. <code>generate</code> command tries to provide best possible meeting timeslot</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.2.3. Algorithm Used</a></h4>
 <div class="sect4">
 <h5 id="code-timeslotgenerator-generate-code"><a class="link" href="#code-timeslotgenerator-generate-code"><code>TimeSlotGenerator#generate()</code></a></h5>
-<div class="paragraph">
-<p>This algorithm goes through several stages:</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1578,4 +1575,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 18:13:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 16:46:29 UTC</div></div></div></body></html>

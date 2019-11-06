@@ -217,9 +217,9 @@ Format: <code>addFromContacts INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="4-add-a-timetable-code-addtimetable-code"><a class="link" href="#4-add-a-timetable-code-addtimetable-code">4. Add a timetable: <code>addTimeTable</code></a></h4>
+<h4 id="4-add-a-timetable-code-addtimetable-code"><a class="link" href="#4-add-a-timetable-code-addtimetable-code">4. Add a timetable: <code>addTimetable</code></a></h4>
 <div class="paragraph">
-<p>Adds a timetable for the specified person, to record down their schedule.</p>
+<p>Need to keep track of your team members' schedule? Use this command to record down their timetable easily!</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -228,7 +228,7 @@ Format: <code>addFromContacts INDEX</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Timetable added is later used to generate avaiable meeting timeslots using the command <code>generate</code>
+Timetable added can be used to generate avaiable meeting timeslots using the command <code>generate</code>
 </td>
 </tr>
 </table>
@@ -248,6 +248,25 @@ Timetable added is later used to generate avaiable meeting timeslots using the c
 <p><code>addTimetable 3 f//home/john/Desktop/aliceTimetable.txt</code><br>
 Add Alice&#8217;s timetable to Alice, who has index 3 in the list of persons.</p>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+File should be formatted as a newline separated list of time ranges, e.g:<br>
+MONDAY 1000 MONDAY 1200<br>
+MONDAY 1400 MONDAY 1600<br>
+TUESDAY 1100 TUESDAY 1500
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>addTimetable 2 n/https://nusmods.com/timetable/sem-1/share?CS2100=LAB:05,TUT:02,LEC:1&amp;CS2101=&amp;CS2103T=LEC:G13&amp;CS2105=TUT:03,LEC:1&amp;CS3241=TUT:05,LEC:1&amp;CS3243=TUT:01,LEC:1&amp;GEQ1000=TUT:D27</code><br>
 Add timetable to the person with index 2 on the list of persons.</p>
@@ -549,10 +568,13 @@ associated with this functionality.</p>
 </div>
 <div class="sect3">
 <h4 id="1-generate-meeting-timing-code-generate-code-checkout"><a class="link" href="#1-generate-meeting-timing-code-generate-code-checkout">1. Generate meeting timing: <code>generate</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Generates possible meeting timeslots for which everyone is available.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Generates possible meeting timeslots for which everyone is available.</p>
+<p>Need to decide on a meeting timing, but having trouble finding a time where all members are free? This command can help suggest meeting timings!</p>
 </div>
 <div class="ulist">
 <ul>
@@ -560,6 +582,18 @@ associated with this functionality.</p>
 <p>Prerequisite: Timetables have been assigned to the members with the command <code>addTimetable</code></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>generate</code> would still work even if some members do not have timetable assigned to them. Make sure that you have done <code>addTimetable</code> for each of the members  in the project.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Format: <code>generate d/DURATION [r/TIMERANGE]</code></p>
@@ -725,4 +759,4 @@ Format: <code>listBudget</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 18:13:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 16:46:29 UTC</div></div></div></body></html>
