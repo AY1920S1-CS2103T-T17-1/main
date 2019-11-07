@@ -262,6 +262,19 @@ Example:
 
 * `deleteTask 1`
 
+
+==== 3. Delete a meeting: `deleteMeeting` [Checkout]
+
+
+Deletes the specified meeting from the current working project.  +
+Format: `deleteMeeting INDEX`
+
+`INDEX` is the number used to identify this meeting in the meeting list.
+
+Example:
+
+* `deleteMeeting 1`
+
 === Finding
 
 
@@ -324,7 +337,7 @@ Do keep in mind that only the user Account in our current version is only compat
 
 ==== 1. Sign in to your account: `signIn`
 Signs in to the your email account. +
-Format: `signIn [ac/ACCOUNT_EMAIL_ADDRESS] [pa/PASSWORD]`
+Format: `signIn ac/ACCOUNT_EMAIL_ADDRESS pa/PASSWORD`
 
 ==== 2. Log out from your account: `logOut`
 Logs out from your email account. +
@@ -332,11 +345,11 @@ Format: `logOut`
 
 ==== 3. Send an email: `sendMail`
 Sends an email to the specified person in your contacts. +
-Format: `sendMail [r/RECIPIENT_OF_EMAIL] [su/SUBJECT] [me/MESSAGE_BODY]`
+Format: `sendMail r/RECIPIENT_OF_EMAIL su/SUBJECT me/MESSAGE_BODY`
 
 ==== 4. Broadcast an email: `broadcastMail`
 Sends an email to all members in the current working project. +
-Format: `broadcastMail [su/SUBJECT] [me/MESSAGE_BODY]`
+Format: `broadcastMail su/SUBJECT me/MESSAGE_BODY`
 
 === Sorting
 
