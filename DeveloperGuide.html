@@ -24,13 +24,14 @@
 <ul class="sectlevel2">
 <li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
 <li><a href="#task-feature">3.2. Task feature</a></li>
-<li><a href="#sorting-feature">3.3. Sorting feature</a></li>
-<li><a href="#generate-meeting-timeslot">3.4. Generate meeting timeslot</a></li>
-<li><a href="#timetable-input">3.5. Timetable input</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
-<li><a href="#Implementation-Checkout">3.8. Checkout</a></li>
-<li><a href="#Implementation-Change-in-UI-display">3.9. Change in UI display</a></li>
+<li><a href="#meeting-feature">3.3. Meeting feature</a></li>
+<li><a href="#sorting-feature">3.4. Sorting feature</a></li>
+<li><a href="#generate-meeting-timeslot">3.5. Generate meeting timeslot</a></li>
+<li><a href="#timetable-input">3.6. Timetable input</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#Implementation-Checkout">3.9. Checkout</a></li>
+<li><a href="#Implementation-Change-in-UI-display">3.10. Change in UI display</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -596,9 +597,50 @@ A typical task will look like this on the app:<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.3. Sorting feature</a></h3>
+<h3 id="meeting-feature"><a class="link" href="#meeting-feature">3.3. Meeting feature</a></h3>
 <div class="sect3">
 <h4 id="description-of-feature-2"><a class="link" href="#description-of-feature-2">3.3.1. Description of feature</a></h4>
+<div class="paragraph">
+<p>Within every project, there are meetings to be held at certain time. The diagram below shows the class diagram of the task class and how it interacts with the model.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MeetingClassDiagram.png" alt="MeetingClassDiagram">
+</div>
+<div class="title">Figure 10. Class Diagram for Meeting</div>
+</div>
+<div class="paragraph">
+<p>As shown above, each project stores multiple meetings in a list. These meetings are automatically sorted based on the time in ascending order.
+Here are some task related commands that can be executed by the app.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>addProjectMeeting - adds a meeting into the project model.</p>
+</li>
+<li>
+<p>deleteProjectMeeting- removes a meeting from the project model based on index specified by user</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-2"><a class="link" href="#details-2">3.3.2. Details</a></h4>
+<div class="paragraph">
+<p>As seen in figure 10, each meeting consists of 2 parameters namely description and time to show what is the meeting about and the date and time of the meeting respectively.
+A typical task will look like this on the app:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ProjectMeeting.png" alt="ProjectMeeting">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.4. Sorting feature</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature-3"><a class="link" href="#description-of-feature-3">3.4.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Sorts some lists based on specifications provided by the user.
 There are 2 lists that are able to be sorted so far.<br></p>
@@ -653,7 +695,7 @@ Methods 1-2 can be used to sort both lists.
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-2"><a class="link" href="#details-2">3.3.2. Details</a></h4>
+<h4 id="details-3"><a class="link" href="#details-3">3.4.2. Details</a></h4>
 <div class="paragraph">
 <p>Both commands sortTask and sortSpending take in a single integer as parameter. As mentioned in the
 note above, 1-4 are valid input for sortTask, 1, 2 and 5 are valid for sortSpending.</p>
@@ -669,7 +711,7 @@ and updating the current sort order in <code>SortingOrder</code> class.</p>
 <div class="content">
 <img src="images/SortTaskSequenceDiagram.png" alt="SortTaskSequenceDiagram">
 </div>
-<div class="title">Figure 10. Sequence Diagram for sortTask</div>
+<div class="title">Figure 11. Sequence Diagram for sortTask</div>
 </div>
 <div class="paragraph">
 <p>These are the stages shown in figure 9. Stages are similar for sort spending as well.</p>
@@ -692,7 +734,7 @@ and updating the current sort order in <code>SortingOrder</code> class.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.3. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.3. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-sort-commands"><a class="link" href="#aspect-data-structure-to-support-the-sort-commands">Aspect: Data structure to support the sort commands</a></h5>
 <div class="ulist">
@@ -730,9 +772,9 @@ no additional sorting needed when adding or editing new elements.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.4. Generate meeting timeslot</a></h3>
+<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.5. Generate meeting timeslot</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-3"><a class="link" href="#description-of-feature-3">3.4.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-4"><a class="link" href="#description-of-feature-4">3.5.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>The timeslot generator is used to suggest meeting timings by making use of team members' timetable.</p>
 </div>
@@ -782,7 +824,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-3"><a class="link" href="#details-3">3.4.2. Details</a></h4>
+<h4 id="details-4"><a class="link" href="#details-4">3.5.2. Details</a></h4>
 <div class="paragraph">
 <p>This feature depends on the timetable stored internally as an attribute of each members:</p>
 </div>
@@ -840,11 +882,11 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/GenerateSlotActivityDiagram.png" alt="GenerateSlotActivityDiagram">
 </div>
-<div class="title">Figure 11. <code>generate</code> command tries to provide best possible meeting timeslot</div>
+<div class="title">Figure 12. <code>generate</code> command tries to provide best possible meeting timeslot</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.4.3. Algorithm Used</a></h4>
+<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.5.3. Algorithm Used</a></h4>
 <div class="sect4">
 <h5 id="code-timeslotgenerator-generate-code"><a class="link" href="#code-timeslotgenerator-generate-code"><code>TimeSlotGenerator#generate()</code></a></h5>
 <div class="olist arabic">
@@ -888,7 +930,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.4. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.4. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-generate-timeslot-with-most-number-of-available-members"><a class="link" href="#aspect-how-to-generate-timeslot-with-most-number-of-available-members">Aspect: How to generate timeslot with most number of available members</a></h5>
 <div class="ulist">
@@ -928,9 +970,9 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable-input"><a class="link" href="#timetable-input">3.5. Timetable input</a></h3>
+<h3 id="timetable-input"><a class="link" href="#timetable-input">3.6. Timetable input</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-4"><a class="link" href="#description-of-feature-4">3.5.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-5"><a class="link" href="#description-of-feature-5">3.6.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>There are two ways to input member&#8217;s timetable</p>
 </div>
@@ -949,7 +991,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-4"><a class="link" href="#details-4">3.5.2. Details</a></h4>
+<h4 id="details-5"><a class="link" href="#details-5">3.6.2. Details</a></h4>
 <div class="paragraph">
 <p>Important functions in the <code>AddTimetableCommand</code>:</p>
 </div>
@@ -989,7 +1031,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-do-i-even-need-this-portion"><a class="link" href="#design-considerations-do-i-even-need-this-portion">3.5.3. Design Considerations (DO I EVEN NEED THIS PORTION???)</a></h4>
+<h4 id="design-considerations-do-i-even-need-this-portion"><a class="link" href="#design-considerations-do-i-even-need-this-portion">3.6.3. Design Considerations (DO I EVEN NEED THIS PORTION???)</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-input-timetable"><a class="link" href="#aspect-how-to-input-timetable">Aspect: How to input timetable</a></h5>
 <div class="paragraph">
@@ -999,14 +1041,14 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1037,13 +1079,13 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.8. Checkout</a></h3>
+<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.9. Checkout</a></h3>
 <div class="paragraph">
 <p>This allows user to checkout to a project from a list of project to work on it.
 Almost every command regarding the project require the user to checkout first.</p>
@@ -1075,7 +1117,7 @@ attribute and the model supports three new methods:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.9. Change in UI display</a></h3>
+<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.10. Change in UI display</a></h3>
 <div class="paragraph">
 <p>The first step of changing UI display is to find out
 whether a change in UI is needed given a command from user.
@@ -1914,4 +1956,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 12:41:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 12:44:18 UTC</div></div></div></body></html>
