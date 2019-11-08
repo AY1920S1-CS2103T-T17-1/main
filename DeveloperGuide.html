@@ -29,6 +29,8 @@
 <li><a href="#timetable-input">3.5. Timetable input</a></li>
 <li><a href="#logging">3.6. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#Implementation-Checkout">3.8. Checkout</a></li>
+<li><a href="#Implementation-Change-in-UI-display">3.9. Change in UI display</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -1040,6 +1042,160 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.8. Checkout</a></h3>
+<div class="paragraph">
+<p>This allows user to checkout to a project from a list of project to work on it.
+Almost every command regarding the project require the user to checkout first.</p>
+</div>
+<div class="paragraph">
+<p>How it works is the ModelManager class is holding an additional <code>Optional&lt;Project&gt;</code>
+attribute and the model supports three new methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setWorkingProject()</code>&#8201;&#8212;&#8201;Sets the attribute to the argument of the method.</p>
+</li>
+<li>
+<p><code>getWorkingProject()</code>&#8201;&#8212;&#8201;Returns the current project.</p>
+</li>
+<li>
+<p><code>isCheckedOut()</code>&#8201;&#8212;&#8201;Checks whether the current working project is empty.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A typical use of the command can be seen in the sequence diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CheckoutSequenceDiagram.png" alt="CheckoutSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.9. Change in UI display</a></h3>
+<div class="paragraph">
+<p>The first step of changing UI display is to find out
+whether a change in UI is needed given a command from user.
+This is done in the CommandResult class constructor. If a command
+word matches either of the four words <code>list, checkout, listBudget, addProject</code>,
+the flag of whether a change in UI is needed will be set to true.</p>
+</div>
+<div class="paragraph">
+<p>Next, a class to represent a state of UI is needed to remember
+a history which is the <code>UiEvent</code> class.
+UiEvent is a class that represent a type of UiDisplay as an
+event. It stores the current state of the application&#8217;s UI and the current working project if it exists.
+The <code>viewHistory</code> is stored in the <code>MainWindow</code> class as a stack of UiEvents
+and it also maintains a currentStatePointer. When a <code>back</code> command
+is executed, it can check back on what is the previous state.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MainWindow#changeUiDisplay</code>&#8201;&#8212;&#8201;Change the Ui and change the current state.</p>
+</li>
+<li>
+<p><code>MainWindow#getPreviousState</code>&#8201;&#8212;&#8201;Pops the stack and peek to look for the previous state.</p>
+</li>
+<li>
+<p><code>MainWindow#handleBack</code>&#8201;&#8212;&#8201;Change the Ui display to the previous state.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example of how the UI behave at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time.
+The <code>viewHistory</code> will be initialized with the initial
+<code>PROJECT_LIST</code> state, and the <code>currentStatePointer</code> pointing to
+that single address book state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeUiDisplayState0.png" alt="ChangeUiDisplayState0">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>checkout 1</code> command to checkout to preoject 1 to work on.
+During the execution of the <code>checkout</code> command, at the commandresult generation step,
+it detects that there is a need to change the Ui and the flag is made to true.
+In the <code>MainWindow</code>, since a change is needed, <code>MainWindow#changeUi</code> is called
+to change the display and set the <code>currentState</code> to be <code>PROJECT_OVERVIEW</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeUiDisplayState1.png" alt="ChangeUiDisplayState1">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3. The user now decide to add a budget by <code>addBudget b/ equipment 3000.00</code>.
+This command does not need a change in Ui display thus the flag is false.
+However, the method <code>MainWindow#changeUiDisplay</code> is still called but this time
+it is called to update the information in the current display and set the
+current state to be still the current state. Thus, the <code>currentStatePointer</code> does
+not move.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeUiDisplayState2.png" alt="ChangeUiDisplayState2">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution, a <code>commandResult</code> wont be generated thus no change in Ui will happen.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now wants to have a better view of the budgets and executes
+<code>listBudget</code>. Same step follows through the checkout command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeUiDisplayState3.png" alt="ChangeUiDisplayState3">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 5. The user now decides to go back to the home page and executes
+two consecutive <code>back</code> command. At the execute stage in <code>MainWindow</code>,
+it detects it is a back command and <code>MainWindow#handleBack</code> is called.
+This method will then pop the current state by <code>MainWindow#getPreviousState</code>
+and call <code>MainWindow#changeUiDisplay</code> to display the previous Ui.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeUiDisplayState4.png" alt="ChangeUiDisplayState4">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeUiDisplayState5.png" alt="ChangeUiDisplayState5">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentStatePointer</code> is at <code>PROJECT_LIST</code>, then there are
+no previous UI states to go back. Under such situation, an error will be returned.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1758,4 +1914,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 11:04:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 11:40:50 UTC</div></div></div></body></html>
