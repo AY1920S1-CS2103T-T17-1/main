@@ -722,7 +722,7 @@ associated with this functionality.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Generates possible meeting timeslots for which everyone is available.</p>
+<p>Generates possible meeting timeslots where all member are available.</p>
 </div>
 </div>
 </div>
@@ -743,7 +743,7 @@ associated with this functionality.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>generate</code> would still work even if some members do not have timetable assigned to them. Make sure that you have done <code>addTimetable</code> for each of the members  in the project.
+<code>generate</code> would not give an error if some members do not have timetable assigned to them. Ensure that you have done <code>addTimetable</code> for each of the members in the project before using <code>generate</code>.
 </td>
 </tr>
 </table>
@@ -761,6 +761,54 @@ associated with this functionality.</p>
 Generates all possible meeting timeslots that lasts at least 2 hours, within the time frame of Monday 9am to Monday 6pm.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Below is a step-by-step instruction to guide you through generating a meeting timeslot that lasts for 2 hours, between Monday 1000 to Monday 1800:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: To generate a meeting timing for a project, you first need to <code>checkout</code> that project.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/generate/generate-step-1.png" alt="generate step 1"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 2: Enter the command with your desired duration of the meeting, and the time range to generate within</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/generate/generate-step-2.png" alt="generate step 2"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 3: Press enter, and you will see the following result:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/generate/generate-step-3.png" alt="generate step 3"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If MyProject is unable to find a timeslot where all members are free, it would try to find another timeslot where most members are free
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/generate/generate-alt.png" alt="generate alt"></span></p>
 </div>
 </div>
 </div>
@@ -963,4 +1011,4 @@ Format: <code>listBudget</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 09:58:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 10:55:08 UTC</div></div></div></body></html>
