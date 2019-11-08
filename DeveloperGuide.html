@@ -795,7 +795,10 @@ no additional sorting needed when adding or editing new elements.</p>
 <p>Sends reminder for tasks and meetings that are due in the number of days given by the user input.</p>
 </div>
 <div class="paragraph">
-<p>The basic implementation uses javax.Mail to send email to other email addresses. The Mailer class has static method sendEmail which is responsible for sending all kinds of email to a given recipient(s). User&#8217;s email account information is stored in the Model class and subsequent queries regarding mailing will use this information that has been stored to send the email. Currently, only gmail server has been made available for use in sending the emails.</p>
+<p>The basic implementation uses javax.Mail to send email to other email addresses. The Mailer class has static method sendEmail
+which is responsible for sending all kinds of email to a given recipient(s). User&#8217;s email account information is
+stored in the Model class and subsequent queries regarding mailing will use this information that has been stored to send the email.
+Currently, only gmail server has been made available for use in sending the emails.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -842,6 +845,9 @@ User Email  Account Information is stored through the signIn command.
 <p>Goes to <code>Model</code> to get the members in the project.</p>
 </li>
 <li>
+<p>Goes to <code>Model</code> to get the OwnerAccount information.</p>
+</li>
+<li>
 <p>Sends email to all the members about the upcoming meetings and tasks in the project.</p>
 </li>
 <li>
@@ -858,7 +864,7 @@ User Email  Account Information is stored through the signIn command.
 <div class="paragraph">
 <p>The diagram above shows how sendReminder works. There are 2 possible error messages that can occur. Firstly,
 if the user inputs nothing as the duration and input cannot be empty error message is shown. Secondly,
-an error will be shown if the user non-numeric number as the duration of time.</p>
+an error will be shown if the user non-numeric or negative or zero number as the duration of time.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2102,4 +2108,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 18:32:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 19:45:19 UTC</div></div></div></body></html>
