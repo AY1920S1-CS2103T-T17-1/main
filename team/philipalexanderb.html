@@ -32,7 +32,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>This is what our project look like:</p>
+<p>This is what our project main page looks like:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -224,14 +224,54 @@ added by the user will automatically be sorted based on the meeting time (earlie
 The user guide consists of easy navigation to certain parts of the user guide, features implemented
 in our application and a summary of commands available in our application.</p>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Below is the section of user guide that I contributed for my feature.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="add-a-project-meeting-code-addprojectmeeting-code-checkout"><a class="link" href="#add-a-project-meeting-code-addprojectmeeting-code-checkout">Add a project meeting: <code>addProjectMeeting</code> [Checkout]</a></h4>
 <div class="paragraph">
-<p>Below is the section of user guide that I contributed for my tasks.</p>
+<p>Adds a new project meeting to the current working project. <br>
+Format: <code>Format: addProjectMeeting [c/ dd/MM/yyyy HHmm] [s/MEETING_DESCRIPTION]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addProjectMeeting c/29/09/2019 1900 s/milestone discussion</code></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
-<h4 id="sign-in-to-your-account-code-signin-code"><a class="link" href="#sign-in-to-your-account-code-signin-code">Sign in to your account: <code>signIn</code></a></h4>
+<h4 id="delete-a-meeting-code-deletemeeting-code-checkout"><a class="link" href="#delete-a-meeting-code-deletemeeting-code-checkout">Delete a meeting: <code>deleteMeeting</code> [Checkout]</a></h4>
 <div class="paragraph">
-<p>Signs in to the your email account.<br>
+<p>Deletes the specified meeting from the current working project. <br>
+Format: <code>deleteMeeting INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><code>INDEX</code> is the number used to identify this meeting in the meeting list.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteMeeting 1</code>
+==== Sign in to your account: <code>signIn</code>
+Signs in to the your email account.<br>
 Format: <code>signIn ac/ACCOUNT_EMAIL_ADDRESS pa/PASSWORD</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -369,6 +409,16 @@ We will not check the correctness of the members' email address
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Below is the section of developer guide that I contributed for my features.</em></p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect2">
 <h3 id="sending-reminder-feature"><a class="link" href="#sending-reminder-feature">Sending Reminder feature</a></h3>
 <div class="sect3">
@@ -533,4 +583,4 @@ A typical meeting will look like this on the app:</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 17:29:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 18:36:33 UTC</div></div></div></body></html>
