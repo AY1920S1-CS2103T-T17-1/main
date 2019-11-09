@@ -7,7 +7,10 @@
 <p>My team of 4 NUS SoC students and I were tasked to enhance a command line addressbook application. We decided to convert it into a one-stop project management app called <strong><em>MyProject</em></strong>.</p>
 </div>
 <div class="paragraph">
-<p><strong>MyProject</strong> has various features to aid team leaders in project management. Notable features include:</p>
+<p>MyProject is meant to aid NUS students in managing multiple projects within a single desktop application that can fufill all their needs.</p>
+</div>
+<div class="paragraph">
+<p>Aside from basic features such as setting of tasks and deadlines, MyProject also boasts several tools to aid users in better managing their projects. Notable features include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -33,7 +36,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui">
+<img src="../images/Ui.png" alt="Ui">
 </div>
 <div class="title">Figure 1. Graphical User Interface for MyProject</div>
 </div>
@@ -46,22 +49,25 @@
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Enhancement: Implemented <code>addTimetable</code> and <code>generate</code> command. <code>addTimetable</code> records down a member&#8217;s schedule, while <code>generate</code> suggests timings to schedule meetings on.</p>
+<p><strong>Enhancement</strong>: Implemented <code>addTimetable</code> and <code>generate</code> command. <code>addTimetable</code> records down a member&#8217;s schedule, while <code>generate</code> suggests timings to schedule meetings on.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does:</p>
+<p><strong>What it does</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>generate</code> command suggest the most suitable timeslots to schedule project meetings on. The <code>addTimetable</code> command is mainly used to support the <code>generate</code> command by recording members' timetables. The <code>addTimetable</code> command  is made extremely convenient for NUS students as they can input their timetable using NUSMods timetable sharing feature in <strong>MyProject</strong> as well.</p>
+<p>The <code>addTimetable</code> command is primarily used to support the <code>generate</code> command by recording members' schedule. The <code>addTimetable</code> command  is made extremely convenient for NUS students due to our integration with NUSMods timetable sharing feature, allowing users to simply input a NUSMods timetable sharing URL, instead of having to enter all the timings manually.</p>
+</li>
+<li>
+<p>The <code>generate</code> command suggest the most suitable timeslots to schedule project meetings on, based on the timetable of members added using the <code>addTimetable</code> command.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Justification</p>
+<p><strong>Justification</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -71,44 +77,80 @@
 </div>
 </li>
 <li>
-<p>Highlights</p>
+<p><strong>Highlights</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>This enhancement is extremely convenient to use, with only 2 commands to remember. The command would try its best to guess what the user wants and supply it. There is also a variety of error catching messages and suggestion of what to do to make the command work when something goes wrong. This feature is also extremely extendable as we can provide for more sources of input, such as input from .ics files. Power users can also be provided more fine-grained control over how to generate the timeslots without disrupting the default timeslot generating behavior.</p>
+<p>I tried to make this enhancement to be very convenient to use, with only 2 commands required for this functionality to work. This led to the high variety of errors that the <code>generate</code> and <code>addTimetable</code> command can occur. As such, I had to provide a robust error catching mechanism to identify what the user did wrongly and provide suggestion on how to make the command work.</p>
+</li>
+<li>
+<p>This enhancement was also challenging because the current Java data and time libraries do not fully address my needs for a weekly recurring type of timetable, thus I had to implement it myself, which proves to be more of a challenge than expected. However, this proved to be worth the time, as it forms the backbone of the entire enhancement. This allowed for my enhancement to be extremely extendable so that we can easily provide for more sources of input, such as input from .ics files.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Credits</p>
+<p><strong>Credits</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Credits to the NUSMods team for provide such a comprehensive API to retrieve module information</p>
+<p>Credits to the NUSMods team for provide such a comprehensive API to retrieve module information.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: Click the following links to view a sample of my code: <a href="http://github.com">Functional Code</a> <a href="http://github.com">Test Code</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Other contributions</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhancement to exisiting features</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Update UI and README to better represent MyProject <a href="https://github.com/AY1920S1-CS2103T-T17-1/main/pull/181">#181</a></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Other contributions</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Project Management</p>
+<p>Project Management:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Managed issue tracker</p>
 </li>
 <li>
-<p>Release all software versions from v1.1 to v1.3</p>
+<p>Release all software releases from v1.1 to v1.3</p>
 </li>
 <li>
 <p>Handled Travis integration on Github</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix bugs introduced by other group members <a href="https://github.com/AY1920S1-CS2103T-T17-1/main/pull/17">#17</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated Coveralls to the project to keep track of code coverage</p>
 </li>
 </ul>
 </div>
@@ -127,7 +169,7 @@
 <p>Below is the section of user guide that I contributed for my tasks.</p>
 </div>
 <div class="sect2">
-<h3 id="4-add-a-timetable-code-addtimetable-code"><a class="link" href="#4-add-a-timetable-code-addtimetable-code">4. Add a timetable: <code>addTimeTable</code></a></h3>
+<h3 id="4-add-a-timetable-code-addtimetable-code"><a class="link" href="#4-add-a-timetable-code-addtimetable-code">4. Add a timetable: <code>addTimetable</code></a></h3>
 <div class="paragraph">
 <p>Adds a timetable for the specified person, to record down their schedule.</p>
 </div>
@@ -243,7 +285,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 <div class="ulist">
 <ul>
 <li>
-<p><code>members</code>: <code>List&lt;TimeTable&gt;</code> of members of the checked-out <code>Project</code></p>
+<p><code>members</code>: <code>List&lt;Timetable&gt;</code> of members of the checked-out <code>Project</code></p>
 </li>
 <li>
 <p><code>desiredMeetingDuration</code>: How long the meeting would last in hour, expressed as a positive integer</p>
@@ -259,7 +301,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 <div class="ulist">
 <ul>
 <li>
-<p><code>TimeSlotGenerator#generate()</code>&#8201;&#8212;&#8201;Generate timeslot suitable for <strong><em>all</em></strong> <code>TimeTable</code> supplied. Returns a list of <code>TimeRange</code>, or an empty list of <code>TimeRange</code> if no such timeslot is available.</p>
+<p><code>TimeSlotGenerator#generate()</code>&#8201;&#8212;&#8201;Generate timeslot suitable for <strong><em>all</em></strong> <code>Timetable</code> supplied. Returns a list of <code>TimeRange</code>, or an empty list of <code>TimeRange</code> if no such timeslot is available.</p>
 </li>
 <li>
 <p><code>TimeSlotGenerator#generateWithMostMembers()</code>&#8201;&#8212;&#8201;Generate timeslot where <strong><em>most</em></strong> members of the currently checked out project are available. Returns a list of <code>TimeRange</code>.</p>
@@ -274,7 +316,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/GenerateSlotClassDiagram.png" alt="GenerateSlotClassDiagram">
+<img src="../images/GenerateSlotClassDiagram.png" alt="GenerateSlotClassDiagram">
 </div>
 </div>
 <div class="paragraph">
@@ -288,7 +330,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/GenerateSlotSequenceDiagram.png" alt="GenerateSlotSequenceDiagram">
+<img src="../images/GenerateSlotSequenceDiagram.png" alt="GenerateSlotSequenceDiagram">
 </div>
 </div>
 <div class="paragraph">
@@ -324,7 +366,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/GenerateSlotActivityDiagram.png" alt="GenerateSlotActivityDiagram">
+<img src="../images/GenerateSlotActivityDiagram.png" alt="GenerateSlotActivityDiagram">
 </div>
 <div class="title">Figure 2. <code>generate</code> command tries to provide best possible meeting timeslot</div>
 </div>
@@ -336,7 +378,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Combine all the given <code>TimeTable</code> into a single <code>List&lt;TimeRange&gt; combined</code></p>
+<p>Combine all the given <code>Timetable</code> into a single <code>List&lt;TimeRange&gt; combined</code></p>
 </li>
 <li>
 <p><code>combined</code> is then processed further by merging overlapping <code>TimeRange</code> into a single <code>TimeRange</code>. E.g. <code>TimeRange(MONDAY, 1000, MONDAY, 1200)</code> and <code>TimeRange(MONDAY, 1200, MONDAY,1400)</code> are merged together to form a single <code>TimeRange(MONDAY, 1000, MONDAY, 1400)</code>. <code>List&lt;TimeRange&gt; merged</code> is then passed on to the next stage.</p>
@@ -367,7 +409,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <p>If <code>TimeSlotGenerator#generate()</code> returns an empty list, repeat step 2 again.</p>
 </li>
 <li>
-<p>Algorithm terminates, returning the combination of List&lt;TimeTable&gt; used and available timings <code>List&lt;TimeRange&gt;</code> wrapped in a class <code>TimeSlotWithMember</code>.</p>
+<p>Algorithm terminates, returning the combination of List&lt;Timetable&gt; used and available timings <code>List&lt;TimeRange&gt;</code> wrapped in a class <code>TimeSlotWithMember</code>.</p>
 </li>
 </ol>
 </div>
@@ -476,4 +518,4 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 06:09:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 08:57:01 UTC</div></div></div></body></html>

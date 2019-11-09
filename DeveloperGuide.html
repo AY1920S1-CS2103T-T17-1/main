@@ -935,7 +935,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 <div class="ulist">
 <ul>
 <li>
-<p><code>members</code>: <code>List&lt;TimeTable&gt;</code> of members of the checked-out <code>Project</code></p>
+<p><code>members</code>: <code>List&lt;Timetable&gt;</code> of members of the checked-out <code>Project</code></p>
 </li>
 <li>
 <p><code>desiredMeetingDuration</code>: How long the meeting would last in hour, expressed as a positive integer</p>
@@ -951,7 +951,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 <div class="ulist">
 <ul>
 <li>
-<p><code>TimeSlotGenerator#generate()</code>&#8201;&#8212;&#8201;Generate timeslot suitable for <strong><em>all</em></strong> <code>TimeTable</code> supplied. Returns a list of <code>TimeRange</code>, or an empty list of <code>TimeRange</code> if no such timeslot is available.</p>
+<p><code>TimeSlotGenerator#generate()</code>&#8201;&#8212;&#8201;Generate timeslot suitable for <strong><em>all</em></strong> <code>Timetable</code> supplied. Returns a list of <code>TimeRange</code>, or an empty list of <code>TimeRange</code> if no such timeslot is available.</p>
 </li>
 <li>
 <p><code>TimeSlotGenerator#generateWithMostMembers()</code>&#8201;&#8212;&#8201;Generate timeslot where <strong><em>most</em></strong> members of the currently checked out project are available. Returns a list of <code>TimeRange</code>.</p>
@@ -1028,7 +1028,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Combine all the given <code>TimeTable</code> into a single <code>List&lt;TimeRange&gt; combined</code></p>
+<p>Combine all the given <code>Timetable</code> into a single <code>List&lt;TimeRange&gt; combined</code></p>
 </li>
 <li>
 <p><code>combined</code> is then processed further by merging overlapping <code>TimeRange</code> into a single <code>TimeRange</code>. E.g. <code>TimeRange(MONDAY, 1000, MONDAY, 1200)</code> and <code>TimeRange(MONDAY, 1200, MONDAY,1400)</code> are merged together to form a single <code>TimeRange(MONDAY, 1000, MONDAY, 1400)</code>. <code>List&lt;TimeRange&gt; merged</code> is then passed on to the next stage.</p>
@@ -1059,7 +1059,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <p>If <code>TimeSlotGenerator#generate()</code> returns an empty list, repeat step 2 again.</p>
 </li>
 <li>
-<p>Algorithm terminates, returning the combination of List&lt;TimeTable&gt; used and available timings <code>List&lt;TimeRange&gt;</code> wrapped in a class <code>TimeSlotWithMember</code>.</p>
+<p>Algorithm terminates, returning the combination of List&lt;Timetable&gt; used and available timings <code>List&lt;TimeRange&gt;</code> wrapped in a class <code>TimeSlotWithMember</code>.</p>
 </li>
 </ol>
 </div>
@@ -1115,15 +1115,15 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Member send a formatted text file to the team leader, which would then be parsed by the system</p>
+<p>Member send a formatted text file to the team leader, which would then be parsed by the system. The file would be a list of newline separated time ranges</p>
 </li>
 <li>
-<p>Member send their NUSMods timetable URL to the team leader, and the system would fetch their timetable data using NUSMods API</p>
+<p>Member send their NUSMods timetable URL to the team leader, and the system would parse the URL and fetch timetable data using NUSMods API</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The main logic is implemented within the <code>AddTimetableCommand</code> class.</p>
+<p>The main logic is implemented within the <code>TimetableInput</code> class.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1134,7 +1134,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="ulist">
 <ul>
 <li>
-<p><code>AddTimetableCommand#getTimetableFromNUSMods(String url)</code>&#8201;&#8212;&#8201;Fetch timetable data using NUSMods API</p>
+<p><code>TimetableInput#getTimetableFromNUSMods(String url)</code>&#8201;&#8212;&#8201;Fetch timetable data using NUSMods API</p>
 </li>
 <li>
 <p><code>AddTimetableCommand#getTimetableFromFile(String filepath)</code>&#8201;&#8212;&#8201;Parse file to obtain timetable data</p>
@@ -2108,4 +2108,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 06:09:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 08:57:00 UTC</div></div></div></body></html>
