@@ -1,0 +1,536 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Philip Alexander Boediman - Project Portfolio for MyProject</title><link rel="stylesheet" href="./gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Philip Alexander Boediman - Project Portfolio for MyProject</h1></div><div id="content"><div class="sect1">
+<h2 id="introduction-to-the-project"><a class="link" href="#introduction-to-the-project">Introduction to the project</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My team of 4 NUS SoC students and I were tasked to enhance a command line addressbook application. We decided to convert it into a all-in-one project management app called <strong><em>MyProject</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>MyProject</strong> has various features to aid team leaders in project management. Some of the more prominent features include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keep track of members' performance</p>
+</li>
+<li>
+<p>Generate meeting timings</p>
+</li>
+<li>
+<p>Keep track of project&#8217;s finances</p>
+</li>
+<li>
+<p>Record meeting minutes</p>
+</li>
+<li>
+<p>Keep track of ongoing and upcoming tasks</p>
+</li>
+<li>
+<p>Send out reminders and broadcast email for important announcements (My Contributions)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is what our project look like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui.png" alt="Ui">
+</div>
+<div class="title">Figure 1. Graphical User Interface for MyProject</div>
+</div>
+<div class="paragraph">
+<p>My role was to design email related features. The following sections illustrate these enhancements in more detail, as well as the relevant documentation
+that I have added to the user and developer guides in relation to these enhancements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows a summary of my coding, documentation and other helpful contribution towards the team project.</p>
+</div>
+<div class="sect2">
+<h3 id="major-enhancement-email-feature"><a class="link" href="#major-enhancement-email-feature">Major Enhancement - Email feature</a></h3>
+<div class="sect3">
+<h4 id="enhancements-implemented"><a class="link" href="#enhancements-implemented">Enhancements Implemented:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>signIn</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>lets user signs in using his/her Google account.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>logOut</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>lets user signs out from his/her Google account.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>sendMail</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>sends a personal email to one member in the project / contact list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>broadcastMail</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>sends a personalised broadcast message to all members in the current project.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>sendReminder</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>sends a reminder to all members in the project of the upcoming meeting and tasks
+which are due in specific number of days defined by user.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>Team leaders often have information that they want to convey to the team members about updates or changes made to
+the project or remind team members of the upcoming meeting or tasks. There might be several applications in which
+the project groups are formed in the social media platforms. Team leaders may have to switch between different applications
+to locate the project group in this platform and this process is oftentimes time-consuming. With this enhancements,
+team leaders will be able to relay his message to his members in a single application, <strong><em>MyProject</em></strong>, where all the informations
+on his various projects are stored.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="highlights"><a class="link" href="#highlights">Highlights</a></h4>
+<div class="paragraph">
+<p>These enhancements are extremely useful and use very intuitive command formats which are very similar to the
+normal GUI that user normally encounters and are very easy to remember. Some of the challenges faced were in understanding how the javax.Mail
+works which was outside the coverages of the course. These enhancements are extendable as we can further enhance to support
+more email domains which users wish to use as well as send attachments. Overall, the enhancements can support all the basic one-way mailing features which
+are sufficient for the optimisation of the team leaders' works.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="credits"><a class="link" href="#credits">Credits</a></h4>
+<div class="paragraph">
+<p>Credits to the <a href="https://javaee.github.io/javamail/" class="bare">https://javaee.github.io/javamail/</a> for providing the JavaMail library and the javax.Mail API.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="secondary-enhancement-meeting-attribute-in-the-project"><a class="link" href="#secondary-enhancement-meeting-attribute-in-the-project">Secondary Enhancement - Meeting attribute in the project.</a></h3>
+<div class="sect3">
+<h4 id="enhancements-implemented-2"><a class="link" href="#enhancements-implemented-2">Enhancements Implemented:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AddProjectMeeting</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>lets user adds a meeting to .</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>DeleteProjectMeeting</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>lets user signs out from his/her Google account.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+<div class="paragraph">
+<p>Every projects will definitely have meetings, thus team leaders can easily keep track of upcoming meetings
+in the projects that he/she has.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="highlights-2"><a class="link" href="#highlights-2">Highlights</a></h4>
+<div class="paragraph">
+<p>This enhancements is extremely useful as meeting is a very crucial part in a project&#8217;s progress. Meetings
+added by the user will automatically be sorted based on the meeting time (earliest to latest).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Management</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tested team members' features and reported bugs for amendment.</p>
+</li>
+<li>
+<p>Implemented Time class which are widely used in the project.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Proof-reading the project&#8217;s User&#8217;s Guide and Developer&#8217;s Guide</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We had to provide a user guide for users to familiarise themselves with our application.
+The user guide consists of easy navigation to certain parts of the user guide, features implemented
+in our application and a summary of commands available in our application.</p>
+</div>
+<div class="paragraph">
+<p>Below is the section of user guide that I contributed for my tasks.</p>
+</div>
+<div class="sect3">
+<h4 id="sign-in-to-your-account-code-signin-code"><a class="link" href="#sign-in-to-your-account-code-signin-code">Sign in to your account: <code>signIn</code></a></h4>
+<div class="paragraph">
+<p>Signs in to the your email account.<br>
+Format: <code>signIn ac/ACCOUNT_EMAIL_ADDRESS pa/PASSWORD</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>signIn ac/example@gmail.com pa/12345678</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command is required to be executed before the remainder of the email commands can be executed.<br>
+The correctness of the email address used and the password will be checked.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="log-out-from-your-account-code-logout-code"><a class="link" href="#log-out-from-your-account-code-logout-code">Log out from your account: <code>logOut</code></a></h4>
+<div class="paragraph">
+<p>Logs out from your email account.<br>
+Format: <code>logOut</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>logOut</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="send-an-email-code-sendmail-code"><a class="link" href="#send-an-email-code-sendmail-code">Send an email: <code>sendMail</code></a></h4>
+<div class="paragraph">
+<p>Sends an email to the specified person in your contacts.<br>
+Format: <code>sendMail r/RECIPIENT_OF_EMAIL su/SUBJECT me/MESSAGE_BODY</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sendMail r/example@gmail.com su/Test me/HelloWorld!</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We will not check the correctness of the member&#8217;s email address
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="broadcast-an-email-code-broadcastmail-code-checkout"><a class="link" href="#broadcast-an-email-code-broadcastmail-code-checkout">Broadcast an email: <code>broadcastMail</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Sends an email to all members in the current working project.<br>
+Format: <code>broadcastMail su/SUBJECT me/MESSAGE_BODY</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>broadcastMail su/CS2103T me/added new Task</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We will not check the correctness of the members' email address
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="send-reminder-code-sendreminder-code-checkout"><a class="link" href="#send-reminder-code-sendreminder-code-checkout">Send reminder: <code>sendReminder</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Sends a reminder to all members from the current working project of the upcoming Meeting and Task that is due.<br>
+Format: `sendReminder`d/DURATION</p>
+</div>
+<div class="paragraph">
+<p><code>DURATION</code> is the number of days from the current time within which the Tasks are due and The Meetings are held.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sendReminder d/3</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We will not check the correctness of the members' email address
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="sending-reminder-feature"><a class="link" href="#sending-reminder-feature">Sending Reminder feature</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature"><a class="link" href="#description-of-feature">Description of feature</a></h4>
+<div class="paragraph">
+<p>Sends reminder for tasks and meetings that are due in the number of days given by the user input.</p>
+</div>
+<div class="paragraph">
+<p>The basic implementation uses javax.Mail to send email to other email addresses. The Mailer class has static method sendEmail
+which is responsible for sending all kinds of email to a given recipient(s). User&#8217;s email account information is
+stored in the Model class and subsequent queries regarding mailing will use this information that has been stored to send the email.
+Currently, only gmail server has been made available for use in sending the emails.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User Email  Account Information is stored through the signIn command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details"><a class="link" href="#details">Details</a></h4>
+<div class="paragraph">
+<p>SendReminder takes in a single integer as parameter. The integer will be the duration in days from the current times in which the meetings and tasks are due.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the process of sending reminder to the project members.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SendReminderSequenceDiagram.png" alt="SendReminderSequenceDiagram">
+</div>
+<div class="title">Figure 2. Sequence Diagram for sendReminder</div>
+</div>
+<div class="paragraph">
+<p>These are the stages shown in figure 10. Stages are similar for broadcastMail as well.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Parses the input to obtain the duration.</p>
+</li>
+<li>
+<p>Goes to <code>Model</code> to get the the Meetings and Tasks.</p>
+</li>
+<li>
+<p>Obtains list of tasks and meetings which are due in the duration time.</p>
+</li>
+<li>
+<p>Goes to <code>Model</code> to get the members in the project.</p>
+</li>
+<li>
+<p>Goes to <code>Model</code> to get the OwnerAccount information.</p>
+</li>
+<li>
+<p>Sends email to all the members about the upcoming meetings and tasks in the project.</p>
+</li>
+<li>
+<p>Display the success message.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SendReminderActivityDiagram.png" alt="SendReminderActivityDiagram">
+</div>
+<div class="title">Figure 3. Activity Diagram for sendReminder</div>
+</div>
+<div class="paragraph">
+<p>The diagram above shows how sendReminder works. There are 2 possible error messages that can occur. Firstly,
+if the user inputs nothing as the duration and input cannot be empty error message is shown. Secondly,
+an error will be shown if the user non-numeric or negative or zero number as the duration of time.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-sendreminder-commands"><a class="link" href="#aspect-data-structure-to-support-the-sendreminder-commands">Aspect: Data structure to support the sendReminder commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Storing List&lt;Person&gt; in the Project for members.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. Do not need to look for the person object in the addressBook from the List of String of
+members' names in the project.</p>
+</li>
+<li>
+<p>Cons: Introduces coupling and may cause unwanted bugs due to cyclic dependencies as Project contains Person and
+Person contains Project.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Stores members as List&lt;String&gt; of members names.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces coupling and and eliminates cyclic dependencies between Project and Person object..</p>
+</li>
+<li>
+<p>Cons: Have to hash the members object in the addressBook by names and go through the List&lt;String&gt; of members'
+names one by one to get the Person object of the member. Harder to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="meeting-feature"><a class="link" href="#meeting-feature">Meeting feature</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature-2"><a class="link" href="#description-of-feature-2">Description of feature</a></h4>
+<div class="paragraph">
+<p>Within every project, there are meetings to be held at certain time.
+The diagram below shows the class diagram of the meeting class and how it interacts with the model.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MeetingClassDiagram.png" alt="MeetingClassDiagram">
+</div>
+<div class="title">Figure 4. Class Diagram for Meeting</div>
+</div>
+<div class="paragraph">
+<p>As shown above, each project stores multiple meetings in a list. These meetings are automatically sorted based on the time in ascending order.
+Here are some meeting related commands that can be executed by the app.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>addProjectMeeting - adds a meeting into the project model.</p>
+</li>
+<li>
+<p>deleteProjectMeeting- removes a meeting from the project model based on index specified by user</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-2"><a class="link" href="#details-2">Details</a></h4>
+<div class="paragraph">
+<p>As seen in figure 10, each meeting consists of 2 parameters namely description and time to show what is the meeting about
+and the date and time of the meeting respectively.
+A typical meeting will look like this on the app:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ProjectMeeting.png" alt="ProjectMeeting">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 15:08:26 UTC</div></div></div></body></html>

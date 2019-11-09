@@ -22,17 +22,16 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#task-feature">3.2. Task feature</a></li>
-<li><a href="#meeting-feature">3.3. Meeting feature</a></li>
-<li><a href="#sorting-feature">3.4. Sorting feature</a></li>
-<li><a href="#sending-reminder-feature">3.5. Sending Reminder feature</a></li>
-<li><a href="#generate-meeting-timeslot">3.6. Generate meeting timeslot</a></li>
-<li><a href="#timetable-input">3.7. Timetable input</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
-<li><a href="#Implementation-Checkout">3.10. Checkout</a></li>
-<li><a href="#Implementation-Change-in-UI-display">3.11. Change in UI display</a></li>
+<li><a href="#task-feature">3.1. Task feature</a></li>
+<li><a href="#meeting-feature">3.2. Meeting feature</a></li>
+<li><a href="#sorting-feature">3.3. Sorting feature</a></li>
+<li><a href="#sending-reminder-feature">3.4. Sending Reminder feature</a></li>
+<li><a href="#generate-meeting-timeslot">3.5. Generate meeting timeslot</a></li>
+<li><a href="#timetable-input">3.6. Timetable input</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#Implementation-Checkout">3.9. Checkout</a></li>
+<li><a href="#Implementation-Change-in-UI-display">3.10. Change in UI display</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -337,223 +336,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="task-feature"><a class="link" href="#task-feature">3.1. Task feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState1.png" alt="UndoRedoState1">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="task-feature"><a class="link" href="#task-feature">3.2. Task feature</a></h3>
-<div class="sect3">
-<h4 id="description-of-feature"><a class="link" href="#description-of-feature">3.2.1. Description of feature</a></h4>
+<h4 id="description-of-feature"><a class="link" href="#description-of-feature">3.1.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Within every project, there are tasks to be done or milestones to be achieved within certain deadlines. The diagram below shows the class diagram of the task class and how it interacts with the model.</p>
 </div>
@@ -585,7 +370,7 @@ Here are some task related commands that can be executed by the app.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="details"><a class="link" href="#details">3.2.2. Details</a></h4>
+<h4 id="details"><a class="link" href="#details">3.1.2. Details</a></h4>
 <div class="paragraph">
 <p>As seen in figure 9, each task consists of 3 parameters namely description, time and a boolean state to show whether the task is done/in progress.
 A typical task will look like this on the app:<br></p>
@@ -598,11 +383,12 @@ A typical task will look like this on the app:<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="meeting-feature"><a class="link" href="#meeting-feature">3.3. Meeting feature</a></h3>
+<h3 id="meeting-feature"><a class="link" href="#meeting-feature">3.2. Meeting feature</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-2"><a class="link" href="#description-of-feature-2">3.3.1. Description of feature</a></h4>
+<h4 id="description-of-feature-2"><a class="link" href="#description-of-feature-2">3.2.1. Description of feature</a></h4>
 <div class="paragraph">
-<p>Within every project, there are meetings to be held at certain time. The diagram below shows the class diagram of the task class and how it interacts with the model.</p>
+<p>Within every project, there are meetings to be held at certain time.
+The diagram below shows the class diagram of the meeting class and how it interacts with the model.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -612,7 +398,7 @@ A typical task will look like this on the app:<br></p>
 </div>
 <div class="paragraph">
 <p>As shown above, each project stores multiple meetings in a list. These meetings are automatically sorted based on the time in ascending order.
-Here are some task related commands that can be executed by the app.</p>
+Here are some meeting related commands that can be executed by the app.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -626,10 +412,11 @@ Here are some task related commands that can be executed by the app.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-2"><a class="link" href="#details-2">3.3.2. Details</a></h4>
+<h4 id="details-2"><a class="link" href="#details-2">3.2.2. Details</a></h4>
 <div class="paragraph">
-<p>As seen in figure 10, each meeting consists of 2 parameters namely description and time to show what is the meeting about and the date and time of the meeting respectively.
-A typical task will look like this on the app:<br></p>
+<p>As seen in figure 10, each meeting consists of 2 parameters namely description and time to show what is the meeting about
+and the date and time of the meeting respectively.
+A typical meeting will look like this on the app:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -639,9 +426,9 @@ A typical task will look like this on the app:<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.4. Sorting feature</a></h3>
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.3. Sorting feature</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-3"><a class="link" href="#description-of-feature-3">3.4.1. Description of feature</a></h4>
+<h4 id="description-of-feature-3"><a class="link" href="#description-of-feature-3">3.3.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Sorts some lists based on specifications provided by the user.
 There are 3 lists that are able to be sorted so far.<br></p>
@@ -699,7 +486,7 @@ Methods 1-2 can be used to sort all lists.
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-3"><a class="link" href="#details-3">3.4.2. Details</a></h4>
+<h4 id="details-3"><a class="link" href="#details-3">3.3.2. Details</a></h4>
 <div class="paragraph">
 <p>All sort commands take in a single integer as parameter. As mentioned in the
 note above, integers 1-4 are valid input for sortTask, integers 1, 2 and 5 are valid for sortSpending, and
@@ -754,7 +541,7 @@ the sorting will occur and the newly sorted task list will be displayed.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.3. Design considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.3. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-sort-commands"><a class="link" href="#aspect-data-structure-to-support-the-sort-commands">Aspect: Data structure to support the sort commands</a></h5>
 <div class="ulist">
@@ -792,9 +579,9 @@ no additional sorting needed when adding or editing new elements.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-reminder-feature"><a class="link" href="#sending-reminder-feature">3.5. Sending Reminder feature</a></h3>
+<h3 id="sending-reminder-feature"><a class="link" href="#sending-reminder-feature">3.4. Sending Reminder feature</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-4"><a class="link" href="#description-of-feature-4">3.5.1. Description of feature</a></h4>
+<h4 id="description-of-feature-4"><a class="link" href="#description-of-feature-4">3.4.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Sends reminder for tasks and meetings that are due in the number of days given by the user input.</p>
 </div>
@@ -818,7 +605,7 @@ User Email  Account Information is stored through the signIn command.
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-4"><a class="link" href="#details-4">3.5.2. Details</a></h4>
+<h4 id="details-4"><a class="link" href="#details-4">3.4.2. Details</a></h4>
 <div class="paragraph">
 <p>SendReminder takes in a single integer as parameter. The integer will be the duration in days from the current times in which the meetings and tasks are due.</p>
 </div>
@@ -832,7 +619,7 @@ User Email  Account Information is stored through the signIn command.
 <div class="title">Figure 13. Sequence Diagram for sendReminder</div>
 </div>
 <div class="paragraph">
-<p>These are the stages shown in figure 9. Stages are similar for sort spending as well.</p>
+<p>These are the stages shown in figure 10. Stages are similar for broadcastMail as well.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -863,7 +650,7 @@ User Email  Account Information is stored through the signIn command.
 <div class="content">
 <img src="images/SendReminderActivityDiagram.png" alt="SendReminderActivityDiagram">
 </div>
-<div class="title">Figure 14. Activity Diagram for sortTask</div>
+<div class="title">Figure 14. Activity Diagram for sendReminder</div>
 </div>
 <div class="paragraph">
 <p>The diagram above shows how sendReminder works. There are 2 possible error messages that can occur. Firstly,
@@ -872,9 +659,9 @@ an error will be shown if the user non-numeric or negative or zero number as the
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.3. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.3. Design considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-sort-commands-2"><a class="link" href="#aspect-data-structure-to-support-the-sort-commands-2">Aspect: Data structure to support the sort commands</a></h5>
+<h5 id="aspect-data-structure-to-support-the-sendreminder-commands"><a class="link" href="#aspect-data-structure-to-support-the-sendreminder-commands">Aspect: Data structure to support the sendReminder commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -886,7 +673,7 @@ an error will be shown if the user non-numeric or negative or zero number as the
 members' names in the project.</p>
 </li>
 <li>
-<p>Cons: Introduces coupling and may cause unwanted bugs due to cyclic depencdencies as Project contains Person and
+<p>Cons: Introduces coupling and may cause unwanted bugs due to cyclic dependencies as Project contains Person and
 Person contains Project.</p>
 </li>
 </ul>
@@ -912,9 +699,9 @@ names one by one to get the Person object of the member. Harder to implement.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.6. Generate meeting timeslot</a></h3>
+<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.5. Generate meeting timeslot</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-5"><a class="link" href="#description-of-feature-5">3.6.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-5"><a class="link" href="#description-of-feature-5">3.5.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>The timeslot generator is used to suggest meeting timings by making use of team members' timetable.</p>
 </div>
@@ -935,7 +722,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-5"><a class="link" href="#details-5">3.6.2. Details</a></h4>
+<h4 id="details-5"><a class="link" href="#details-5">3.5.2. Details</a></h4>
 <div class="paragraph">
 <p><code>TimeSlotGenerator(members, desiredMeetingDuration, restrictedTimeRange)</code></p>
 </div>
@@ -1026,7 +813,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.6.3. Algorithm Used</a></h4>
+<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.5.3. Algorithm Used</a></h4>
 <div class="sect4">
 <h5 id="code-timeslotgenerator-generate-code"><a class="link" href="#code-timeslotgenerator-generate-code"><code>TimeSlotGenerator#generate()</code></a></h5>
 <div class="olist arabic">
@@ -1070,7 +857,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.4. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.4. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-generate-timeslot-with-most-number-of-available-members"><a class="link" href="#aspect-how-to-generate-timeslot-with-most-number-of-available-members">Aspect: How to generate timeslot with most number of available members</a></h5>
 <div class="ulist">
@@ -1110,9 +897,9 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable-input"><a class="link" href="#timetable-input">3.7. Timetable input</a></h3>
+<h3 id="timetable-input"><a class="link" href="#timetable-input">3.6. Timetable input</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-6"><a class="link" href="#description-of-feature-6">3.7.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-6"><a class="link" href="#description-of-feature-6">3.6.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>This feature is used to input timetable data, which would then be used in the <code>generate</code> command to find a suitable meeting timeslot.</p>
 </div>
@@ -1137,7 +924,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-6"><a class="link" href="#details-6">3.7.2. Details</a></h4>
+<h4 id="details-6"><a class="link" href="#details-6">3.6.2. Details</a></h4>
 <div class="paragraph">
 <p>Important functions in <code>TimetableInput</code>:</p>
 </div>
@@ -1177,7 +964,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.7.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-input-timetable"><a class="link" href="#aspect-how-to-input-timetable">Aspect: How to input timetable</a></h5>
 <div class="ulist">
@@ -1217,14 +1004,14 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1255,13 +1042,13 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.10. Checkout</a></h3>
+<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.9. Checkout</a></h3>
 <div class="paragraph">
 <p>This allows user to checkout to a project from a list of project to work on it.
 Almost every command regarding the project require the user to checkout first.</p>
@@ -1293,7 +1080,7 @@ attribute and the model supports three new methods:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.11. Change in UI display</a></h3>
+<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.10. Change in UI display</a></h3>
 <div class="paragraph">
 <p>The first step of changing UI display is to find out
 whether a change in UI is needed given a command from user.
@@ -2148,4 +1935,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 14:38:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 15:08:26 UTC</div></div></div></body></html>
