@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Fadi Sng - Project Portfolio</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Fadi Sng - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-myproject"><a class="link" href="#project-myproject">PROJECT: MyProject</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="background"><a class="link" href="#background">Background</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My team consists of a group of 5 NUS computer science students working on ths project as part of a software engineering project.
+The task was to enhance a basic CLI addressbook app into an app that suits the needs of a target group of people.
+We decided to morph it into a project management app for students as it was something closer to us and we could
+make changes based on our own personal needs as students which are representative of the target group. Our app,
+<em>MyProject</em> is for students, by students.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>MyProject</em> is a one stop project management app for team leaders to store and manage your multiple projects
+through the use of a Command Line Interface(CLI). <em>MyProject</em> provides a centralized platform to store, edit and
+display all your important information in a simple and intuitive manner. <em>MyProject</em> has unique functions
+such as sending emails to members within the app as well as financial tracking capabilities. Currently our main
+target group is for university students, but we intend to develop further to accommodate working adults as well in the future.</p>
+</div>
+<div class="paragraph">
+<p>This is what <em>MyProject</em> looks like after you <code>checkout</code> to a chosen project:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/fadisngppp1.png" alt="fadisngppp1">
+</div>
+<div class="title">Figure 1. The graphical user interface for <em>MyProject</em>.</div>
+</div>
+<div class="paragraph">
+<p>My role in creating the basic project model was to implement the task feature. Every project has different
+tasks with different deadlines and my goal was to make storing, accessing and displaying these tasks in the
+most user-friendly way possible, while keeping the user interactions as simple as possible.</p>
+</div>
+<div class="paragraph">
+<p>In addition, my enhancement to the project as a whole was implementing the sorting mechanisms for the different
+types of information that can be displayed such as the list of tasks and spending. This was to allow for users to
+choose how they want to organize their information while ensuring that the commands to sort all these information
+follow the same format so that it is easy for users to remember these commands.</p>
+</div>
+<div class="paragraph">
+<p>The following sections illustrates these enhancements in more detail as well as the relevant documentation
+I have added to the user and developer guides.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Added <strong>the ability to sort the different types of information according to user preferences</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to choose which kind of sorting order they&#8217;d like out of a pre-specified list of sorting orders(this list is shown in the highlighted section below) for the different types of information displayed.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because the main goal of <em>MyProject</em> was to provide a platform to store and display all these important information in an organized and systematic manner.
+Giving the user such options to sort all these information helps them locate what they need easily.</p>
+</li>
+<li>
+<p>Highlights: The type of sorting order is maintained until the app is closed. What this means is that whenever you add or edit items into the displayed list, that item will automatically be inserted into the correctly sorted position.
+This reduces the need for users to continuously enter the sort command whenever they add or edit the list of items.<br>
+Another noteworthy highlight is that all sort commands follow the same format. For example <code>sortTask 1</code> and <code>sortSpending 1</code> will sort both lists by alphabetical order.
+Therefore users only need to remember the command for 1 sort command and the rest follows suit!</p>
+</li>
+<li>
+<p>Challenges: The main challenge of this feature was that I needed to know how the other features were implemented before I can sort them. For example, I needed to wait
+for the completion of the meeting feature before I could implement the sorting feature for the list of meetings displayed. This also required
+me to understand the internal workings of other features like how these items are stored and displayed so that I could implement the appropriate methods to sort them.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added the tasks feature for the project model including basic commands such as adding, deleting and editing tasks.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: Please click the link to see a sample of my code: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=fadisng&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Functional code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generally in charge of issuing and assigning issues/tasks on GitHub for each milestone.</p>
+</li>
+<li>
+<p>Created the project model on GitHub and kept track of the progresses. <a href="https://github.com/AY1920S1-CS2103T-T17-1/main/projects/1">Project model on GitHub</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edited images originially from addressbook to include the new features implemented by the whole team.
+For example, edited the storage class diagram to include all the new storage classes that were added. <a href="https://github.com/AY1920S1-CS2103T-T17-1/main/pull/52">#52</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>MyProject</em> uses most of the original addressbook features, therefore most of the addressbook user guide is still intact
+and present in <em>MyProject</em>'s user guide.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are some sections I contributed to the User Guide, but not all. These are sections that I believe
+are representative of my skills. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="sorting"><a class="link" href="#sorting">Sorting</a></h3>
+<div class="paragraph">
+<p>The following section provides a set of commands which help with sorting the information inside the
+application. <em>MyProject</em> makes it very easy and user-friendly by making all sort commands follow the same
+format and index/order pairing as shown below!</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>All commands in this section follow this set of index/order pairing, where applicable:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Alphabetical order</p>
+</li>
+<li>
+<p>Increasing order of time</p>
+</li>
+<li>
+<p>Whether tasks are done</p>
+</li>
+<li>
+<p>Whether tasks are done and then by increasing order of time</p>
+</li>
+<li>
+<p>Increasing price</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The default sorting order for the following lists is by increasing order of time(index 2). Whenever <em>MyProject</em>
+is closed, the ordering will return to the default order.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="sort-tasks-code-sorttask-code-checkout"><a class="link" href="#sort-tasks-code-sorttask-code-checkout">Sort tasks: <code>sortTask</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>This command sorts the tasks in the task list of the current working project.<br>
+Format: <code>sortTask INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><code>INDEX</code> refers to the index of the list provided in the highlighted section above which corresponds to the type of sorting you wish to apply.
+For example, index 1 corresponds to sorting by alphabetical order. For the case of sorting tasks, only numbers between 1 and 4 are applicable.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have added many different tasks with different deadlines and progresses into <em>MyProject</em>.<br></p>
+</div>
+<div class="paragraph">
+<p>The default sorting order that <em>MyProject</em> offers is by increasing order of time(index 2). However you wish to group those tasks that are done in one group and those not done in another group and
+then further sort each group by increasing order of time(index 4) to track the progress of your tasks.<br></p>
+</div>
+<div class="paragraph">
+<p>Simply type in the command <code>sortTask 4</code> and all the tasks in the list will immediately be sorted accordingly.<br></p>
+</div>
+<div class="paragraph">
+<p>In addition, whenever you add a new task(Section 3.2.4) or edit the details of an existing task(Section 3.3.2), <em>MyProject</em> will automatically insert
+the newly added or edited task into the correct position based on this new sorting order so you don&#8217;t have to continuously type this command whenever
+you wish to add or edit tasks!<br></p>
+</div>
+<div class="paragraph">
+<p>Here is a step by step process on how to do this.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Firstly, since this command is labeled with [Checkout] at the start, ensure that you <code>checkout</code> to a project first.
+Notice how the tasks in the task list are currently at the default sorting order which is by increasing order of time.
+<span class="image"><img src="images/sortTask1.png" alt="sortTask1"></span></p>
+</li>
+<li>
+<p>Next, enter the command <code>sortTask 4</code> into the command line and press enter. You can choose any index from 1-4 depending
+on which type of sorting order you wish to sort by based on the specifications provided in the highlighted section above.
+<span class="image"><img src="images/sortTask2.png" alt="sortTask2"></span></p>
+</li>
+<li>
+<p>The following success message will be displayed if the input was entered correctly. Check that the type of sorting
+displayed in the success message is the one you actually wanted.<br>
+The tasks in the task list will then be immediately sorted accordingly as shown in the white box.
+<span class="image"><img src="images/sortTask3.png" alt="sortTask3"></span></p>
+</li>
+<li>
+<p>Now let&#8217;s say the deadline for task 2(Do UG) is pushed forward by a week and you&#8217;ve just completed it. Type in the command
+<code>editTask 2 d/ c/04/12/2019 0000</code>(check out section 3.3.2 for more details on the editTask command) into the command line and press enter.<br>
+The task will be edited accordingly and immediately be sorted into the correct position as shown below.
+<span class="image"><img src="images/sortTask4.png" alt="sortTask4"></span></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="task-feature"><a class="link" href="#task-feature">Task feature</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature"><a class="link" href="#description-of-feature">Description of feature</a></h4>
+<div class="paragraph">
+<p>Within every project, there are tasks to be done or milestones to be achieved within certain deadlines. The diagram below shows the class diagram of the task class and how it interacts with the model.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TaskClassDiagram.png" alt="TaskClassDiagram">
+</div>
+<div class="title">Figure 2. Class Diagram for Task</div>
+</div>
+<div class="paragraph">
+<p>As shown in figure 2, each project stores multiple tasks in a list. These tasks can be stored, deleted, edited and sorted very easily.
+Here are some task related commands that can be executed by the app.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>addTask - adds a task into the project model.</p>
+</li>
+<li>
+<p>deleteTask - removes a task from the project model based on index specified by user</p>
+</li>
+<li>
+<p>editTask - edits a task of the given index with attribute/s to edit e.g deadline/description/whether is done</p>
+</li>
+<li>
+<p>sortTask - sorts the list of tasks based on specification given by user. (more info available in section 3.3)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details"><a class="link" href="#details">Details</a></h4>
+<div class="paragraph">
+<p>As seen in figure 2, each task consists of 3 parameters namely description, time and a boolean state to show whether the task is done/in progress.
+A typical task will look like this on the app:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TASK.png" alt="TASK">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">Sorting feature</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature-2"><a class="link" href="#description-of-feature-2">Description of feature</a></h4>
+<div class="paragraph">
+<p>Sorts some lists based on specifications provided by the user.
+There are 3 lists that are able to be sorted so far.<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sort list of tasks</p>
+</li>
+<li>
+<p>Sort list of spending</p>
+</li>
+<li>
+<p>Sort list of meetings</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The implementation is similar for these 3 methods. It makes use of <code>SortingOrder</code>, which is
+a container class that stores the current sort order as well as methods to get and set these orders.
+<code>SortingOrder</code> can be found in the <code>model</code> package.
+Currently there are 5 different methods to sort the lists.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Alphabetical order</p>
+</li>
+<li>
+<p>Increasing order of time</p>
+</li>
+<li>
+<p>Whether tasks are done</p>
+</li>
+<li>
+<p>Whether tasks are done and then by increasing order of time</p>
+</li>
+<li>
+<p>Increasing price</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Methods 3-4 are only for sorting tasks whereas method 5 is for sort spending.
+Methods 1-2 can be used to sort all lists.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-2"><a class="link" href="#details-2">Details</a></h4>
+<div class="paragraph">
+<p>All sort commands take in a single integer as parameter. As mentioned in the
+note above, integers 1-4 are valid input for sortTask, integers 1, 2 and 5 are valid for sortSpending, and
+integers 1-2 are valid for sortMeeting.</p>
+</div>
+<div class="paragraph">
+<p>An example command would be <code>sortTask 1</code> which sorts the list of tasks by alphabetical order.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the process of obtaining a list with the new sorting order
+and updating the current sort order in <code>SortingOrder</code> class.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortTaskSequenceDiagram.png" alt="SortTaskSequenceDiagram">
+</div>
+<div class="title">Figure 3. Sequence Diagram for sortTask</div>
+</div>
+<div class="paragraph">
+<p>These are the stages shown in figure 3. Stages are similar for sort spending as well.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Parses the input to obtain the index.</p>
+</li>
+<li>
+<p>Goes to <code>SortingOrder</code> to change the current sorting order to the one linked to the given index based on the specification shown above.</p>
+</li>
+<li>
+<p>Obtains list of tasks from model and sorts it. List now maintains this sorting order and displays a sorted list even after adding or editing elements.</p>
+</li>
+<li>
+<p>Display the newly sorted task list.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortTaskActivityDiagram.png" alt="SortTaskActivityDiagram">
+</div>
+<div class="title">Figure 4. Activity Diagram for sortTask</div>
+</div>
+<div class="paragraph">
+<p>The diagram above shows sortTask works. There are 2 possible error messages that can occur. Firstly,
+if the user inputs an index that is not applicable to the type of items sorted. For example, <code>sortTask 5</code>
+is invalid as index 5 is linked to a price sorting mechanism which is not applicable to sorting tasks. Secondly,
+an error will be shown if the user attempts to sort the items in the same order is the current sorting order.
+For example, since the default sorting order for tasks is by increasing order of date, the command <code>sortTask 2</code>
+will be invalid if the sorting order has never been changed before. Otherwise if the input is valid,
+the sorting will occur and the newly sorted task list will be displayed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-sort-commands"><a class="link" href="#aspect-data-structure-to-support-the-sort-commands">Aspect: Data structure to support the sort commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Store the data in list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+</li>
+<li>
+<p>Cons: May have performance issues as list has to be sorted every time a new element is added or edited.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store the data in a PriorityQueue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Much more efficient in terms of performance and complexity. Internal list will automatically be updated which means
+no additional sorting needed when adding or editing new elements.</p>
+</li>
+<li>
+<p>Cons: Have to create and add all the tasks into another PriorityQueue if the sorting order were to be changed. Harder to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 14:30:28 UTC</div></div></div></body></html>

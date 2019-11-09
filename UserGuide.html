@@ -608,28 +608,7 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clear-the-address-book-code-clear-code"><a class="link" href="#clear-the-address-book-code-clear-code">3.4.2. Clear the address book: <code>clear</code></a></h4>
-<div class="paragraph">
-<p>Removes all persons from your address book.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-This command removes ALL persons from your address book so use it with caution!
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="remove-a-member-code-removemember-code-checkout"><a class="link" href="#remove-a-member-code-removemember-code-checkout">3.4.3. Remove a member: <code>removeMember</code> [Checkout]</a></h4>
+<h4 id="remove-a-member-code-removemember-code-checkout"><a class="link" href="#remove-a-member-code-removemember-code-checkout">3.4.2. Remove a member: <code>removeMember</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Removes the specified person from the current working project.<br>
 Format: <code>removeMember NAME</code></p>
@@ -649,7 +628,7 @@ Format: <code>removeMember NAME</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-a-task-code-deletetask-code-checkout"><a class="link" href="#delete-a-task-code-deletetask-code-checkout">3.4.4. Delete a task: <code>deleteTask</code> [Checkout]</a></h4>
+<h4 id="delete-a-task-code-deletetask-code-checkout"><a class="link" href="#delete-a-task-code-deletetask-code-checkout">3.4.3. Delete a task: <code>deleteTask</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Deletes the specified task from the current working project. <br>
 Format: <code>deleteTask INDEX</code></p>
@@ -669,7 +648,7 @@ Format: <code>deleteTask INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-a-meeting-code-deletemeeting-code-checkout"><a class="link" href="#delete-a-meeting-code-deletemeeting-code-checkout">3.4.5. Delete a meeting: <code>deleteMeeting</code> [Checkout]</a></h4>
+<h4 id="delete-a-meeting-code-deletemeeting-code-checkout"><a class="link" href="#delete-a-meeting-code-deletemeeting-code-checkout">3.4.4. Delete a meeting: <code>deleteMeeting</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Deletes the specified meeting from the current working project. <br>
 Format: <code>deleteMeeting INDEX</code></p>
@@ -982,7 +961,8 @@ Format: `sendReminder`d/DURATION</p>
 <h3 id="sorting"><a class="link" href="#sorting">3.9. Sorting</a></h3>
 <div class="paragraph">
 <p>The following section provides a set of commands which help with sorting the information inside the
-application.</p>
+application. MyProject makes it very easy and user-friendly by making all sort commands follow the same
+format and index/order pairing as shown below!</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1010,6 +990,19 @@ application.</p>
 </div>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The default sorting order for the following lists is by increasing order of time(index 2). Whenever MyProject
+is closed, the ordering will return to the default order.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="sort-tasks-code-sorttask-code-checkout"><a class="link" href="#sort-tasks-code-sorttask-code-checkout">3.9.1. Sort tasks: <code>sortTask</code> [Checkout]</a></h4>
 <div class="paragraph">
@@ -1027,9 +1020,8 @@ For example, index 1 corresponds to sorting by alphabetical order. For the case 
 <p>Let&#8217;s say you have added many different tasks with different deadlines and progresses into MyProject.<br></p>
 </div>
 <div class="paragraph">
-<p>The default sorting order that MyProject
-offers is by increasing order of date(index 2). However you wish to group those tasks that are done in one group and those not done in another group and
-then further sort each group by increasing order of date(index 4) to track the progress of your tasks.<br></p>
+<p>The default sorting order that MyProject offers is by increasing order of time(index 2). However you wish to group those tasks that are done in one group and those not done in another group and
+then further sort each group by increasing order of time(index 4) to track the progress of your tasks.<br></p>
 </div>
 <div class="paragraph">
 <p>Simply type in the command <code>sortTask 4</code> and all the tasks in the list will immediately be sorted accordingly.<br></p>
@@ -1046,7 +1038,7 @@ you wish to add or edit tasks!<br></p>
 <ol class="arabic">
 <li>
 <p>Firstly, since this command is labeled with [Checkout] at the start, ensure that you <code>checkout</code> to a project first.
-Notice how the tasks in the task list are currently at the default sorting order which is by increasing order of date.
+Notice how the tasks in the task list are currently at the default sorting order which is by increasing order of time.
 <span class="image"><img src="images/sortTask1.png" alt="sortTask1"></span></p>
 </li>
 <li>
@@ -1073,11 +1065,12 @@ The task will be edited accordingly and immediately be sorted into the correct p
 <h4 id="sort-spending-code-sortspending-code-checkout"><a class="link" href="#sort-spending-code-sortspending-code-checkout">3.9.2. Sort spending: <code>sortSpending</code> [Checkout]</a></h4>
 <div class="paragraph">
 <p>Sorts the spending in the budget list of the current working project based on given specification. The implementation is
-exactly the same as sortTask. Refer to the sortTask section for a more detailed explanation.<br>
+slightly different from sortTask. MyProject will not show you the list of spending immediately after entering
+the command <code>sortSpending</code>. Enter the command <code>listBudget</code> to view the newly sorted list of spending.<br>
 Format: <code>sortSpending INDEX</code></p>
 </div>
 <div class="paragraph">
-<p><code>INDEX</code> in this case refers to which type of sorting you want to do. In this case, only integers 1, 2 and 5 are applicable.(Refer to the highlighted section above)</p>
+<p><code>INDEX</code> refers to which type of sorting you want to do. In this case, only integers 1, 2 and 5 are applicable.(Refer to the highlighted section above)</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -1098,7 +1091,7 @@ exactly the same as sortTask. Refer to the sortTask section for a more detailed 
 Format: <code>sortMeeting INDEX</code></p>
 </div>
 <div class="paragraph">
-<p><code>INDEX</code> in this case refers to which type of sorting you want to do. In this case, only integers 1 and 2 are applicable.(Refer to the highlighted section above)</p>
+<p><code>INDEX</code> refers to which type of sorting you want to do. In this case, only integers 1 and 2 are applicable.(Refer to the highlighted section above)</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -1113,4 +1106,4 @@ Format: <code>sortMeeting INDEX</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 14:12:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 14:30:28 UTC</div></div></div></body></html>
