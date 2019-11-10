@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>MyProject V1.4 - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>MyProject V1.4 - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>T17-1</code>      Since: <code>Oct 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -26,12 +26,14 @@
 <li><a href="#meeting-feature">3.2. Meeting feature</a></li>
 <li><a href="#sorting-feature">3.3. Sorting feature</a></li>
 <li><a href="#sending-reminder-feature">3.4. Sending Reminder feature</a></li>
-<li><a href="#generate-meeting-timeslot">3.5. Generate meeting timeslot</a></li>
-<li><a href="#timetable-input">3.6. Timetable input</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
-<li><a href="#Implementation-Checkout">3.9. Checkout</a></li>
-<li><a href="#Implementation-Change-in-UI-display">3.10. Change in UI display</a></li>
+<li><a href="#broadcast-mail-feature">3.5. Broadcast Mail feature</a></li>
+<li><a href="#sign-in-feature">3.6. Sign In feature</a></li>
+<li><a href="#generate-meeting-timeslot">3.7. Generate meeting timeslot</a></li>
+<li><a href="#timetable-input">3.8. Timetable input</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
+<li><a href="#Implementation-Checkout">3.11. Checkout</a></li>
+<li><a href="#Implementation-Change-in-UI-display">3.12. Change in UI display</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -619,7 +621,7 @@ User Email  Account Information is stored through the signIn command.
 <div class="title">Figure 13. Sequence Diagram for sendReminder</div>
 </div>
 <div class="paragraph">
-<p>These are the stages shown in figure 10. Stages are similar for broadcastMail as well.</p>
+<p>These are the stages shown in figure 13.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -631,6 +633,9 @@ User Email  Account Information is stored through the signIn command.
 </li>
 <li>
 <p>Obtains list of tasks and meetings which are due in the duration time.</p>
+</li>
+<li>
+<p>Goes to <code>Project</code> to get the Members names.</p>
 </li>
 <li>
 <p>Goes to <code>Model</code> to get the members in the project.</p>
@@ -653,7 +658,7 @@ User Email  Account Information is stored through the signIn command.
 <div class="title">Figure 14. Activity Diagram for sendReminder</div>
 </div>
 <div class="paragraph">
-<p>The diagram above shows how sendReminder works. There are 2 possible error messages that can occur. Firstly,
+<p>The diagram above shows how <code>sendReminder</code> works. There are 2 possible error messages that can occur. Firstly,
 if the user inputs nothing as the duration and input cannot be empty error message is shown. Secondly,
 an error will be shown if the user non-numeric or negative or zero number as the duration of time.</p>
 </div>
@@ -699,9 +704,271 @@ names one by one to get the Person object of the member. Harder to implement.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.5. Generate meeting timeslot</a></h3>
+<h3 id="broadcast-mail-feature"><a class="link" href="#broadcast-mail-feature">3.5. Broadcast Mail feature</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-5"><a class="link" href="#description-of-feature-5">3.5.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-5"><a class="link" href="#description-of-feature-5">3.5.1. Description of feature</a></h4>
+<div class="paragraph">
+<p>Broadcast an email to all members in the project.</p>
+</div>
+<div class="paragraph">
+<p>Similar to sendReminder, the basic implementation uses javax.Mail to send email to other email addresses. The Mailer class has static method sendEmail
+which is responsible for sending all kinds of email to a given recipient(s). User&#8217;s email account information is
+stored in the Model class and subsequent queries regarding mailing will use this information that has been stored to send the email.
+Currently, only gmail server has been made available for use in sending the emails.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User Email  Account Information is stored through the signIn command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-5"><a class="link" href="#details-5">3.5.2. Details</a></h4>
+<div class="paragraph">
+<p>BroadcastMail takes in a two String, an email Subject and Body.
+The subject will be the email title which are normally on the email header and the body
+will be the message body of the email.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the process of broadcast email to the project members.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BroadcastMailSequenceDiagram.png" alt="BroadcastMailSequenceDiagram">
+</div>
+<div class="title">Figure 15. Sequence Diagram for broadcastMail</div>
+</div>
+<div class="paragraph">
+<p>These are the stages shown in figure 15.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Parses the input to obtain the Subject and Body of the email.</p>
+</li>
+<li>
+<p>Goes to <code>Project</code> to get the Members names.</p>
+</li>
+<li>
+<p>Goes to <code>Model</code> to get the the members in the project.</p>
+</li>
+<li>
+<p>Goes to <code>Model</code> to get the OwnerAccount information.</p>
+</li>
+<li>
+<p>Sends email to all the members with header Subject and message Body.</p>
+</li>
+<li>
+<p>Display the success message.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BroadcastMailActivityDiagram.png" alt="BroadcastMailActivityDiagram">
+</div>
+<div class="title">Figure 16. Activity Diagram for BroadcastMail</div>
+</div>
+<div class="paragraph">
+<p>The diagram above shows how <code>broadcastMail</code> works.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.3. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-broadcastmail-commands"><a class="link" href="#aspect-data-structure-to-support-the-broadcastmail-commands">Aspect: Data structure to support the broadcastMail commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Storing List&lt;Person&gt; in the Project for members.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. Do not need to look for the person object in the addressBook from the List of String of
+members' names in the project.</p>
+</li>
+<li>
+<p>Cons: Introduces coupling and may cause unwanted bugs due to cyclic dependencies as Project contains Person and
+Person contains Project.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Stores members as List&lt;String&gt; of members names.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces coupling and and eliminates cyclic dependencies between Project and Person object.</p>
+</li>
+<li>
+<p>Cons: Have to hash the members object in the addressBook by names and go through the List&lt;String&gt; of members'
+names one by one to get the Person object of the member. Harder to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sign-in-feature"><a class="link" href="#sign-in-feature">3.6. Sign In feature</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature-6"><a class="link" href="#description-of-feature-6">3.6.1. Description of feature</a></h4>
+<div class="paragraph">
+<p>Signs in using a Google account for mailing purposes.</p>
+</div>
+<div class="paragraph">
+<p>The basic implementation uses javax.Mail to check for the validity of the email address and password.
+User&#8217;s email account information is stored in the Model class through this command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In this version, only gmail server has been made available for use in signing in and sending emails.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-6"><a class="link" href="#details-6">3.6.2. Details</a></h4>
+<div class="paragraph">
+<p>signIn takes in two inputs, first is the email address of the user (in gmail), second is the password to the email address.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the process of signing in to the user&#8217;s account.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SignInSequenceDiagram.png" alt="SignInSequenceDiagram">
+</div>
+<div class="title">Figure 17. Sequence Diagram for signIn command</div>
+</div>
+<div class="paragraph">
+<p>These are the stages shown in figure 15.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Parses the input to obtain the Email address and Password.</p>
+</li>
+<li>
+<p>Goes to <code>Model</code> to check if user has signed in.</p>
+</li>
+<li>
+<p>Creates OwnerAccount with the address and password.</p>
+</li>
+<li>
+<p>Goes to <code>Model</code> to store the Email address and Password as <code>OwnerAccount</code>.</p>
+</li>
+<li>
+<p>Display the success message.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SignInActivityDiagram.png" alt="SignInActivityDiagram">
+</div>
+<div class="title">Figure 18. Activity Diagram for SignIn</div>
+</div>
+<div class="paragraph">
+<p>The diagram above shows how <code>signIn</code> works.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.3. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-algorithm-to-check-validity-of-the-account-in-signin-commands"><a class="link" href="#aspect-algorithm-to-check-validity-of-the-account-in-signin-commands">Aspect: Algorithm to check validity of the Account in SignIn commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Sends an email to a dummy email address <a href="mailto:cs2103t17@gmail.com">cs2103t17@gmail.com</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. Do not need to use external libraries which might be time-consuming and difficult to learn.</p>
+</li>
+<li>
+<p>Cons: Takes a while for the method to be executed as it checks whether it can send an email to the address <a href="mailto:cs2103t17@gmail.com">cs2103t17@gmail.com</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use external libraries and utilise more of the javax.Mail API.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Might make the email checking more efficient, thus need only check for the password input.</p>
+</li>
+<li>
+<p>Cons: Would have to use external libraries which will be harder to implement. Only checks for the existence of the email address and does not
+check for the correctness of the password input.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-eliminating-signin-command"><a class="link" href="#aspect-eliminating-signin-command">Aspect: Eliminating signIn command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Lets user Signs In using their own Gmail Account.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows users to user their own Gmail Account and lets members(recipients) know email
+sent by the team leaders.</p>
+</li>
+<li>
+<p>Cons: Expose users' password when users are trying to sign in. Users will need to change the account
+security settings to let less secure app access the account. Compromises account security.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Hardcode an account in the application that is responsible for all mailing command/</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Do not expose users' password and Users do not need to change their Account security settings to
+send the emails.</p>
+</li>
+<li>
+<p>Cons: Members(recipient) receiving email from the users' may not know the origin of the email.
+This may lead to confusion for the project&#8217;s members.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.7. Generate meeting timeslot</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature-7"><a class="link" href="#description-of-feature-7">3.7.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>The timeslot generator is used to suggest meeting timings by making use of team members' timetable.</p>
 </div>
@@ -722,7 +989,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-5"><a class="link" href="#details-5">3.5.2. Details</a></h4>
+<h4 id="details-7"><a class="link" href="#details-7">3.7.2. Details</a></h4>
 <div class="paragraph">
 <p><code>TimeSlotGenerator(members, desiredMeetingDuration, restrictedTimeRange)</code></p>
 </div>
@@ -809,11 +1076,11 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/GenerateSlotActivityDiagram.png" alt="GenerateSlotActivityDiagram">
 </div>
-<div class="title">Figure 15. <code>generate</code> command tries to provide best possible meeting timeslot</div>
+<div class="title">Figure 19. <code>generate</code> command tries to provide best possible meeting timeslot</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.5.3. Algorithm Used</a></h4>
+<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.7.3. Algorithm Used</a></h4>
 <div class="sect4">
 <h5 id="code-timeslotgenerator-generate-code"><a class="link" href="#code-timeslotgenerator-generate-code"><code>TimeSlotGenerator#generate()</code></a></h5>
 <div class="olist arabic">
@@ -857,7 +1124,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.4. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.7.4. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-generate-timeslot-with-most-number-of-available-members"><a class="link" href="#aspect-how-to-generate-timeslot-with-most-number-of-available-members">Aspect: How to generate timeslot with most number of available members</a></h5>
 <div class="ulist">
@@ -897,9 +1164,9 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable-input"><a class="link" href="#timetable-input">3.6. Timetable input</a></h3>
+<h3 id="timetable-input"><a class="link" href="#timetable-input">3.8. Timetable input</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-6"><a class="link" href="#description-of-feature-6">3.6.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-8"><a class="link" href="#description-of-feature-8">3.8.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>This feature is used to input timetable data, which would then be used in the <code>generate</code> command to find a suitable meeting timeslot.</p>
 </div>
@@ -924,7 +1191,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-6"><a class="link" href="#details-6">3.6.2. Details</a></h4>
+<h4 id="details-8"><a class="link" href="#details-8">3.8.2. Details</a></h4>
 <div class="paragraph">
 <p>Important functions in <code>TimetableInput</code>:</p>
 </div>
@@ -945,7 +1212,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/add-timetable/AddTimetableClassDiagram.png" alt="AddTimetableClassDiagram">
 </div>
-<div class="title">Figure 16. Class diagram for timetable input feature</div>
+<div class="title">Figure 20. Class diagram for timetable input feature</div>
 </div>
 <div class="paragraph">
 <p><code>addTimetableCommand</code> accepts either a filepath or a URL, which is then supplied to <code>TimetableInput</code> to fetch the timetable data.</p>
@@ -960,11 +1227,11 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/add-timetable/AddTimetableSequenceDiagram.png" alt="AddTimetableSequenceDiagram">
 </div>
-<div class="title">Figure 17. Timeline of entire process from user executing their command to getting the result back.</div>
+<div class="title">Figure 21. Timeline of entire process from user executing their command to getting the result back.</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.3. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.8.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-input-timetable"><a class="link" href="#aspect-how-to-input-timetable">Aspect: How to input timetable</a></h5>
 <div class="ulist">
@@ -1004,14 +1271,14 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1042,13 +1309,13 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.9. Checkout</a></h3>
+<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.11. Checkout</a></h3>
 <div class="paragraph">
 <p>This allows user to checkout to a project from a list of project to work on it.
 Almost every command regarding the project require the user to checkout first.</p>
@@ -1080,7 +1347,7 @@ attribute and the model supports three new methods:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.10. Change in UI display</a></h3>
+<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.12. Change in UI display</a></h3>
 <div class="paragraph">
 <p>The first step of changing UI display is to find out
 whether a change in UI is needed given a command from user.
@@ -1935,4 +2202,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:38:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:35:33 UTC</div></div></div></body></html>

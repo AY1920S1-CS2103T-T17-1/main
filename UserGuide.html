@@ -446,14 +446,31 @@ Whenever you add a time with the prefix c/, the format should be dd/MM/yyyy HHmm
 Format: <code>Format: addProjectMeeting [c/ dd/MM/yyyy HHmm] [s/MEETING_DESCRIPTION]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p><code>dd/MM/yyyy HHmm</code> refers to the date and time the meeting is to be held.
+<code>MEETING_DESCRIPTION</code> refers to the purpose of the meeting.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="paragraph">
+<p>Example:<br>
+Let&#8217;s say that you plan to have a meeting on the 19th November 2019, you want to keep track of this meeting
+by recording it down in the MyProject app.</p>
+</div>
+<div class="paragraph">
+<p>To add a project meeting:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>addProjectMeeting c/29/09/2019 1900 s/milestone discussion</code></p>
+<p>Type <code>addProjectMeeting c/19/11/2019 1300 s/DIscussion on version 2</code> and press enter to execute it.Note that
+this project meeting will be held after the 4th meeting on 16/11/2019 1700 and before the 5th meeting on 29/11/2019 1300.
+<span class="image"><img src="images/addProjectMeeting1.png" alt="addProjectMeeting1"></span></p>
 </li>
-</ul>
+<li>
+<p>Success message with the respective information about the meeting will be displayed. The meeting added will
+be automatically sorted according to the dates and times in ascending order. Thus, the new meeting added will
+be placed as number 5.
+<span class="image"><img src="images/addProjectMeeting2.png" alt="addProjectMeeting2"></span></p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -872,6 +889,10 @@ Do keep in mind that only the user Account in our current version is only compat
 Format: <code>signIn ac/ACCOUNT_EMAIL_ADDRESS pa/PASSWORD</code></p>
 </div>
 <div class="paragraph">
+<p><code>ACCOUNT_EMAIL_ADDRESS</code> refers to the sender&#8217;s/user&#8217;s email address.
+<code>PASSWORD</code> refers to the password to the sender&#8217;s/user&#8217;s email address.</p>
+</div>
+<div class="paragraph">
 <p>Example:</p>
 </div>
 <div class="ulist">
@@ -880,6 +901,18 @@ Format: <code>signIn ac/ACCOUNT_EMAIL_ADDRESS pa/PASSWORD</code></p>
 <p><code>signIn ac/example@gmail.com pa/12345678</code></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please Turn on the access to less secure app in your account&#8217;s security setting.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -916,7 +949,12 @@ Format: <code>logOut</code></p>
 <h4 id="send-an-email-code-sendmail-code"><a class="link" href="#send-an-email-code-sendmail-code">3.8.3. Send an email: <code>sendMail</code></a></h4>
 <div class="paragraph">
 <p>Sends an email to the specified person in your contacts.<br>
-Format: <code>sendMail r/RECIPIENT_OF_EMAIL su/SUBJECT me/MESSAGE_BODY</code></p>
+Format: <code>sendMail r/RECIPIENT_EMAIL su/SUBJECT me/MESSAGE_BODY</code></p>
+</div>
+<div class="paragraph">
+<p><code>RECIPIENT_EMAIL</code> refers to the email address of the recipients.<br>
+<code>SUBJECT</code> refers to the email header.<br>
+<code>MESSAGE_BODY</code> refers to the email body.</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -948,14 +986,8 @@ We will not check the correctness of the member&#8217;s email address
 Format: <code>broadcastMail su/SUBJECT me/MESSAGE_BODY</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>broadcastMail su/CS2103T me/added new Task</code></p>
-</li>
-</ul>
+<p><code>SUBJECT</code> refers to the email header.<br>
+<code>MESSAGE_BODY</code> refers to the email body.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -968,6 +1000,31 @@ We will not check the correctness of the members' email address
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Example:
+Let&#8217;s say that a new task has just been added and you want to inform your group members of the new task. Instead of switching to another
+application to inform your group members, you can simply use the <code>broadcastMail</code> command to inform everyone in the group.</p>
+</div>
+<div class="paragraph">
+<p>To broadcast Email:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>broadcastMail su/New Task Added me/Finalise UG and DG before 17th November</code> and press enter to execute it.
+Note that the <code>SUBJECT</code> will be sent as the email header and the <code>MESSAGE_BODY</code> will be send as the email body.
+<span class="image"><img src="images/broadcastMail1.png" alt="broadcastMail1"></span></p>
+</li>
+<li>
+<p>A success message will be displayed in the box saying "Reminders has been sent!"
+<span class="image"><img src="images/broadcastMail2.png" alt="broadcastMail2"></span></p>
+</li>
+<li>
+<p>Members will receive the email that looks like the following:
+<span class="image"><img src="images/broadcastMail3.png" alt="broadcastMail3"></span></p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -979,16 +1036,6 @@ Format: `sendReminder`d/DURATION</p>
 <div class="paragraph">
 <p><code>DURATION</code> is the number of days from the current time within which the Tasks are due and The Meetings are held.</p>
 </div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>sendReminder d/3</code></p>
-</li>
-</ul>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1000,6 +1047,35 @@ We will not check the correctness of the members' email address
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Let&#8217;s say that you have several meetings and task for the coming week, and you want to remind your group of the upcoming meetings
+and the tasks that are supposed to be done by the week.</p>
+</div>
+<div class="paragraph">
+<p>Instead of typing all the meetings and tasks for the coming week all over again, you can just easily send these lists to their email
+addresses from the application.</p>
+</div>
+<div class="paragraph">
+<p>To send reminder:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>sendReminder d/7</code> and press enter to execute it.Note that the date at the time this screenshot was taken is 10/11/2019, thus,
+only meeting meetings 2-4 and task 1-3 will be sent as reminders to the members.
+<span class="image"><img src="images/sendReminder1.png" alt="sendReminder1"></span></p>
+</li>
+<li>
+<p>A success message will be displayed in the box saying "Reminders has been sent!"
+<span class="image"><img src="images/sendReminder2.png" alt="sendReminder2"></span></p>
+</li>
+<li>
+<p>Members will receive an email with the tasks due and meetings happening within the next 7 days.
+<span class="image"><img src="images/sendReminder3.png" alt="sendReminder3"></span></p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1152,4 +1228,4 @@ Format: <code>sortMeeting INDEX</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:38:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:35:33 UTC</div></div></div></body></html>
