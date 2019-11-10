@@ -784,38 +784,9 @@ will be the message body of the email.</p>
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.3. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-broadcastmail-commands"><a class="link" href="#aspect-data-structure-to-support-the-broadcastmail-commands">Aspect: Data structure to support the broadcastMail commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1:</strong> Storing List&lt;Person&gt; in the Project for members.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement. Do not need to look for the person object in the addressBook from the List of String of
-members' names in the project.</p>
-</li>
-<li>
-<p>Cons: Introduces coupling and may cause unwanted bugs due to cyclic dependencies as Project contains Person and
-Person contains Project.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Stores members as List&lt;String&gt; of members names.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Reduces coupling and and eliminates cyclic dependencies between Project and Person object.</p>
-</li>
-<li>
-<p>Cons: Have to hash the members object in the addressBook by names and go through the List&lt;String&gt; of members'
-names one by one to get the Person object of the member. Harder to implement.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p>The alternatives are similar to sendReminder as the underlying problem lies in sending email
+to all the members in the project group.</p>
 </div>
 </div>
 </div>
@@ -2202,4 +2173,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:35:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 23:20:51 UTC</div></div></div></body></html>
