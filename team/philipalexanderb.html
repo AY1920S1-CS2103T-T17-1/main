@@ -64,11 +64,10 @@ that I have added to the user and developer guides in relation to these enhancem
 <div class="paragraph">
 <p>This section shows a summary of my coding, documentation and other helpful contribution towards the team project.</p>
 </div>
-<div class="sect2">
-<h3 id="code-contributed"><a class="link" href="#code-contributed">Code Contributed:</a></h3>
 <div class="paragraph">
-<p>Please click the link to see my sample code: <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=philipalexanderb&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Functional code</a></p>
-</div>
+<p>Credits to <a href="https://javaee.github.io/javamail/" class="bare">https://javaee.github.io/javamail/</a> for providing the JavaMail library and the javax.Mail API.
+=== Code Contributed:
+Please click the link to see my sample code: <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=philipalexanderb&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Functional code</a></p>
 </div>
 <div class="sect2">
 <h3 id="major-enhancement-email-feature"><a class="link" href="#major-enhancement-email-feature">Major Enhancement - Email feature</a></h3>
@@ -149,12 +148,6 @@ normal GUI that user normally encounters and are very easy to remember. Some of 
 works which was outside the coverages of the course. These enhancements are extendable as we can further enhance to support
 more email domains which users wish to use as well as send attachments. Overall, the enhancements can support all the basic one-way mailing features which
 are sufficient for the optimisation of the team leaders' works.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="credits"><a class="link" href="#credits">Credits</a></h4>
-<div class="paragraph">
-<p>Credits to <a href="https://javaee.github.io/javamail/" class="bare">https://javaee.github.io/javamail/</a> for providing the JavaMail library and the javax.Mail API.</p>
 </div>
 </div>
 </div>
@@ -275,13 +268,12 @@ by recording it down in the MyProject app.</p>
 <li>
 <p>Type <code>addProjectMeeting c/19/11/2019 1300 s/DIscussion on version 2</code> and press enter to execute it.Note that
 this project meeting will be held after the 4th meeting on 16/11/2019 1700 and before the 5th meeting on 29/11/2019 1300.
-<span class="image"><img src="../images/addProjectMeetingPPP1.png" alt="addProjectMeetingPPP1"></span></p>
+<span class="image"><img src="../images/addProjectMeetingPPP1.png" alt="addProjectMeetingPPP1" width="400"></span></p>
 </li>
 <li>
 <p>Success message with the respective information about the meeting will be displayed. The meeting added will
 be automatically sorted according to the dates and times in ascending order. Thus, the new meeting added will
-be placed as number 5.
-<span class="image"><img src="../images/addProjectMeetingPPP2.png" alt="addProjectMeetingPPP2"></span></p>
+be placed as number 5 and the previous meeting with number 5 will be move to number 6.</p>
 </li>
 </ol>
 </div>
@@ -380,14 +372,13 @@ addresses from the application.</p>
 <li>
 <p>Type <code>sendReminder d/7</code> and press enter to execute it.Note that the date at the time this screenshot was taken is 10/11/2019, thus,
 only meeting meetings 2-4 and task 1-3 will be sent as reminders to the members.
-<span class="image"><img src="../images/sendReminderPPP1.png" alt="sendReminderPPP1"></span></p>
+<span class="image"><img src="../images/sendReminderPPP1.png" alt="sendReminderPPP1" width="350"></span></p>
 </li>
 <li>
 <p>A success message will be displayed in the box saying "Reminders have been sent!"</p>
 </li>
 <li>
-<p>Members will receive an email with the tasks due and meetings happening within the next 7 days.
-<span class="image"><img src="../images/sendReminder3.png" alt="sendReminder3"></span></p>
+<p>Members will receive an email with the tasks due and meetings happening within the next 7 days.</p>
 </li>
 </ol>
 </div>
@@ -431,7 +422,7 @@ The diagram below shows the class diagram of the meeting class and how it intera
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/MeetingClassDiagram.png" alt="MeetingClassDiagram">
+<img src="../images/MeetingClassDiagram.png" alt="MeetingClassDiagram" width="200">
 </div>
 <div class="title">Figure 1. Class Diagram for Meeting</div>
 </div>
@@ -493,7 +484,7 @@ User Email  Account Information is stored through the signIn command.
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SendReminderSequenceDiagram.png" alt="SendReminderSequenceDiagram">
+<img src="../images/SendReminderSequenceDiagram.png" alt="SendReminderSequenceDiagram" width="800">
 </div>
 <div class="title">Figure 2. Sequence Diagram for sendReminder</div>
 </div>
@@ -530,7 +521,7 @@ User Email  Account Information is stored through the signIn command.
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SendReminderActivityDiagram.png" alt="SendReminderActivityDiagram">
+<img src="../images/SendReminderActivityDiagram.png" alt="SendReminderActivityDiagram" width="700">
 </div>
 <div class="title">Figure 3. Activity Diagram for sendReminder</div>
 </div>
@@ -615,7 +606,7 @@ In this version, only gmail server has been made available for use in signing in
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SignInSequenceDiagram.png" alt="SignInSequenceDiagram">
+<img src="../images/SignInSequenceDiagram.png" alt="SignInSequenceDiagram" width="550">
 </div>
 <div class="title">Figure 4. Sequence Diagram for signIn command</div>
 </div>
@@ -644,40 +635,6 @@ In this version, only gmail server has been made available for use in signing in
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-algorithm-to-check-validity-of-the-account-in-signin-commands"><a class="link" href="#aspect-algorithm-to-check-validity-of-the-account-in-signin-commands">Aspect: Algorithm to check validity of the Account in SignIn commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Sends an email to a dummy email address <a href="mailto:cs2103t17@gmail.com">cs2103t17@gmail.com</a>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement. Do not need to use external libraries which might be time-consuming and difficult to learn.</p>
-</li>
-<li>
-<p>Cons: Takes a while for the method to be executed as it checks whether it can send an email to the address <a href="mailto:cs2103t17@gmail.com">cs2103t17@gmail.com</a>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use external libraries and utilise more of the javax.Mail API.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Might make the email checking more efficient, thus need only check for the password input.</p>
-</li>
-<li>
-<p>Cons: Would have to use external libraries which will be harder to implement. Only checks for the existence of the email address and does not
-check for the correctness of the password input.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
 <div class="sect4">
 <h5 id="aspect-eliminating-signin-command"><a class="link" href="#aspect-eliminating-signin-command">Aspect: Eliminating signIn command</a></h5>
 <div class="ulist">
@@ -718,4 +675,4 @@ This may lead to confusion for the project&#8217;s members.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:30:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:35:09 UTC</div></div></div></body></html>
