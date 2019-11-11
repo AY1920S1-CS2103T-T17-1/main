@@ -33,9 +33,10 @@
 <li><a href="#timetable-input">3.9. Timetable input</a></li>
 <li><a href="#logging">3.10. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
-<li><a href="#Implementation-Checkout">3.12. Checkout</a></li>
-<li><a href="#Implementation-Change-in-UI-display">3.13. Change in UI display</a></li>
-<li><a href="#performance-tracking">3.14. Performance Tracking</a></li>
+<li><a href="#finance-feature">3.12. Finance feature</a></li>
+<li><a href="#Implementation-Checkout">3.13. Checkout</a></li>
+<li><a href="#Implementation-Change-in-UI-display">3.14. Change in UI display</a></li>
+<li><a href="#performance-tracking">3.15. Performance Tracking</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -1417,7 +1418,43 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.12. Checkout</a></h3>
+<h3 id="finance-feature"><a class="link" href="#finance-feature">3.12. Finance feature</a></h3>
+<div class="paragraph">
+<p>The finance feature allows the user to keep track of the budgets of
+the project and view them in a graph. The graphs are achieved
+using JavaFX built in bar and pie chart. The user is also able to store
+the information in an excel sheet as well. This is done using
+the Apache POI API. The documentation of this library can
+be seen at <a href="https://poi.apache.org/apidocs/">here</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="details-9"><a class="link" href="#details-9">3.12.1. Details</a></h4>
+<div class="paragraph">
+<p>This logic of the feature is based on the the construction of different classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FinanceClassDiagram.png" alt="FinanceClassDiagram">
+</div>
+<div class="title">Figure 26. This class diagram depicts the interaction among classes under finance feature.</div>
+</div>
+<div class="paragraph">
+<p>The fact that <code>Budget</code> contains two money object is that it maintains
+two attribute <code>amount</code> and <code>remainingAmount</code> as these are usually
+the crucial information the user wants to see.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.12.2. Design considerations</a></h4>
+<div class="paragraph">
+<p><code>Money</code> is represented as an object. As it is shared by the
+<code>Spending</code> class and the <code>Budget</code> class and they all require to
+check the validity of a given string to convert it to <code>BigDecimal</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.13. Checkout</a></h3>
 <div class="paragraph">
 <p>This allows user to checkout to a project from a list of project to work on it.
 Almost every command regarding the project require the user to checkout first.</p>
@@ -1449,19 +1486,21 @@ attribute and the model supports three new methods:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.13. Change in UI display</a></h3>
+<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.14. Change in UI display</a></h3>
 <div class="paragraph">
 <p>The first step of changing UI display is to find out
 whether a change in UI is needed given a command from user.
 This is done in the CommandResult class constructor. If a command
-word matches either of the four words <code>list, checkout, listBudget, addProject</code>,
-the flag of whether a change in UI is needed will be set to true.</p>
+word matches actions that is email related or help or exit,
+the flag will indicate that a change in UI is not needed.</p>
 </div>
 <div class="paragraph">
 <p>Next, a class to represent a state of UI is needed to remember
-a history which is the <code>UiEvent</code> class.
-UiEvent is a class that represent a type of UiDisplay as an
-event. It stores the current state of the application&#8217;s UI and the current working project if it exists.
+a history which is the <code>UiEvent</code> class.UiEvent is a class that represent
+a type of UiDisplay as an event. It stores the current state of the
+application&#8217;s UI and the current working project if it exists.
+Whenever a command is executed, only if this command lead to a state
+that is different from the current one a new UiEvent will be generated and stored in history.
 The <code>viewHistory</code> is stored in the <code>MainWindow</code> class as a stack of UiEvents
 and it also maintains a currentStatePointer. When a <code>back</code> command
 is executed, it can check back on what is the previous state.</p>
@@ -1497,7 +1536,7 @@ that single address book state.</p>
 <p>Step 2. The user executes <code>checkout 1</code> command to checkout to preoject 1 to work on.
 During the execution of the <code>checkout</code> command, at the commandresult generation step,
 it detects that there is a need to change the Ui and the flag is made to true.
-In the <code>MainWindow</code>, since a change is needed, <code>MainWindow#changeUi</code> is called
+In the <code>MainWindow</code>, since a change is needed, <code>MainWindow#changeUiDisplay</code> is called
 to change the display and set the <code>currentState</code> to be <code>PROJECT_OVERVIEW</code>.</p>
 </div>
 <div class="imageblock">
@@ -1507,8 +1546,10 @@ to change the display and set the <code>currentState</code> to be <code>PROJECT_
 </div>
 <div class="paragraph">
 <p>Step 3. The user now decide to add a budget by <code>addBudget b/ equipment 3000.00</code>.
-This command does not need a change in Ui display thus the flag is false.
-However, the method <code>MainWindow#changeUiDisplay</code> is still called but this time
+This command does need a change in Ui display but the state of this command
+is exactly the same as the previous command thus <code>MainWindow#changeUiDisplay</code>
+will be called with the same state.
+Thus, the method <code>MainWindow#changeUiDisplay</code> is still called but this time
 it is called to update the information in the current display and set the
 current state to be still the current state. Thus, the <code>currentStatePointer</code> does
 not move.</p>
@@ -1556,6 +1597,12 @@ and call <code>MainWindow#changeUiDisplay</code> to display the previous Ui.</p>
 <img src="images/ChangeUiDisplayState5.png" alt="ChangeUiDisplayState5">
 </div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeUiDisplayActivityDiagram.png" alt="ChangeUiDisplayActivityDiagram">
+</div>
+<div class="title">Figure 27. This diagram shows how the Ui reacts to an user&#8217;s input</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1571,13 +1618,13 @@ no previous UI states to go back. Under such situation, an error will be returne
 </div>
 </div>
 <div class="sect2">
-<h3 id="performance-tracking"><a class="link" href="#performance-tracking">3.14. Performance Tracking</a></h3>
+<h3 id="performance-tracking"><a class="link" href="#performance-tracking">3.15. Performance Tracking</a></h3>
 <div class="paragraph">
 <p>We allow users to be able to track the performance of every member in the project, by using information that the user has
 already input into MyProject.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.14.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.15.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>Performance</code> of each <code>Person</code> is consolidated and stored in a <code>PerformanceOverview</code> object inside the model.</p>
 </div>
@@ -1654,7 +1701,7 @@ is input by the user.</p>
 <div class="content">
 <img src="images/ShowPerformanceOverviewSequenceDiagram.png" alt="ShowPerformanceOverviewSequenceDiagram">
 </div>
-<div class="title">Figure 26. Sequence diagram of the <code>showPerformanceOverview</code> command execution</div>
+<div class="title">Figure 28. Sequence diagram of the <code>showPerformanceOverview</code> command execution</div>
 </div>
 <div class="paragraph">
 <p>With reference to the sequence diagram above, here are the steps of the command execution:</p>
@@ -1681,7 +1728,7 @@ calculate the different attributes of the member&#8217;s performance. It is also
 <div class="content">
 <img src="images/ShowPerformanceOverviewActivityDiagram.png" alt="ShowPerformanceOverviewActivityDiagram">
 </div>
-<div class="title">Figure 27. Activity diagram for <code>showPerformanceOverview</code></div>
+<div class="title">Figure 29. Activity diagram for <code>showPerformanceOverview</code></div>
 </div>
 <div class="paragraph">
 <p>As shown in the activity diagram, there are only 2 main flows during the execution of this command. If there are members
@@ -1691,7 +1738,7 @@ the performance overview cannot be computed.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.14.2. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.15.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Data structure of <code>PerformanceOverview</code></strong></p>
 </div>
@@ -2467,4 +2514,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:05:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:09:00 UTC</div></div></div></body></html>
