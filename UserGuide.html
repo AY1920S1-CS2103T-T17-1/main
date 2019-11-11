@@ -410,6 +410,23 @@ Timetable set can be used to generate available meeting timeslots using the comm
 <div class="paragraph">
 <p><code>setTimetable INDEX [n/NUSMODS_SHARE_URL] [f/FILEPATH_TO_TIMETABLE]</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Assigns timetable to the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed person list using the command <code>list</code>.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
@@ -445,12 +462,12 @@ Set timetable to the person with index 2 on the list of persons, by retrieving t
 </ul>
 </div>
 <div class="paragraph">
-<p>Below is a step-by-step instruction to guide you through the process of setting a timetable to Alice, through the use of NUSMods:</p>
+<p>Below is a step-by-step instruction to guide you through the process of setting a timetable to Alex, through the use of NUSMods:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: Type <code>setTimetable</code>, followed by the index of the person you wish to set the timetable to, and the URL of the share link.</p>
+<p>Step 1: Type <code>list</code> and enter to view the list of persons. Identify the index of the person you wish to set the timetable to.</p>
 </li>
 </ul>
 </div>
@@ -458,26 +475,39 @@ Set timetable to the person with index 2 on the list of persons, by retrieving t
 <div class="content">
 <img src="images/set-timetable/set-timetable-step-1.png" alt="set timetable step 1">
 </div>
-<div class="title">Figure 7. User enters timetable of team member</div>
+<div class="title">Figure 7. List of person in the application</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 2: Press enter, and you would see the following message. You can even scroll down to view a simple visualization of the timetable set!</p>
+<p>Step 2: Type <code>setTimetable</code>, followed by the index of the person you wish to set the timetable to, and the URL of the share link.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/set-timetable/set-timetable-step-2a.png" alt="set timetable step 2a">
+<img src="images/set-timetable/set-timetable-step-2.png" alt="set timetable step 2">
 </div>
-<div class="title">Figure 8. <code>setTimetable</code> command success</div>
+<div class="title">Figure 8. User enters timetable of team member</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 3: Press enter, and you would see the following message. You can even scroll down to view a simple visualization of the timetable set!</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/set-timetable/set-timetable-step-2b.png" alt="set timetable step 2b">
+<img src="images/set-timetable/set-timetable-step-3a.png" alt="set timetable step 3a">
 </div>
-<div class="title">Figure 9. Visualization of timetable set</div>
+<div class="title">Figure 9. <code>setTimetable</code> command success</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/set-timetable/set-timetable-step-3b.png" alt="set timetable step 3b">
+</div>
+<div class="title">Figure 10. Visualization of timetable set</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -493,9 +523,9 @@ Even if you accidentally entered a wrong URL, MyProject would prompt you helpful
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/set-timetable/set-timetable-step-3.png" alt="set timetable step 3">
+<img src="images/set-timetable/set-timetable-step-3-error.png" alt="set timetable step 3 error">
 </div>
-<div class="title">Figure 10. Error message when entered URL is invalid</div>
+<div class="title">Figure 11. Error message when entered URL is invalid</div>
 </div>
 </div>
 <div class="sect3">
@@ -744,7 +774,7 @@ she just dropped your module. Notice her index is at 1</p>
 <div class="content">
 <img src="images/RemoveMemberFindingPerson.png" alt="RemoveMemberFindingPerson">
 </div>
-<div class="title">Figure 11. Finding the person you want to remove</div>
+<div class="title">Figure 12. Finding the person you want to remove</div>
 </div>
 <div class="paragraph">
 <p>Step 2. Type in the <code>removeMember</code> command with the index of <code>1</code></p>
@@ -753,7 +783,7 @@ she just dropped your module. Notice her index is at 1</p>
 <div class="content">
 <img src="images/RemoveMemberCommandInput.png" alt="RemoveMemberCommandInput">
 </div>
-<div class="title">Figure 12. <code>removeMember</code> command user input.</div>
+<div class="title">Figure 13. <code>removeMember</code> command user input.</div>
 </div>
 <div class="paragraph">
 <p>Step 3. Press enter and you&#8217;re done! She is now no longer a member of your project.</p>
@@ -821,7 +851,7 @@ Format: <code>list</code></p>
 <div class="content">
 <img src="images/listbudget-command.png" alt="listbudget command">
 </div>
-<div class="title">Figure 13. Present budget in a pie chart depicting all expenses under the budget and the remaining amount.</div>
+<div class="title">Figure 14. Present budget in a pie chart depicting all expenses under the budget and the remaining amount.</div>
 </div>
 </div>
 </div>
@@ -887,7 +917,17 @@ associated with this functionality.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Prerequisite: Timetables have been assigned to the members with the command <code>setTimetable</code></p>
+<p>Prerequisite:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Members have been assigned to the project using <code>addFromContacts</code> or <code>addMember</code></p>
+</li>
+<li>
+<p>Timetables have been assigned to the members with the command <code>setTimetable</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -931,7 +971,7 @@ Generates all possible meeting timeslots that lasts at least 2 hours, within the
 <div class="content">
 <img src="images/generate/generate-step-1.png" alt="generate step 1">
 </div>
-<div class="title">Figure 14. Timeslot will be generated for the checked out project</div>
+<div class="title">Figure 15. Timeslot will be generated for the checked out project</div>
 </div>
 <div class="ulist">
 <ul>
@@ -944,7 +984,7 @@ Generates all possible meeting timeslots that lasts at least 2 hours, within the
 <div class="content">
 <img src="images/generate/generate-step-2.png" alt="generate step 2">
 </div>
-<div class="title">Figure 15. Enter parameters for <code>generate</code> command</div>
+<div class="title">Figure 16. Enter parameters for <code>generate</code> command</div>
 </div>
 <div class="ulist">
 <ul>
@@ -957,7 +997,7 @@ Generates all possible meeting timeslots that lasts at least 2 hours, within the
 <div class="content">
 <img src="images/generate/generate-step-3.png" alt="generate step 3">
 </div>
-<div class="title">Figure 16. Suggested timeslots shown on the GUI</div>
+<div class="title">Figure 17. Suggested timeslots shown on the GUI</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -975,7 +1015,7 @@ If MyProject is unable to find a timeslot where all members are free, it would t
 <div class="content">
 <img src="images/generate/generate-alt.png" alt="generate alt">
 </div>
-<div class="title">Figure 17. Result shown when not all members are available. Members available would be listed.</div>
+<div class="title">Figure 18. Result shown when not all members are available. Members available would be listed.</div>
 </div>
 </div>
 </div>
@@ -1486,7 +1526,7 @@ indexes.</p>
 <div class="content">
 <img src="images/AssignTaskFinding.png" alt="AssignTaskFinding">
 </div>
-<div class="title">Figure 18. Finding the task to assign and the members to assign to</div>
+<div class="title">Figure 19. Finding the task to assign and the members to assign to</div>
 </div>
 <div class="paragraph">
 <p>Step 2. Type in the <code>assignTask</code> command along with the correct indexes.</p>
@@ -1495,7 +1535,7 @@ indexes.</p>
 <div class="content">
 <img src="images/AssignTaskCommandInput.png" alt="AssignTaskCommandInput">
 </div>
-<div class="title">Figure 19. Typing the <code>assignTask</code> command with the correct input</div>
+<div class="title">Figure 20. Typing the <code>assignTask</code> command with the correct input</div>
 </div>
 <div class="paragraph">
 <p>Step 3. Press enter and you&#8217;re done! You will now see the tasks reflected under the respective members in your contacts.</p>
@@ -1507,7 +1547,7 @@ indexes.</p>
 <div class="content">
 <img src="images/AssignTaskCommandMessageSuccess.png" alt="AssignTaskCommandMessageSuccess">
 </div>
-<div class="title">Figure 20. <code>assignTask</code> command success message</div>
+<div class="title">Figure 21. <code>assignTask</code> command success message</div>
 </div>
 <div class="paragraph">
 <p>And also see the task reflected under the members:</p>
@@ -1516,7 +1556,7 @@ indexes.</p>
 <div class="content">
 <img src="images/PersonListAssignedTask.png" alt="PersonListAssignedTask">
 </div>
-<div class="title">Figure 21. How the assigned task is shown</div>
+<div class="title">Figure 22. How the assigned task is shown</div>
 </div>
 </div>
 <div class="sect3">
@@ -1566,7 +1606,7 @@ of their indexes.</p>
 <div class="content">
 <img src="images/UnassignTaskFinding.png" alt="UnassignTaskFinding">
 </div>
-<div class="title">Figure 22. Finding the tasks to unassign, and the person to unassign the tasks from.</div>
+<div class="title">Figure 23. Finding the tasks to unassign, and the person to unassign the tasks from.</div>
 </div>
 <div class="paragraph">
 <p>Step 2. Type in the <code>unassignTask</code> command with the relevant inputs</p>
@@ -1575,7 +1615,7 @@ of their indexes.</p>
 <div class="content">
 <img src="images/UnassignTaskCommandInput.png" alt="UnassignTaskCommandInput">
 </div>
-<div class="title">Figure 23. <code>unassignTask</code> command input</div>
+<div class="title">Figure 24. <code>unassignTask</code> command input</div>
 </div>
 <div class="paragraph">
 <p>Step 3. Press enter and you&#8217;re done!</p>
@@ -1587,7 +1627,7 @@ of their indexes.</p>
 <div class="content">
 <img src="images/UnassignTaskMessageSuccess.png" alt="UnassignTaskMessageSuccess">
 </div>
-<div class="title">Figure 24. <code>unassignTask</code> command success message</div>
+<div class="title">Figure 25. <code>unassignTask</code> command success message</div>
 </div>
 <div class="paragraph">
 <p>And you will no longer see the tasks reflected under the person.</p>
@@ -1638,7 +1678,7 @@ this marks the attendance for meeting 1 for members 1, 3 and 4.
 <div class="content">
 <img src="images/MarkAttendanceFinding.png" alt="MarkAttendanceFinding">
 </div>
-<div class="title">Figure 25. Finding the meeting to mark attendance for and the members to mark attendance of</div>
+<div class="title">Figure 26. Finding the meeting to mark attendance for and the members to mark attendance of</div>
 </div>
 <div class="paragraph">
 <p>Step 2. Type in the <code>markAttendance</code> command with the relevant inputs.</p>
@@ -1647,7 +1687,7 @@ this marks the attendance for meeting 1 for members 1, 3 and 4.
 <div class="content">
 <img src="images/MarkAttendanceCommandInput.png" alt="MarkAttendanceCommandInput">
 </div>
-<div class="title">Figure 26. <code>markAttendance</code> command input</div>
+<div class="title">Figure 27. <code>markAttendance</code> command input</div>
 </div>
 <div class="paragraph">
 <p>Step 3. Press enter and you&#8217;re done!</p>
@@ -1659,7 +1699,7 @@ this marks the attendance for meeting 1 for members 1, 3 and 4.
 <div class="content">
 <img src="images/MarkAttendanceMessageSuccess.png" alt="MarkAttendanceMessageSuccess">
 </div>
-<div class="title">Figure 27. <code>markAttendance</code> command success message</div>
+<div class="title">Figure 28. <code>markAttendance</code> command success message</div>
 </div>
 <div class="paragraph">
 <p>And the meeting will show up under the information of the person like this:</p>
@@ -1668,7 +1708,7 @@ this marks the attendance for meeting 1 for members 1, 3 and 4.
 <div class="content">
 <img src="images/PersonListMarkAttendance.png" alt="PersonListMarkAttendance">
 </div>
-<div class="title">Figure 28. Showing attendance marked</div>
+<div class="title">Figure 29. Showing attendance marked</div>
 </div>
 </div>
 <div class="sect3">
@@ -1763,4 +1803,4 @@ Format: <code>showPerformanceOverview</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:47:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:09:17 UTC</div></div></div></body></html>

@@ -29,8 +29,8 @@
 <li><a href="#sending-reminder-feature">3.5. Sending Reminder feature</a></li>
 <li><a href="#broadcast-mail-feature">3.6. Broadcast Mail feature</a></li>
 <li><a href="#sign-in-feature">3.7. Sign In feature</a></li>
-<li><a href="#generate-meeting-timeslot">3.8. Generate meeting timeslot</a></li>
-<li><a href="#timetable-input">3.9. Timetable input</a></li>
+<li><a href="#timetable-input">3.8. Timetable input</a></li>
+<li><a href="#generate-meeting-timeslot">3.9. Generate meeting timeslot</a></li>
 <li><a href="#logging">3.10. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
 <li><a href="#finance-feature">3.12. Finance feature</a></li>
@@ -1067,9 +1067,116 @@ This may lead to confusion for the project&#8217;s members.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.8. Generate meeting timeslot</a></h3>
+<h3 id="timetable-input"><a class="link" href="#timetable-input">3.8. Timetable input</a></h3>
 <div class="sect3">
 <h4 id="description-of-feature-8"><a class="link" href="#description-of-feature-8">3.8.1. Description of Feature</a></h4>
+<div class="paragraph">
+<p>This feature is used to input timetable data, which would then be used in the <code>generate</code> command to find a suitable meeting timeslot.</p>
+</div>
+<div class="paragraph">
+<p>There are two ways to input member&#8217;s timetable:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Member send a formatted text file to the team leader, which would then be parsed by the system. The file would be a list of newline separated time ranges</p>
+</li>
+<li>
+<p>Member send their NUSMods timetable URL to the team leader, and the system would parse the URL and fetch timetable data using NUSMods API</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>User command would be in the format: <code>setTimetable INDEX m/member [n/NUSMODS_URL] [f/FILEPATH]</code></p>
+</div>
+<div class="paragraph">
+<p>The main logic is implemented within the <code>TimetableInput</code> class, which is invoked by the <code>SetTimetableCommand</code> class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-7"><a class="link" href="#details-7">3.8.2. Details</a></h4>
+<div class="paragraph">
+<p>Important functions in <code>TimetableInput</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TimetableInput#getTimetableFromNUSMods(Url url)</code>&#8201;&#8212;&#8201;Parse URL and fetch timetable data using NUSMods API</p>
+</li>
+<li>
+<p><code>TimetableInput#getTimetableFromFile(String filepath)</code>&#8201;&#8212;&#8201;Parse file to obtain timetable data</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is an overview of the classes related to time+table input:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/set-timetable/SetTimetableClassDiagram.png" alt="SetTimetableClassDiagram">
+</div>
+<div class="title">Figure 21. Class diagram for timetable input feature</div>
+</div>
+<div class="paragraph">
+<p><code>setTimetableCommand</code> accepts either a filepath or a URL, which is then supplied to <code>TimetableInput</code> to fetch the timetable data.</p>
+</div>
+<div class="paragraph">
+<p>Afterwards, the timetable is passed into <code>TimetableVisualization</code> to provide a visual representation of the set timetable. This visualization is then passed back as a <code>CommandResult</code> to be displayed to the user.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates what happens when the user issues the command <code>setTimetable</code> to add their timetable from a shared NUSMods timetable.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/set-timetable/SetTimetableSequenceDiagram.png" alt="SetTimetableSequenceDiagram">
+</div>
+<div class="title">Figure 22. Timeline of entire process from user executing their command to getting the result back.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.8.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-input-timetable"><a class="link" href="#aspect-how-to-input-timetable">Aspect: How to input timetable</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong> (current choice): Input timetable by importing timetable from an already existing platform.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More practical and convenient for users to input, as opposed to manually typing in all the timetable for every single members.</p>
+</li>
+<li>
+<p>Cons: Feature unreliable as it requires maintainance if the web API changes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Input all time ranges manually by user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Very reliable due to lack of usage of online APIs.</p>
+</li>
+<li>
+<p>Cons: Very impractical. Most users would not want to enter timetable data of all their members one by one, and would probably skip this feature.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We realized that it is very impractical to expect users to input timetable manually all by themselves. No matter how unreliable the web API is, the feature would at least be useful to users. If users have to manually input all the data, we cannot realistically expect this feature to be useful at all.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.9. Generate meeting timeslot</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature-9"><a class="link" href="#description-of-feature-9">3.9.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>The timeslot generator is used to suggest meeting timings by making use of team members' timetable.</p>
 </div>
@@ -1090,7 +1197,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-7"><a class="link" href="#details-7">3.8.2. Details</a></h4>
+<h4 id="details-8"><a class="link" href="#details-8">3.9.2. Details</a></h4>
 <div class="paragraph">
 <p><code>TimeSlotGenerator(members, desiredMeetingDuration, restrictedTimeRange)</code></p>
 </div>
@@ -1127,7 +1234,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 <div class="content">
 <img src="images/GenerateSlotClassDiagram.png" alt="GenerateSlotClassDiagram">
 </div>
-<div class="title">Figure 21. Class diagram of the <code>TimeSlotGenerator</code></div>
+<div class="title">Figure 23. Class diagram of the <code>TimeSlotGenerator</code></div>
 </div>
 <div class="paragraph">
 <p>Typical usage of <code>TimeSlotGenerator</code> would be look like this:</p>
@@ -1142,7 +1249,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 <div class="content">
 <img src="images/GenerateSlotSequenceDiagram.png" alt="GenerateSlotSequenceDiagram">
 </div>
-<div class="title">Figure 22. Timeline of process from user entering the command to the results being displayed to the user.</div>
+<div class="title">Figure 24. Timeline of process from user entering the command to the results being displayed to the user.</div>
 </div>
 <div class="paragraph">
 <p>As shown in the sequence diagram above, the command execution would go through the following stages:</p>
@@ -1179,11 +1286,11 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/GenerateSlotActivityDiagram.png" alt="GenerateSlotActivityDiagram">
 </div>
-<div class="title">Figure 23. <code>generate</code> command tries to provide best possible meeting timeslot</div>
+<div class="title">Figure 25. <code>generate</code> command tries to provide best possible meeting timeslot</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.8.3. Algorithm Used</a></h4>
+<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.9.3. Algorithm Used</a></h4>
 <div class="sect4">
 <h5 id="code-timeslotgenerator-generate-code"><a class="link" href="#code-timeslotgenerator-generate-code"><code>TimeSlotGenerator#generate()</code></a></h5>
 <div class="olist arabic">
@@ -1227,7 +1334,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.8.4. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.9.4. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-generate-timeslot-with-most-number-of-available-members"><a class="link" href="#aspect-how-to-generate-timeslot-with-most-number-of-available-members">Aspect: How to generate timeslot with most number of available members</a></h5>
 <div class="ulist">
@@ -1262,113 +1369,6 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 <div class="paragraph">
 <p>We went with options 1 as there is no real difference in speed if the number of members is restricted to below 15 members, which many projects do not normally exceed. It is much easier to understand and maintain by other developers as well.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="timetable-input"><a class="link" href="#timetable-input">3.9. Timetable input</a></h3>
-<div class="sect3">
-<h4 id="description-of-feature-9"><a class="link" href="#description-of-feature-9">3.9.1. Description of Feature</a></h4>
-<div class="paragraph">
-<p>This feature is used to input timetable data, which would then be used in the <code>generate</code> command to find a suitable meeting timeslot.</p>
-</div>
-<div class="paragraph">
-<p>There are two ways to input member&#8217;s timetable:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Member send a formatted text file to the team leader, which would then be parsed by the system. The file would be a list of newline separated time ranges</p>
-</li>
-<li>
-<p>Member send their NUSMods timetable URL to the team leader, and the system would parse the URL and fetch timetable data using NUSMods API</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>User command would be in the format: <code>setTimetable INDEX m/member [n/NUSMODS_URL] [f/FILEPATH]</code></p>
-</div>
-<div class="paragraph">
-<p>The main logic is implemented within the <code>TimetableInput</code> class, which is invoked by the <code>SetTimetableCommand</code> class.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="details-8"><a class="link" href="#details-8">3.9.2. Details</a></h4>
-<div class="paragraph">
-<p>Important functions in <code>TimetableInput</code>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>TimetableInput#getTimetableFromNUSMods(Url url)</code>&#8201;&#8212;&#8201;Parse URL and fetch timetable data using NUSMods API</p>
-</li>
-<li>
-<p><code>TimetableInput#getTimetableFromFile(String filepath)</code>&#8201;&#8212;&#8201;Parse file to obtain timetable data</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Below is an overview of the classes related to time+table input:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/set-timetable/SetTimetableClassDiagram.png" alt="SetTimetableClassDiagram">
-</div>
-<div class="title">Figure 24. Class diagram for timetable input feature</div>
-</div>
-<div class="paragraph">
-<p><code>setTimetableCommand</code> accepts either a filepath or a URL, which is then supplied to <code>TimetableInput</code> to fetch the timetable data.</p>
-</div>
-<div class="paragraph">
-<p>Afterwards, the timetable is passed into <code>TimetableVisualization</code> to provide a visual representation of the set timetable. This visualization is then passed back as a <code>CommandResult</code> to be displayed to the user.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram illustrates what happens when the user issues the command <code>setTimetable</code> to add their timetable from a shared NUSMods timetable.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/set-timetable/SetTimetableSequenceDiagram.png" alt="SetTimetableSequenceDiagram">
-</div>
-<div class="title">Figure 25. Timeline of entire process from user executing their command to getting the result back.</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.9.3. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-to-input-timetable"><a class="link" href="#aspect-how-to-input-timetable">Aspect: How to input timetable</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1</strong> (current choice): Input timetable by importing timetable from an already existing platform.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More practical and convenient for users to input, as opposed to manually typing in all the timetable for every single members.</p>
-</li>
-<li>
-<p>Cons: Feature unreliable as it requires maintainance if the web API changes.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Input all time ranges manually by user.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Very reliable due to lack of usage of online APIs.</p>
-</li>
-<li>
-<p>Cons: Very impractical. Most users would not want to enter timetable data of all their members one by one, and would probably skip this feature.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>We realized that it is very impractical to expect users to input timetable manually all by themselves. No matter how unreliable the web API is, the feature would at least be useful to users. If users have to manually input all the data, we cannot realistically expect this feature to be useful at all.</p>
 </div>
 </div>
 </div>
@@ -2514,4 +2514,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:47:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:09:17 UTC</div></div></div></body></html>
