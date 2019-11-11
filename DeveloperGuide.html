@@ -57,7 +57,9 @@
 <li><a href="#signing-in">G.5. Signing In</a></li>
 <li><a href="#editing-a-task">G.6. Editing a task</a></li>
 <li><a href="#sorting-a-task">G.7. Sorting a task</a></li>
-<li><a href="#saving-data">G.8. Saving data</a></li>
+<li><a href="#adding-a-member-from-contacts">G.8. Adding a member from contacts</a></li>
+<li><a href="#assigning-a-task-to-members">G.9. Assigning a task to members</a></li>
+<li><a href="#saving-data">G.10. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -2628,7 +2630,61 @@ Expected: Task will be added to the first index as the list is sorted by alphabe
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.8. Saving data</a></h3>
+<h3 id="adding-a-member-from-contacts"><a class="link" href="#adding-a-member-from-contacts">G.8. Adding a member from contacts</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Checkout to a project using the <code>checkout</code> command. You also need to have multiple <code>Person</code>(s)
+in your contacts.</p>
+</li>
+<li>
+<p>Test case: <code>addFromContacts 1</code><br>
+Expected: First person in your contacts is added your your project.</p>
+</li>
+<li>
+<p>Test case: <code>addFromContacts 2 3</code><br>
+Expected: Adds both the second and third person into your project.</p>
+</li>
+<li>
+<p>Test case: <code>addFromContacts 2000</code>
+Expected: No members are added, error message is shown saying the index is invalid.</p>
+</li>
+<li>
+<p>Other incorrect addFromContacts commands to try: <code>addFromContacts</code> (this is an incorrect format since no index is specified)<br>
+<code>addFromContacts -1</code> (This is an invalid format since index should be positive)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="assigning-a-task-to-members"><a class="link" href="#assigning-a-task-to-members">G.9. Assigning a task to members</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Checkout to a project using the <code>checkout</code> command. There are one or more tasks in your project. There
+are one or more members in your project.</p>
+</li>
+<li>
+<p>Test case: <code>assignTask 1 1</code><br>
+Expected: First task listed in the project is assigned to the first person listed in the project as a member.</p>
+</li>
+<li>
+<p>Test case: <code>assignTask 1 2 3</code><br>
+Expected: First task listed in the project is assigned to both the second and third person listed in the project.</p>
+</li>
+<li>
+<p>Test case: <code>assignTask</code><br>
+Expected: No tasks are assigned and error message for invalid format is shown.</p>
+</li>
+<li>
+<p>Other incorrect <code>assignTask</code> commands to try: <code>assignTask 2000 1</code> (this should be an incorrect task index specified)<br>
+<code>assignTask -1 2 3</code> (this is an incorrect format as indexes should be positive).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.10. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2648,4 +2704,4 @@ Expected: Task will be added to the first index as the list is sorted by alphabe
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:00:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:08:06 UTC</div></div></div></body></html>
