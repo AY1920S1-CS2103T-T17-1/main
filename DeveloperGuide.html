@@ -52,8 +52,12 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
-<li><a href="#editing-a-task">G.3. Editing a task</a></li>
-<li><a href="#sorting-a-task">G.4. Sorting a task</a></li>
+<li><a href="#sending-reminders">G.3. Sending Reminders</a></li>
+<li><a href="#broadcasting-email">G.4. Broadcasting Email</a></li>
+<li><a href="#signing-in">G.5. Signing In</a></li>
+<li><a href="#editing-a-task">G.6. Editing a task</a></li>
+<li><a href="#sorting-a-task">G.7. Sorting a task</a></li>
+<li><a href="#saving-data">G.8. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -909,7 +913,8 @@ will be the message body of the email.</p>
 <div class="title">Figure 18. Activity Diagram for BroadcastMail</div>
 </div>
 <div class="paragraph">
-<p>The diagram above shows how <code>broadcastMail</code> works.</p>
+<p>The diagram above shows how <code>broadcastMail</code> works. When the command is executed, it will throw a CommandException if the user
+has not checked out or have not signed in. Otherwise, broadcast message will be executed normally.</p>
 </div>
 </div>
 <div class="sect3">
@@ -990,7 +995,10 @@ In this version, only gmail server has been made available for use in signing in
 <div class="title">Figure 20. Activity Diagram for SignIn</div>
 </div>
 <div class="paragraph">
-<p>The diagram above shows how <code>signIn</code> works.</p>
+<p>The diagram above shows how <code>signIn</code> works. The command will result in CommandException to be thrown if user has
+already signed in with a valid email address (gmail) and password. If the user has not signed in, it will result in CommandException if
+either the user&#8217;s email address or password is incorrect or does not match. Otherwise, the command will be executed and
+the user&#8217;s Account information will be stored.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2490,7 +2498,78 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-task"><a class="link" href="#editing-a-task">G.3. Editing a task</a></h3>
+<h3 id="sending-reminders"><a class="link" href="#sending-reminders">G.3. Sending Reminders</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Checkout to a project using the checkout command. Sign in using the Gmail Account using the signIn command.</p>
+</li>
+<li>
+<p>Command input: sendReminder d/0<br>
+Expected output: no reminders are sent as the duration is 0, no meetings or tasks are due in 0 days.</p>
+</li>
+<li>
+<p>Command input: sendReminder d/-1<br>
+Expected output: no reminders are sent as the duration cannot be a negative number.</p>
+</li>
+<li>
+<p>Other incorrect sendReminder commands to try: sendReminder d/hello (where duration is an alphabet), sendReminder d/0.9 (
+duration can only take numeric character whereas 0.9 contains "."), sendReminder d/ (duration cannot be empty)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="broadcasting-email"><a class="link" href="#broadcasting-email">G.4. Broadcasting Email</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Checkout to a project using the checkout command. Sign in using the Gmail Account using the signIn command.</p>
+</li>
+<li>
+<p>Command input: broadcastMail su/ me/<br>
+Expected output: An email with empty Header and empty Message body will be sent to all members in the project.</p>
+</li>
+<li>
+<p>Command input: broadcastMail su/0.%$&amp;89 me/lkjhsd<br>
+Expected output: An email with header "0.%$&amp;89" and message body "lkjhsd" will be sent to all members in the project.</p>
+</li>
+<li>
+<p>There is no incorrect broadcastMail commands as the header and the message body can be anything that the user likes.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="signing-in"><a class="link" href="#signing-in">G.5. Signing In</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Enable access to less secure app in the Google Account security settings. Disable the two-step verification method in the
+Google Account security settings. Use google account email address.</p>
+</li>
+<li>
+<p>Command input: signIn ac/hello@yahoo.com pa/12345678<br>
+Expected output: failed to sign in as the input would expect a gmail domain to be keyed in.</p>
+</li>
+<li>
+<p>Command input: signIn ac/hello hello pa/123213<br>
+Expected output: failed to sign in as the email address keyed in is not in the correct email format.</p>
+</li>
+<li>
+<p>Command input signIn ac/ pa/
+Expected output: failed to sign in as an empty email address is not a valid format for an email address.</p>
+</li>
+<li>
+<p>Other incorrect commands for signIn: signIn ac/cs2103t17@gmail.com pa/ (failed to sign in as the
+password for the email address is wrong) signIn ac/111111 pa/111111 (failed to sign in
+due to invalid format for email address)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-task"><a class="link" href="#editing-a-task">G.6. Editing a task</a></h3>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -2515,7 +2594,7 @@ Expected: No task is edited. Error details shown in the status message.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-a-task"><a class="link" href="#sorting-a-task">G.4. Sorting a task</a></h3>
+<h3 id="sorting-a-task"><a class="link" href="#sorting-a-task">G.7. Sorting a task</a></h3>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -2539,5 +2618,25 @@ Expected: Task will be added to the first index as the list is sorted by alphabe
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.8. Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:59:06 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:45:12 UTC</div></div></div></body></html>
