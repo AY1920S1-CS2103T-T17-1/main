@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Wang Runding - Project Portfolio for MyProject</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Wang Runding - Project Portfolio for MyProject</h1></div><div id="content"><div class="sect1">
+<h2 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My team developed a one-stop app to store and manage projects and their
+relevant information for project team leaders. Team leaders refers to
+those who are in charge of planning an event such as concert, sports
+event and software engineering project. We realise that many students in NUS
+are involved in such events but all of them face some common problems.
+These problems range from arranging a meeting, keeping track of the finance information
+and delegating tasks. Thus, we have MyProject as the solution.</p>
+</div>
+<div class="paragraph">
+<p><strong>MyProject</strong> has a few distinctive features to help them out which includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An address book to record contact details of the planning committee members</p>
+</li>
+<li>
+<p>Generating common free slot among members for meeting</p>
+</li>
+<li>
+<p>Keeping track of budgets information</p>
+</li>
+<li>
+<p>Updating the members with regards to the project via email</p>
+</li>
+<li>
+<p>Monitoring members' performance in terms of attendance and amount of tasks done</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contribution"><a class="link" href="#summary-of-contribution">Summary of contribution</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="overview"><a class="link" href="#overview">Overview</a></h3>
+<div class="paragraph">
+<p>What I did for the project is generating ideas and implementing change
+in UI display feature as well as finance tracker feature.</p>
+</div>
+<div class="paragraph">
+<p>At the apps home page, a list of projects that the user is currently involved in will be shown.
+If the user wish to work on a particular project, simple checkout to that project
+with the command checkout followed by the index of the project.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RDHome.png" alt="Home" width="320" height="240">
+</div>
+</div>
+<div class="paragraph">
+<p>After checking out, a project overview will be shown which contains the important information about the project.
+Below is how a typical project overview look like.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RDProjectOverview.png" alt="Overview" width="320" height="240">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features-added-finance-tracker"><a class="link" href="#features-added-finance-tracker">Features added: Finance tracker.</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: It allows user to monitor the budget situation
+for a project. For example the umbrella organization of a cca
+set the budgets for an event which includes equipment with an
+amount of 1000 dollars. The user can add this Budget to the
+project. When an expense is made under this budget, let’s say
+200 dollars are used to rent fog machines for the event which
+can be claimed under equipment budget. The user can add this expense under the equipment Budget.
+MyProject will minus away this amount from the budget and calculate the remaining amount. At any time, the user can view a detailed summary of the budgets in a pie-chart format
+indicating all the expenses under a budget and an overview of how much are left for each budget in the project overview.
+A even more convenient function is that it generates an excel sheet that corresponds to the budgets data. It can be used for sending out to the rest of the planning committee members to update them.</p>
+</li>
+<li>
+<p>Rationale: In many projects, finance information is only restricted to the treasurer but it is actually important for members in the planning committee to know about it.
+For example, the publicity in charge may reconsider the props he’s going to use after viewing the budget situation.
+Thus, monitoring the budgets information is essential for the team leader to know the situation
+and to update the members if needed.</p>
+</li>
+<li>
+<p>Highlights: As a beginner of JavaFX, understanding the concept of how UI works was challenging especially given a rather advanced set up.
+The implementation of the budget is actually a finance object containing a list of budgets
+objects which each contains a list of spending objects. This implementation requires
+a lot of interaction with jackson which is also a challenge.
+Lastly, playing with Apache POI was really fun. I get to create and
+style excel sheets and learn about using other&#8217;s API along the way.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features-added-change-of-ui-checkout-feature"><a class="link" href="#features-added-change-of-ui-checkout-feature">Features added: Change of Ui/checkout feature</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to switch to a project to work on it.
+As the user types a command, the display of the application will change to a state that
+best fits what the user would want to see after typing that command.</p>
+</li>
+<li>
+<p>Rational: Users would expect to see different information given different commands.
+If he adds an expense, he may want to see information with regards to finance
+thus displaying the list of budgets maybe more suitable than displaying the
+project overview.</p>
+</li>
+<li>
+<p>Highlights: The logic and maintaining design pattern is the
+hard part for this as different commands needs different interfaces
+and the switching between interface that involves switching to and from
+the current working project.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contribution"><a class="link" href="#other-contribution">Other contribution:</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Idea generation:
+The idea of the project stemmed from my personal experience and as a team we together make it a success.</p>
+</li>
+<li>
+<p>Helping out team mates: During the process, I helped some team members to brainstorm certain part of their features such as email.</p>
+</li>
+<li>
+<p>Reviewing of PRs: Made some constructive feedback on 2 of my teammates' PR.</p>
+</li>
+<li>
+<p>Building the foundation of the app: As we are building a whole new model, I
+volunteered to construct the basis of the app which is the project model. It has
+the ability that is similar to address book.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contribution-to-user-guide"><a class="link" href="#contribution-to-user-guide">Contribution to User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since I&#8217;m in charge of the finance feature I&#8217;m demonstrating
+how I document this portion in UG.</p>
+</div>
+<div class="sect2">
+<h3 id="finance"><a class="link" href="#finance">Finance</a></h3>
+<div class="paragraph">
+<p>Imagine today you just attended the Budget meeting
+and your Organization is kind enough to provide you with
+budgets for your event! How delightful! What’s better is
+that you can record this information in MyProject!</p>
+</div>
+<div class="sect3">
+<h4 id="add-budget-code-addbudget-code-checkout"><a class="link" href="#add-budget-code-addbudget-code-checkout">Add budget: <code>addBudget</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Let&#8217;s say the organization gave you budgets on equipment and
+manpower, let&#8217;s first add these budgets to the project.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addBudget [b/NAME_OF_BUDGET ex/AMOUNT_OF_BUDGET]</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addBudget.png" alt="addBudget" width="320" height="240">
+</div>
+</div>
+<div class="paragraph">
+<p>After adding the budgets, we will be able to see a summary of
+them at project overview. Currently it only shows the amount
+remaining which is the same as the amount you typed just now
+because you haven&#8217;t spent anything yet.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/projectOverview.png" alt="Overview" width="320" height="240">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-expense-code-addexpense-code-checkout"><a class="link" href="#add-expense-code-addexpense-code-checkout">Add expense: <code>addExpense</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>Format: <code>addExpense [INDEX_OF_BUDGET] [s/DESCRIPTION] [ex/AMOUNT SPEND] [c/dd/MM/yyyy HHmm]</code></p>
+</div>
+<div class="paragraph">
+<p>One month later&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Now you have gone through quite a few meetings with the planning
+committee and made some orders online and receive some invoices,
+what&#8217;s next? To record all these expenses, simply use the command
+addExpense to add it under the budget. In order to do that, you
+need the index of the budgets which you may already forgot, but
+you may simply type listBudgets to view them again.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addExpense.png" alt="addExpense" width="320" height="240">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-budgets-code-listbudget-code-checkout"><a class="link" href="#list-budgets-code-listbudget-code-checkout">List budgets: <code>listBudget</code> [Checkout]</a></h4>
+<div class="paragraph">
+<p>List information about the budgets.<br>
+Format: <code>listBudget</code></p>
+</div>
+<div class="paragraph">
+<p>In the diagram below, you are seeing the pie chart representation of the budgets.
+It will usually show all the expenses made and the amount remaining for this budget.
+However, if you have already overshot the budget, the pie chart will show
+overshot instead of remaining to remind you!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/listBudget.png" alt="listBudget" width="320" height="240">
+</div>
+</div>
+<div class="paragraph">
+<p>After all that have been done, a breakdown of the budget situation
+will be available at the project overview with a stacked bar graph
+indicating the amount remaining and the amount spent.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/projectOverviewFinal.png" alt="Overview" width="320" height="240">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="excel-sheet-storage"><a class="link" href="#excel-sheet-storage">Excel sheet storage</a></h4>
+<div class="paragraph">
+<p>Keeping the planning committee updated regarding budget is always
+a challenge isn&#8217;t it? Fret not, MyProject is here to help! Every update on
+the budget information will be recorded in an excel sheet located
+in the budgets folder. It creates a sheet per project and display
+the budgets and expenses under the budget in a table form. You
+can easily send this comprehensible document to your team members
+to update them!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/excelSheet.001.jpeg" alt="excelSheet.001">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contribution-to-developer-guide"><a class="link" href="#contribution-to-developer-guide">Contribution to Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section is rather intuitive for the user but it is not really the
+case for developers thus I would like to feature my documentation of
+this part in the developer guide.</p>
+</div>
+<div class="sect2">
+<h3 id="checkout"><a class="link" href="#checkout">Checkout</a></h3>
+<div class="paragraph">
+<p>This allows user to checkout to a project from a list of project to work on it.
+Almost every command regarding the project require the user to checkout first.</p>
+</div>
+<div class="paragraph">
+<p>For it to work, the ModelManager class is holding an additional <code>Optional&lt;Project&gt;</code>
+attribute and the model supports three new methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setWorkingProject()</code>&#8201;&#8212;&#8201;Sets the attribute to the argument of the method.</p>
+</li>
+<li>
+<p><code>getWorkingProject()</code>&#8201;&#8212;&#8201;Returns the current project.</p>
+</li>
+<li>
+<p><code>isCheckedOut()</code>&#8201;&#8212;&#8201;Checks whether the current working project is empty.</p>
+</li>
+<li>
+<p><code>removeWorkingProject</code>&#8201;&#8212;&#8201;Sets the attribute to <code>Optional.empty()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A typical use of the command can be seen in the sequence diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CheckoutSequenceDiagram.png" alt="CheckoutSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">Change in UI display</a></h3>
+<div class="paragraph">
+<p>The first step of changing UI display is to find out
+whether a change in UI is needed given a command from user.
+This is done in the CommandResult class constructor. If a command
+word matches actions that is email related or help or exit,
+the flag will indicate that a change in UI is not needed.</p>
+</div>
+<div class="paragraph">
+<p>Next, a class to represent the state of UI is needed to remember
+a history which is the <code>UiEvent</code> class.UiEvent is a class that represent
+a type of UiDisplay as an event. It stores the current state of the
+application&#8217;s UI and the current working project index if it exists.
+Whenever a command is executed, a new UiEvent will be generated and stored in history
+if this command lead to a state
+that is different from the current one.
+The <code>viewHistory</code> is stored in the <code>MainWindow</code> class as a stack of UiEvents
+and the class also maintains a currentStatePointer. When a <code>back</code> command
+is executed, it can check back on what is the previous state.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MainWindow#changeUiDisplay</code>&#8201;&#8212;&#8201;Change the Ui and change the current state.</p>
+</li>
+<li>
+<p><code>MainWindow#getPreviousState</code>&#8201;&#8212;&#8201;Pops the stack and peek to look for the previous state.</p>
+</li>
+<li>
+<p><code>MainWindow#handleBack</code>&#8201;&#8212;&#8201;Change the Ui display to the previous state.</p>
+</li>
+<li>
+<p><code>MainWindow#getState</code>&#8201;&#8212;&#8201;Get the state given a command word.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example of how the UI behave at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application and the <code>viewHistory</code> will be initialized with the
+<code>PROJECT_LIST</code> state. The <code>currentStatePointer</code> is currently pointing to
+that single address book state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeUiDisplayState0.png" alt="state" width="320" height="240">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>checkout 1</code> command to checkout to project 1 to work on.
+During the execution of the <code>checkout</code> command, when commandresult is created,
+it detects that there is a need to change the Ui and the flag is made to true.
+In the <code>MainWindow</code>, since a change is needed, <code>MainWindow#changeUiDisplay</code> is called
+to change the display to <code>PROJECT_OVERVIEW</code> which is found out using
+the <code>MainWindow#getState</code> method. It also set the <code>currentState</code> to be <code>PROJECT_OVERVIEW</code>.
+The UiEvent with the state of <code>PROJECT_LIST</code> and an empty index will be stored
+in the <code>viewHistory</code> stack.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeUiDisplayState1.png" alt="state" width="480" height="360">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3. The user now decide to add a budget by <code>addBudget b/ equipment 3000.00</code>.
+This command does need a change in Ui display but the state of this command
+is exactly the same as the previous command thus <code>MainWindow#changeUiDisplay</code>
+will be called with the same state.
+Thus, the method <code>MainWindow#changeUiDisplay</code> is still called but this time
+it is called to update the information in the current display and set the
+current state to be still the current state. Thus, the <code>currentStatePointer</code> does
+not move.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeUiDisplayState2.png" alt="state" width="480" height="360">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution, a <code>commandResult</code> wont be generated thus no change in Ui will happen.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now wants to have a better view of the budgets and executes
+<code>listBudget</code>. Same step follows through the checkout command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeUiDisplayState3.png" alt="state" width="480" height="360">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 5. The user now decides to go back to the home page and executes
+two consecutive <code>back</code> command. At the execute stage in <code>MainWindow</code>,
+it detects it is a back command and <code>MainWindow#handleBack</code> is called.
+This method will then pop the current state by <code>MainWindow#getPreviousState</code>
+and call <code>MainWindow#changeUiDisplay</code> to display the previous Ui.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeUiDisplayState4.png" alt="state" width="480" height="360">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeUiDisplayState5.png" alt="state" width="480" height="360">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeUiDisplayActivityDiagram.png" alt="ChangeUiDisplayActivityDiagram">
+</div>
+<div class="title">Figure 1. This diagram shows how the Ui reacts to an user&#8217;s input</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentStatePointer</code> is at <code>PROJECT_LIST</code>, then there are
+no previous UI states to go back. Under such situation, an error will be returned.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:00:22 UTC</div></div></div></body></html>

@@ -1470,7 +1470,7 @@ check the validity of a given string to convert it to <code>BigDecimal</code>.</
 Almost every command regarding the project require the user to checkout first.</p>
 </div>
 <div class="paragraph">
-<p>How it works is the ModelManager class is holding an additional <code>Optional&lt;Project&gt;</code>
+<p>For it to work, the ModelManager class is holding an additional <code>Optional&lt;Project&gt;</code>
 attribute and the model supports three new methods:</p>
 </div>
 <div class="ulist">
@@ -1483,6 +1483,9 @@ attribute and the model supports three new methods:</p>
 </li>
 <li>
 <p><code>isCheckedOut()</code>&#8201;&#8212;&#8201;Checks whether the current working project is empty.</p>
+</li>
+<li>
+<p><code>removeWorkingProject</code>&#8201;&#8212;&#8201;Sets the attribute to <code>Optional.empty()</code>.</p>
 </li>
 </ul>
 </div>
@@ -1505,14 +1508,15 @@ word matches actions that is email related or help or exit,
 the flag will indicate that a change in UI is not needed.</p>
 </div>
 <div class="paragraph">
-<p>Next, a class to represent a state of UI is needed to remember
+<p>Next, a class to represent the state of UI is needed to remember
 a history which is the <code>UiEvent</code> class.UiEvent is a class that represent
 a type of UiDisplay as an event. It stores the current state of the
-application&#8217;s UI and the current working project if it exists.
-Whenever a command is executed, only if this command lead to a state
-that is different from the current one a new UiEvent will be generated and stored in history.
+application&#8217;s UI and the current working project index if it exists.
+Whenever a command is executed, a new UiEvent will be generated and stored in history
+if this command lead to a state
+that is different from the current one.
 The <code>viewHistory</code> is stored in the <code>MainWindow</code> class as a stack of UiEvents
-and it also maintains a currentStatePointer. When a <code>back</code> command
+and the class also maintains a currentStatePointer. When a <code>back</code> command
 is executed, it can check back on what is the previous state.</p>
 </div>
 <div class="ulist">
@@ -1526,15 +1530,17 @@ is executed, it can check back on what is the previous state.</p>
 <li>
 <p><code>MainWindow#handleBack</code>&#8201;&#8212;&#8201;Change the Ui display to the previous state.</p>
 </li>
+<li>
+<p><code>MainWindow#getState</code>&#8201;&#8212;&#8201;Get the state given a command word.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Given below is an example of how the UI behave at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time.
-The <code>viewHistory</code> will be initialized with the initial
-<code>PROJECT_LIST</code> state, and the <code>currentStatePointer</code> pointing to
+<p>Step 1. The user launches the application and the <code>viewHistory</code> will be initialized with the
+<code>PROJECT_LIST</code> state. The <code>currentStatePointer</code> is currently pointing to
 that single address book state.</p>
 </div>
 <div class="imageblock">
@@ -1543,11 +1549,14 @@ that single address book state.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>checkout 1</code> command to checkout to preoject 1 to work on.
-During the execution of the <code>checkout</code> command, at the commandresult generation step,
+<p>Step 2. The user executes <code>checkout 1</code> command to checkout to project 1 to work on.
+During the execution of the <code>checkout</code> command, when commandresult is created,
 it detects that there is a need to change the Ui and the flag is made to true.
 In the <code>MainWindow</code>, since a change is needed, <code>MainWindow#changeUiDisplay</code> is called
-to change the display and set the <code>currentState</code> to be <code>PROJECT_OVERVIEW</code>.</p>
+to change the display to <code>PROJECT_OVERVIEW</code> which is found out using
+the <code>MainWindow#getState</code> method. It also set the <code>currentState</code> to be <code>PROJECT_OVERVIEW</code>.
+The UiEvent with the state of <code>PROJECT_LIST</code> and an empty index will be stored
+in the <code>viewHistory</code> stack.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2639,4 +2648,4 @@ Expected: Task will be added to the first index as the list is sorted by alphabe
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:45:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:00:22 UTC</div></div></div></body></html>
