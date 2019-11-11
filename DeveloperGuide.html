@@ -59,7 +59,9 @@
 <li><a href="#sorting-a-task">G.7. Sorting a task</a></li>
 <li><a href="#adding-a-member-from-contacts">G.8. Adding a member from contacts</a></li>
 <li><a href="#assigning-a-task-to-members">G.9. Assigning a task to members</a></li>
-<li><a href="#saving-data">G.10. Saving data</a></li>
+<li><a href="#set-timetable-to-person">G.10. Set timetable to person</a></li>
+<li><a href="#generate-timetable">G.11. Generate timetable</a></li>
+<li><a href="#saving-data">G.12. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -2684,7 +2686,50 @@ Expected: No tasks are assigned and error message for invalid format is shown.</
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.10. Saving data</a></h3>
+<h3 id="set-timetable-to-person"><a class="link" href="#set-timetable-to-person">G.10. Set timetable to person</a></h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>setTimetable 1 n/https://nusmods.com/timetable/sem-1/share?CS2100=LAB:05,TUT:02,LEC:1&amp;CS2101=&amp;CS2103T=LEC:G13&amp;CS2105=TUT:03,LEC:1&amp;CS3241=TUT:05,LEC:1&amp;CS3243=TUT:01,LEC:1&amp;GEQ1000=TUT:D27</code><br>
+Expected: Data is fetch from the internet and added successfully. Scroll down on the result box to view visualization of timetable set.</p>
+</li>
+<li>
+<p>Test case: <code>setTimetable 1 n/https://nusmods.com/timetable/sem-1/share?CS2100=LAB:05,TUT:02,LEC:1&amp;CS2101=&amp;CS2103T=LEC:G13&amp;CS2105=TUT:03,LEC:1&amp;CS3241=TUT:05,LEC:1&amp;CS3243=TUT:01,LEC:1&amp;GEQ1000=TUT:D1</code><br>
+Expected: Error message should show due to invalid URL. System should pinpoint which module is invalid on the URL</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generate-timetable"><a class="link" href="#generate-timetable">G.11. Generate timetable</a></h3>
+<div class="paragraph">
+<p>Assuming timetable is added as above, with person at index 1 in the checked out project</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>generate d/2 r/MONDAY 0800 MONDAY 1000</code><br>
+Expected: Time slots generated successfully. Should see visualization on result panel.</p>
+</li>
+<li>
+<p>Test case: <code>generate d/2 r/MONDAY 0900 MONDAY 1100</code><br>
+Expected: Unable to generate any time slots.</p>
+</li>
+<li>
+<p>Other test cases to try out</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Other timetables added to other members in the same project, and use generate command.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.12. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2704,4 +2749,4 @@ Expected: No tasks are assigned and error message for invalid format is shown.</
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:35:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:40:34 UTC</div></div></div></body></html>
