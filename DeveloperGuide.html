@@ -24,16 +24,18 @@
 <ul class="sectlevel2">
 <li><a href="#task-feature">3.1. Task feature</a></li>
 <li><a href="#meeting-feature">3.2. Meeting feature</a></li>
-<li><a href="#sorting-feature">3.3. Sorting feature</a></li>
-<li><a href="#sending-reminder-feature">3.4. Sending Reminder feature</a></li>
-<li><a href="#broadcast-mail-feature">3.5. Broadcast Mail feature</a></li>
-<li><a href="#sign-in-feature">3.6. Sign In feature</a></li>
-<li><a href="#generate-meeting-timeslot">3.7. Generate meeting timeslot</a></li>
-<li><a href="#timetable-input">3.8. Timetable input</a></li>
-<li><a href="#logging">3.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
-<li><a href="#Implementation-Checkout">3.11. Checkout</a></li>
-<li><a href="#Implementation-Change-in-UI-display">3.12. Change in UI display</a></li>
+<li><a href="#member-feature">3.3. Member feature</a></li>
+<li><a href="#sorting-feature">3.4. Sorting feature</a></li>
+<li><a href="#sending-reminder-feature">3.5. Sending Reminder feature</a></li>
+<li><a href="#broadcast-mail-feature">3.6. Broadcast Mail feature</a></li>
+<li><a href="#sign-in-feature">3.7. Sign In feature</a></li>
+<li><a href="#generate-meeting-timeslot">3.8. Generate meeting timeslot</a></li>
+<li><a href="#timetable-input">3.9. Timetable input</a></li>
+<li><a href="#logging">3.10. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
+<li><a href="#Implementation-Checkout">3.12. Checkout</a></li>
+<li><a href="#Implementation-Change-in-UI-display">3.13. Change in UI display</a></li>
+<li><a href="#performance-tracking">3.14. Performance Tracking</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -428,9 +430,136 @@ A typical meeting will look like this on the app:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.3. Sorting feature</a></h3>
+<h3 id="member-feature"><a class="link" href="#member-feature">3.3. Member feature</a></h3>
 <div class="sect3">
 <h4 id="description-of-feature-3"><a class="link" href="#description-of-feature-3">3.3.1. Description of feature</a></h4>
+<div class="paragraph">
+<p>In every project, it almost certain that there are members. Therefore we have allowed for the users to be able to
+track who are the members, and how many members there are within each project. Each <code>Project</code> stores its members as a list
+of strings representing their names, and similarly each <code>Person</code> stores the projects they are involved in
+as a list of strings representing the project titles. Below you will find 2 diagrams which represents this relationship.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MemberClassDiagram1.png" alt="MemberClassDiagram1">
+</div>
+<div class="title">Figure 11. Class diagram of Project</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MemberClassDiagram2.png" alt="MemberClassDiagram2">
+</div>
+<div class="title">Figure 12. Class diagram of a Person</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Whenever member is mentioned it should be known that it is represented by a <code>Person</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to facilitate this feature, 4 commands are implemented as a subclass of the <code>Command</code> class:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>addMember</code> - Adds a new <code>Person</code> to the contacts an records the name as a member of the current working project.</p>
+</li>
+<li>
+<p><code>addFromContacts</code> - Adds a <code>Person</code> to the current working project as a member.</p>
+</li>
+<li>
+<p><code>removeMember</code> - Removes the record of the <code>Person</code> as a member of the current working project.</p>
+</li>
+<li>
+<p><code>addProfilePicture</code> - Adds a profile picture to the specified <code>Person</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.3.2. Implementation</a></h4>
+<div class="paragraph">
+<p>In this section, we will demonstrate how a member is added to the project from your contacts, and also how a member as a new <code>Person</code>.</p>
+</div>
+<div class="paragraph">
+<p>We will start with adding a new <code>Person</code> to your contacts, and to your project at the same time.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user enters the <code>addMember</code> command with the following parameters <code>n/David p/94328727 e/david97@hotmail.com a/Ang Mo kio
+avenue 3</code>.</p>
+</div>
+<div class="paragraph">
+<p>Full user input: <code>addMember n/David p/94328727 e/david97@hotmail.com a/Ang Mo kio
+avenue 3</code></p>
+</div>
+<div class="paragraph">
+<p>The user input is parsed into an <code>ArgumentMultiMap</code> by <code>AddMemberCommandParser#parse</code> so that every attribute of the person can be
+extracted, and put into a <code>NewMemberDescriptor</code> to be used to correctly create the <code>Person</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>ArgumentMultimap</code> is a class that stores all the parsed parameters from the user input.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>NewMemberDescriptor</code> is a class that stores any all the information on the <code>Person</code> given by the user to be used
+to create the <code>Person</code> subsequently.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 2. The information of the person is stored in the <code>NewMemberDescriptor</code>, and used to create a new instance of the <code>AddMemberCommand</code></p>
+</div>
+<div class="paragraph">
+<p>Every Project keeps track of which members are involved by storing a list of strings of the names of the members.
+Similarly a Person keeps track of which projects they are involved in by storing a list of strings of the project titles.</p>
+</div>
+<div class="paragraph">
+<p>The following commands are implemented to support this feature:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>addMember</code> - Adds a new person to the contacts as well as to the current working project.</p>
+</li>
+<li>
+<p><code>addFromContacts</code> - Adds a person currently stored in your contacts to the current working project.</p>
+</li>
+<li>
+<p><code>removeMember</code> - Removes a person from the current working project.</p>
+</li>
+<li>
+<p><code>addProfilePicture</code> - Adds a profile picture to a person in the contacts.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.4. Sorting feature</a></h3>
+<div class="sect3">
+<h4 id="description-of-feature-4"><a class="link" href="#description-of-feature-4">3.4.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Sorts some lists based on specifications provided by the user.
 There are 3 lists that are able to be sorted so far.<br></p>
@@ -488,7 +617,7 @@ Methods 1-2 can be used to sort all lists.
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-3"><a class="link" href="#details-3">3.3.2. Details</a></h4>
+<h4 id="details-3"><a class="link" href="#details-3">3.4.2. Details</a></h4>
 <div class="paragraph">
 <p>All sort commands take in a single integer as parameter. As mentioned in the
 note above, integers 1-4 are valid input for sortTask, integers 1, 2 and 5 are valid for sortSpending, and
@@ -505,7 +634,7 @@ and updating the current sort order in <code>SortingOrder</code> class.</p>
 <div class="content">
 <img src="images/SortTaskSequenceDiagram.png" alt="SortTaskSequenceDiagram">
 </div>
-<div class="title">Figure 11. Sequence Diagram for sortTask</div>
+<div class="title">Figure 13. Sequence Diagram for sortTask</div>
 </div>
 <div class="paragraph">
 <p>These are the stages shown in figure 9. Stages are similar for sort spending as well.</p>
@@ -530,7 +659,7 @@ and updating the current sort order in <code>SortingOrder</code> class.</p>
 <div class="content">
 <img src="images/SortTaskActivityDiagram.png" alt="SortTaskActivityDiagram">
 </div>
-<div class="title">Figure 12. Activity Diagram for sortTask</div>
+<div class="title">Figure 14. Activity Diagram for sortTask</div>
 </div>
 <div class="paragraph">
 <p>The diagram above shows sortTask works. There are 2 possible error messages that can occur. Firstly,
@@ -543,7 +672,7 @@ the sorting will occur and the newly sorted task list will be displayed.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.3. Design considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.4.3. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-sort-commands"><a class="link" href="#aspect-data-structure-to-support-the-sort-commands">Aspect: Data structure to support the sort commands</a></h5>
 <div class="ulist">
@@ -581,9 +710,9 @@ no additional sorting needed when adding or editing new elements.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-reminder-feature"><a class="link" href="#sending-reminder-feature">3.4. Sending Reminder feature</a></h3>
+<h3 id="sending-reminder-feature"><a class="link" href="#sending-reminder-feature">3.5. Sending Reminder feature</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-4"><a class="link" href="#description-of-feature-4">3.4.1. Description of feature</a></h4>
+<h4 id="description-of-feature-5"><a class="link" href="#description-of-feature-5">3.5.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Sends reminder for tasks and meetings that are due in the number of days given by the user input.</p>
 </div>
@@ -607,7 +736,7 @@ User Email  Account Information is stored through the signIn command.
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-4"><a class="link" href="#details-4">3.4.2. Details</a></h4>
+<h4 id="details-4"><a class="link" href="#details-4">3.5.2. Details</a></h4>
 <div class="paragraph">
 <p>SendReminder takes in a single integer as parameter. The integer will be the duration in days from the current times in which the meetings and tasks are due.</p>
 </div>
@@ -618,7 +747,7 @@ User Email  Account Information is stored through the signIn command.
 <div class="content">
 <img src="images/SendReminderSequenceDiagram.png" alt="SendReminderSequenceDiagram">
 </div>
-<div class="title">Figure 13. Sequence Diagram for sendReminder</div>
+<div class="title">Figure 15. Sequence Diagram for sendReminder</div>
 </div>
 <div class="paragraph">
 <p>These are the stages shown in figure 13.</p>
@@ -655,7 +784,7 @@ User Email  Account Information is stored through the signIn command.
 <div class="content">
 <img src="images/SendReminderActivityDiagram.png" alt="SendReminderActivityDiagram">
 </div>
-<div class="title">Figure 14. Activity Diagram for sendReminder</div>
+<div class="title">Figure 16. Activity Diagram for sendReminder</div>
 </div>
 <div class="paragraph">
 <p>The diagram above shows how <code>sendReminder</code> works. There are 2 possible error messages that can occur. Firstly,
@@ -664,7 +793,7 @@ an error will be shown if the user non-numeric or negative or zero number as the
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.3. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.3. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-sendreminder-commands"><a class="link" href="#aspect-data-structure-to-support-the-sendreminder-commands">Aspect: Data structure to support the sendReminder commands</a></h5>
 <div class="ulist">
@@ -704,9 +833,9 @@ names one by one to get the Person object of the member. Harder to implement.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="broadcast-mail-feature"><a class="link" href="#broadcast-mail-feature">3.5. Broadcast Mail feature</a></h3>
+<h3 id="broadcast-mail-feature"><a class="link" href="#broadcast-mail-feature">3.6. Broadcast Mail feature</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-5"><a class="link" href="#description-of-feature-5">3.5.1. Description of feature</a></h4>
+<h4 id="description-of-feature-6"><a class="link" href="#description-of-feature-6">3.6.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Broadcast an email to all members in the project.</p>
 </div>
@@ -730,7 +859,7 @@ User Email  Account Information is stored through the signIn command.
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-5"><a class="link" href="#details-5">3.5.2. Details</a></h4>
+<h4 id="details-5"><a class="link" href="#details-5">3.6.2. Details</a></h4>
 <div class="paragraph">
 <p>BroadcastMail takes in a two String, an email Subject and Body.
 The subject will be the email title which are normally on the email header and the body
@@ -743,7 +872,7 @@ will be the message body of the email.</p>
 <div class="content">
 <img src="images/BroadcastMailSequenceDiagram.png" alt="BroadcastMailSequenceDiagram">
 </div>
-<div class="title">Figure 15. Sequence Diagram for broadcastMail</div>
+<div class="title">Figure 17. Sequence Diagram for broadcastMail</div>
 </div>
 <div class="paragraph">
 <p>These are the stages shown in figure 15.</p>
@@ -774,14 +903,14 @@ will be the message body of the email.</p>
 <div class="content">
 <img src="images/BroadcastMailActivityDiagram.png" alt="BroadcastMailActivityDiagram">
 </div>
-<div class="title">Figure 16. Activity Diagram for BroadcastMail</div>
+<div class="title">Figure 18. Activity Diagram for BroadcastMail</div>
 </div>
 <div class="paragraph">
 <p>The diagram above shows how <code>broadcastMail</code> works.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.3. Design considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.3. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-broadcastmail-commands"><a class="link" href="#aspect-data-structure-to-support-the-broadcastmail-commands">Aspect: Data structure to support the broadcastMail commands</a></h5>
 <div class="paragraph">
@@ -792,9 +921,9 @@ to all the members in the project group.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sign-in-feature"><a class="link" href="#sign-in-feature">3.6. Sign In feature</a></h3>
+<h3 id="sign-in-feature"><a class="link" href="#sign-in-feature">3.7. Sign In feature</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-6"><a class="link" href="#description-of-feature-6">3.6.1. Description of feature</a></h4>
+<h4 id="description-of-feature-7"><a class="link" href="#description-of-feature-7">3.7.1. Description of feature</a></h4>
 <div class="paragraph">
 <p>Signs in using a Google account for mailing purposes.</p>
 </div>
@@ -816,7 +945,7 @@ In this version, only gmail server has been made available for use in signing in
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-6"><a class="link" href="#details-6">3.6.2. Details</a></h4>
+<h4 id="details-6"><a class="link" href="#details-6">3.7.2. Details</a></h4>
 <div class="paragraph">
 <p>signIn takes in two inputs, first is the email address of the user (in gmail), second is the password to the email address.</p>
 </div>
@@ -827,7 +956,7 @@ In this version, only gmail server has been made available for use in signing in
 <div class="content">
 <img src="images/SignInSequenceDiagram.png" alt="SignInSequenceDiagram">
 </div>
-<div class="title">Figure 17. Sequence Diagram for signIn command</div>
+<div class="title">Figure 19. Sequence Diagram for signIn command</div>
 </div>
 <div class="paragraph">
 <p>These are the stages shown in figure 15.</p>
@@ -855,14 +984,14 @@ In this version, only gmail server has been made available for use in signing in
 <div class="content">
 <img src="images/SignInActivityDiagram.png" alt="SignInActivityDiagram">
 </div>
-<div class="title">Figure 18. Activity Diagram for SignIn</div>
+<div class="title">Figure 20. Activity Diagram for SignIn</div>
 </div>
 <div class="paragraph">
 <p>The diagram above shows how <code>signIn</code> works.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.3. Design considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.3. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-algorithm-to-check-validity-of-the-account-in-signin-commands"><a class="link" href="#aspect-algorithm-to-check-validity-of-the-account-in-signin-commands">Aspect: Algorithm to check validity of the Account in SignIn commands</a></h5>
 <div class="ulist">
@@ -937,9 +1066,9 @@ This may lead to confusion for the project&#8217;s members.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.7. Generate meeting timeslot</a></h3>
+<h3 id="generate-meeting-timeslot"><a class="link" href="#generate-meeting-timeslot">3.8. Generate meeting timeslot</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-7"><a class="link" href="#description-of-feature-7">3.7.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-8"><a class="link" href="#description-of-feature-8">3.8.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>The timeslot generator is used to suggest meeting timings by making use of team members' timetable.</p>
 </div>
@@ -960,7 +1089,7 @@ This feature makes heavy use of the class <code>TimeRange</code>, which represen
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-7"><a class="link" href="#details-7">3.7.2. Details</a></h4>
+<h4 id="details-7"><a class="link" href="#details-7">3.8.2. Details</a></h4>
 <div class="paragraph">
 <p><code>TimeSlotGenerator(members, desiredMeetingDuration, restrictedTimeRange)</code></p>
 </div>
@@ -1047,11 +1176,11 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/GenerateSlotActivityDiagram.png" alt="GenerateSlotActivityDiagram">
 </div>
-<div class="title">Figure 19. <code>generate</code> command tries to provide best possible meeting timeslot</div>
+<div class="title">Figure 21. <code>generate</code> command tries to provide best possible meeting timeslot</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.7.3. Algorithm Used</a></h4>
+<h4 id="algorithm-used"><a class="link" href="#algorithm-used">3.8.3. Algorithm Used</a></h4>
 <div class="sect4">
 <h5 id="code-timeslotgenerator-generate-code"><a class="link" href="#code-timeslotgenerator-generate-code"><code>TimeSlotGenerator#generate()</code></a></h5>
 <div class="olist arabic">
@@ -1095,7 +1224,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.7.4. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.8.4. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-generate-timeslot-with-most-number-of-available-members"><a class="link" href="#aspect-how-to-generate-timeslot-with-most-number-of-available-members">Aspect: How to generate timeslot with most number of available members</a></h5>
 <div class="ulist">
@@ -1135,9 +1264,9 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable-input"><a class="link" href="#timetable-input">3.8. Timetable input</a></h3>
+<h3 id="timetable-input"><a class="link" href="#timetable-input">3.9. Timetable input</a></h3>
 <div class="sect3">
-<h4 id="description-of-feature-8"><a class="link" href="#description-of-feature-8">3.8.1. Description of Feature</a></h4>
+<h4 id="description-of-feature-9"><a class="link" href="#description-of-feature-9">3.9.1. Description of Feature</a></h4>
 <div class="paragraph">
 <p>This feature is used to input timetable data, which would then be used in the <code>generate</code> command to find a suitable meeting timeslot.</p>
 </div>
@@ -1162,7 +1291,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect3">
-<h4 id="details-8"><a class="link" href="#details-8">3.8.2. Details</a></h4>
+<h4 id="details-8"><a class="link" href="#details-8">3.9.2. Details</a></h4>
 <div class="paragraph">
 <p>Important functions in <code>TimetableInput</code>:</p>
 </div>
@@ -1183,7 +1312,7 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/add-timetable/AddTimetableClassDiagram.png" alt="AddTimetableClassDiagram">
 </div>
-<div class="title">Figure 20. Class diagram for timetable input feature</div>
+<div class="title">Figure 22. Class diagram for timetable input feature</div>
 </div>
 <div class="paragraph">
 <p><code>addTimetableCommand</code> accepts either a filepath or a URL, which is then supplied to <code>TimetableInput</code> to fetch the timetable data.</p>
@@ -1198,11 +1327,11 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 <div class="content">
 <img src="images/add-timetable/AddTimetableSequenceDiagram.png" alt="AddTimetableSequenceDiagram">
 </div>
-<div class="title">Figure 21. Timeline of entire process from user executing their command to getting the result back.</div>
+<div class="title">Figure 23. Timeline of entire process from user executing their command to getting the result back.</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.8.3. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.9.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-input-timetable"><a class="link" href="#aspect-how-to-input-timetable">Aspect: How to input timetable</a></h5>
 <div class="ulist">
@@ -1242,14 +1371,14 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1280,13 +1409,13 @@ If <code>generate()</code> returns an empty <code>List&lt;TimeRange&gt;</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.11. Checkout</a></h3>
+<h3 id="Implementation-Checkout"><a class="link" href="#Implementation-Checkout">3.12. Checkout</a></h3>
 <div class="paragraph">
 <p>This allows user to checkout to a project from a list of project to work on it.
 Almost every command regarding the project require the user to checkout first.</p>
@@ -1318,7 +1447,7 @@ attribute and the model supports three new methods:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.12. Change in UI display</a></h3>
+<h3 id="Implementation-Change-in-UI-display"><a class="link" href="#Implementation-Change-in-UI-display">3.13. Change in UI display</a></h3>
 <div class="paragraph">
 <p>The first step of changing UI display is to find out
 whether a change in UI is needed given a command from user.
@@ -1437,6 +1566,169 @@ no previous UI states to go back. Under such situation, an error will be returne
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="performance-tracking"><a class="link" href="#performance-tracking">3.14. Performance Tracking</a></h3>
+<div class="paragraph">
+<p>We allow users to be able to track the performance of every member in the project, by using information that the user has
+already input into MyProject.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.14.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Performance</code> of each <code>Person</code> is consolidated and stored in a <code>PerformanceOverview</code> object inside the model.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Performance</code> of a <code>Person</code> stores the information such as tasks assigned to the person, which are specific to the person. The actual performance
+of the person can only be calculated in <code>PerformanceOverview</code> with information from the <code>Project</code> as well.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>PerformanceOverview</code> is a separate model we have implemented, which consolidates all the data from each <code>Person</code> involved
+in the specific project, as well as from the project itself. The following is a class diagram for <code>PerformanceOverview</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PerformanceOverviewClassDiagram.png" alt="PerformanceOverviewClassDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>A typical <code>PerformanceOverview</code> is created using the following constructor:</p>
+</div>
+<div class="paragraph">
+<p><code>PerformanceOverview(project, memberList)</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>project</code> - This is the <code>Project</code> that the user is concerned about.</p>
+</li>
+<li>
+<p><code>memberList</code> - This is the <code>List&lt;Person&gt;</code> which consists of all the <code>Person</code>(s) involved with this project. Note that they each
+have their own <code>Performance</code> as well.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All the calculations of the various components constituting the performance of an individual is calculated within the <code>PerformanceOverview</code>,
+and the results are accessed using each of the following commands:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>PerformanceOverview#getAttendanceOf(Person person)</code> - Gets the number of meetings attended by the <code>Person</code></p>
+</li>
+<li>
+<p><code>PerformanceOverview#getRateOfAttendanceOf(Person person)</code> - Gets the percentage of meetings attended by the <code>Person</code></p>
+</li>
+<li>
+<p><code>PerformanceOverview#getNumOfTaskDoneOf(Person person)</code> - Gets the number of tasks completed by this <code>Person</code></p>
+</li>
+<li>
+<p><code>PerformanceOverview#getTaskCompletionRateOf(Person person)</code> - Gets the percentage of the assigned tasks, which the <code>Person</code> completed</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Internally, every attribute of the performance of an individual a HashMap for that particular attribute. For example, the task completion
+rate of every individual is stored in a <code>HashMap&lt;String, RateOfTaskCompletion&gt;</code> where the key is the string of the name of the member, while
+the value is the rate of task completion. Every other attribute is stored in similar fashion.</p>
+</div>
+<div class="paragraph">
+<p>Next, we will demonstrate the process of using this feature to see the performance of each member. The following sequence diagram
+shows the entire process of calculating the performance of member and showing it, after the <code>showPerformanceOverview</code> command
+is input by the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ShowPerformanceOverviewSequenceDiagram.png" alt="ShowPerformanceOverviewSequenceDiagram">
+</div>
+<div class="title">Figure 24. Sequence diagram of the <code>showPerformanceOverview</code> command execution</div>
+</div>
+<div class="paragraph">
+<p>With reference to the sequence diagram above, here are the steps of the command execution:</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user input is parsed, and a <code>ShowPerformanceOverviewCommand</code> is created.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The execution of the <code>ShowPerformanceOverviewCommand</code> fetches the <code>Project</code> that the user is working on, and also
+the <code>Person</code>(s) involved in the project and returns them as a <code>List&lt;Person&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>List&lt;Person&gt;</code> and <code>Project</code> are used to create the <code>PerformanceOverview</code>. Here you can see that when a <code>PerformanceOverview</code> is created
+there are 4 methods being called internally. This is where all the necessary information is taken from the project and members, and used to
+calculate the different attributes of the member&#8217;s performance. It is also in those 4 methods, where the HashMaps are created.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The <code>PerformanceOverview</code> is set in the <code>Model</code>, and displayed to the user subsequently.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes the general flow of the execution of the <code>showPerformanceOverview</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ShowPerformanceOverviewActivityDiagram.png" alt="ShowPerformanceOverviewActivityDiagram">
+</div>
+<div class="title">Figure 25. Activity diagram for <code>showPerformanceOverview</code></div>
+</div>
+<div class="paragraph">
+<p>As shown in the activity diagram, there are only 2 main flows during the execution of this command. If there are members
+in the project, the performance of the members can be calculated, and the performance overview will be displayed
+to the user. If there are no members in the project, the user will be shown an error message to tell them that
+the performance overview cannot be computed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.14.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Data structure of <code>PerformanceOverview</code></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(Current implementation):</strong> Currently, every attribute is stored and paired to the member using a HashMap. The key
+is the string representation of the name of the members, and the value is the attribute itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
+</li>
+<li>
+<p>In order to add a new attribute to measure performance, there is only a need to add a new HashMap, a method to calculate the values,
+and a method to retrieve the values.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It is more difficult to iterate through all HashMaps to retrieve the values based on your preferred ordering.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -2173,4 +2465,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 23:20:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 02:54:03 UTC</div></div></div></body></html>
